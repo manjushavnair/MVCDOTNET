@@ -1,0 +1,18 @@
+﻿@model MVCApp.Models.LoginModels
+ 
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+
+}
+
+ <p>
+    <input type="submit" value="Login" onclick="" />
+</p>
+<p>
+    Not a member yet ?  <li>@Html.ActionLink("Join us", "UserAdd", "Register", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+</p>
