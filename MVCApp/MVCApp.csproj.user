@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunTests">
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="RunTests" />
+  <PropertyGroup>
+    <UseIISExpress>false</UseIISExpress>
+    <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- After Compile: Result will be saved in OutDir -->
+    <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
+    <!-- MAke this Solution to work in Visusl Studio   -->
+    <OutDir>.\MVCApp\bin\</OutDir>
+    <!-- Solutionproperties -->
+    <SolutionProperties>
+        OutDir=$(OutDir);
+        Platform=Any CPU;
+        Configuration=$(Configuration)
+      </SolutionProperties>
+    <!-- Configuration -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Solution Include="MVCApp.csproj.user">
+      <Properties>
+                     $(SolutionProperties)
+                 </Properties>
+    </Solution>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildArtifactsDir Include="BuildArtifacts\" />
+    <SolutionFile Include="MVCApp.sln" />
+  </ItemGroup>
+  <Target Name="EchoDate">
+    <Exec Command="echo %25date%25" />
+    <Message Text=" About to Call External EchoDate 	 " />
+  </Target>
+  <Target Name="ShowParameters" DependsOnTargets="EchoDate">
+    <Message Text=" SolutionProperties = $(SolutionProperties)" />
+    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    <Message Text=" WebSiteFolderFullPath = $(WebSiteFolderFullPath)" />
+    <Message Text=" MSBuildExtensionsPath = $(MSBuildExtensionsPath)" />
+    <Message Text=" OutDir = $(OutDir)" />
+    <Message Text=" SrcBasePath = $(SrcBasePath)" />
+    <Message Text=" StyleCopArtifactPath = $(StyleCopArtifactPath)" />
+  </Target>
+  <Target Name="Clean" DependsOnTargets="ShowParameters">
+    <RemoveDir Directories="@(BuildArtifactsDir)" />
+  </Target>
+  <Target Name="Init" >
+    <MakeDir Directories="@(BuildArtifactsDir)" />
+  </Target>
+  <Target Name="BuildSolution" DependsOnTargets="Init">
+    <Message Text="BuildSolution called" />
+    <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+  </Target>
+  <Target Name="RunTests" DependsOnTargets="Init">
+    <Message Text="*** NUnit tests beginning..." />
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug\MVCAppTests.dll">
+      <Output TaskParameter="Include" ItemName="TestAssembly" />
+    </CreateItem>
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ShowLabels="All" NoHeader="true" NoColor="true" ContinueOnError="false" Process="Single" Workers="10" EnableShadowCopy="true" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
+  </Target>
+  <Target Name="Coverage" DependsOnTargets="RunTests">
+    <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
+  </Target>
+  <Target Name="ExecuteNUnit">
+    <Message Text="*** NUnit tests beginning..." />
+    <NUnit3 Assemblies="@(TestAssembly)" ContinueOnError="false" OutputXmlFile="$(NUnitArtifactFileName).$(NUnitArtifactFileExtension)" ToolPath="$(NUnitPath)" />
+  </Target>
+  <Target Name="Run">
+    <CallTarget Targets="BuildSolution" />
+    <CallTarget Targets="RunTests" />
+  </Target>
+  <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
+    <!-- Create a collection of files to scan -->
+    <CreateItem Include="$(MSBuildStartupDirectory)\**\*.cs">
+      <Output TaskParameter="Include" ItemName="StyleCopFiles" />
+    </CreateItem>
+    <!-- Run the StyleCop MSBuild task -->
+    <MSBuild.ExtensionPack.CodeQuality.StyleCop TaskAction="Scan" SourceFiles="@(StyleCopFiles)" ShowOutput="true" ForceFullAnalysis="true" CacheResults="false" logFile="$(StyleCopArtifactPath)\StyleCopLog.txt" SettingsFile="$(StyleCopPath)\Settings.StyleCop">
+      <Output TaskParameter="Succeeded" PropertyName="AllPassed" />
+      <Output TaskParameter="ViolationCount" PropertyName="Violations" />
+      <Output TaskParameter="FailedFiles" ItemName="Failures" />
+    </MSBuild.ExtensionPack.CodeQuality.StyleCop>
+    <Message Text="Succeeded: $(AllPassed), Violations: $(Violations)" />
+    <Message Text="%(Failures.Identity) - Failed on Line %(Failures.LineNumber). %(Failures.CheckId): %(Failures.Message)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>SpecificPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
