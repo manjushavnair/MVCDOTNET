@@ -76,41 +76,7 @@
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
   
-  <Target Name="RunTests" DependsOnTargets="Init" >
-    <Message Text="*** NUnit tests beginning..." />
-     <ItemGroup>
-          <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
-   </ItemGroup>
-       <Message Text="*** Creating test assembly..." />
-       <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
 
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug\MVCAppTests.dll">
-    
-    
-      <Output TaskParameter="Include" ItemName="TestAssembly" />
-    </CreateItem>
-      
-    	
-     <Message Text=" SolutionProperties = @(TestAssembly)" />
-     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
-     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-      
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"     ContinueOnError="false" Process="Single"   TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)"  />
-    
-    
-  </Target>
-  
-  
-  <Target Name="Coverage" DependsOnTargets="RunTests">
-    <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll MVCAppTests.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
-  </Target>
-  
-  <Target Name="ExecuteNUnit">
-    <Message Text="*** NUnit tests beginning..." />
-      <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"     ContinueOnError="false" Process="Single"   TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)"  />
-  
-  </Target>
   
   <Target Name="Run">
     <CallTarget Targets="BuildSolution" />
