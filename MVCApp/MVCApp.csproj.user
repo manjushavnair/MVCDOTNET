@@ -13,7 +13,7 @@
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\MVCApp\bin\</OutDir>
+    <OutDir>.\bin\</OutDir>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
@@ -28,7 +28,7 @@
     <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Solution Include="MVCApp.csproj.user">
+    <Solution Include="MVCApp.sln">
       <Properties>
                      $(SolutionProperties)
                  </Properties>
@@ -39,15 +39,17 @@
   
   
    
-   
-   
+    <Target Name="Build">  
+        <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)"/>  
+    </Target>
  
   <Target Name="BuildSolution"   >
  
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+    
   </Target>
  
-   <Target Name="RunTests"  >
+   <Target Name="RunTests"    DependsOnTargets="Build">
        <Message Text="*** NUnit tests beginning..." />
         <ItemGroup>
              <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
