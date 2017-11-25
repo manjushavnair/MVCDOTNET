@@ -76,7 +76,7 @@
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
  
-   <Target Name="RunTests" DependsOnTargets="Init" >
+   <Target Name="RunTests" DependsOnTargets="BuildSolution" >
        <Message Text="*** NUnit tests beginning..." />
         <ItemGroup>
              <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
