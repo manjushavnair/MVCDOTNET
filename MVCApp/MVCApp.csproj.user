@@ -68,15 +68,15 @@
   <Target Name="Clean" DependsOnTargets="ShowParameters">
     <RemoveDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="Init" >
+  <Target Name="Init" DependsOnTargets="Clean">
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="BuildSolution" DependsOnTargets="Init">
+  <Target Name="BuildSolution"  DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
   
-  <Target Name="RunTests" DependsOnTargets="Init">
+  <Target Name="RunTests" DependsOnTargets="Init" >
     <Message Text="*** NUnit tests beginning..." />
      <ItemGroup>
           <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
@@ -104,7 +104,8 @@
   
   <Target Name="ExecuteNUnit">
     <Message Text="*** NUnit tests beginning..." />
-    <NUnit3 Assemblies="@(TestAssembly)" ContinueOnError="false" OutputXmlFile="$(NUnitArtifactFileName).$(NUnitArtifactFileExtension)" ToolPath="$(NUnitPath)" />
+      <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"     ContinueOnError="false" Process="Single"   TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)"  />
+  
   </Target>
   
   <Target Name="Run">
