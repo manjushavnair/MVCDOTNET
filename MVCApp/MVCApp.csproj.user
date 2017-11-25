@@ -81,11 +81,15 @@
      <ItemGroup>
           <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
    </ItemGroup>
+       <Message Text="*** Creating test assembly..." />
+       <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+
     <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug\MVCAppTests.dll">
+    
+    
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem>
-     
-    
+      
     	
      <Message Text=" SolutionProperties = @(TestAssembly)" />
      <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
