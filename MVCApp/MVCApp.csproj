@@ -382,10 +382,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
-    <Error Condition="!Exists('packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets'))" />
+    <Error Condition="!Exists('packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets'))" />
   </Target>
   <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
-  <Import Project="packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets')" />
+  <Import Project="packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
