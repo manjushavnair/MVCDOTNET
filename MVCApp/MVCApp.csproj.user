@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunTests">
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="BuildSolution">
  
-   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="RunTests" />
+
   
   <UsingTask AssemblyFile="C:\Program Files\MSBuildExtensionPack\4.0\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
    
@@ -80,8 +80,7 @@
   
   <Target Name="Run">
     <CallTarget Targets="BuildSolution" />
-    <CallTarget Targets="RunTests" />
-  </Target>
+   </Target>
   
   <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
     <!-- Create a collection of files to scan -->
