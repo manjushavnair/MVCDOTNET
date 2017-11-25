@@ -71,16 +71,11 @@
   <Target Name="Init" DependsOnTargets="Clean">
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="BuildSolution"  DependsOnTargets="Init">
+  <Target Name="BuildSolution"  >
     <Message Text="BuildSolution called" />
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
-  
-
-  
-  <Target Name="Run">
-    <CallTarget Targets="BuildSolution" />
-   </Target>
+ 
   
   <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
     <!-- Create a collection of files to scan -->
