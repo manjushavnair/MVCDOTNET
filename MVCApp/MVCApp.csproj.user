@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunTests">
-  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="RunTests" />
+ 
+   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="RunTests" />
+  
+  <UsingTask AssemblyFile="C:\Program Files\MSBuildExtensionPack\4.0\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
+   
   <PropertyGroup>
     <UseIISExpress>false</UseIISExpress>
     <ProjectView>ProjectFiles</ProjectView>
@@ -34,11 +38,25 @@
     <BuildArtifactsDir Include="BuildArtifacts\" />
     <SolutionFile Include="MVCApp.sln" />
   </ItemGroup>
+  
+  
+  
   <Target Name="EchoDate">
     <Exec Command="echo %25date%25" />
     <Message Text=" About to Call External EchoDate 	 " />
   </Target>
+  
+  
+  
+   
+   
+   
   <Target Name="ShowParameters" DependsOnTargets="EchoDate">
+
+	<Message Text=" TestAssembly = @(TestAssembly)" />
+	<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+	<Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
+  
     <Message Text=" SolutionProperties = $(SolutionProperties)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" WebSiteFolderFullPath = $(WebSiteFolderFullPath)" />
@@ -59,11 +77,26 @@
   </Target>
   <Target Name="RunTests" DependsOnTargets="Init">
     <Message Text="*** NUnit tests beginning..." />
+     <ItemGroup>
+          <Assemblies   Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
+   </ItemGroup>
     <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem>
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ShowLabels="All" NoHeader="true" NoColor="true" ContinueOnError="false" Process="Single" Workers="10" EnableShadowCopy="true" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
+     
+    
+    	
+     <Message Text=" SolutionProperties = @(TestAssembly)" />
+     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
+      
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"     ContinueOnError="false" Process="Single"   TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)"  />
+    
+    
   </Target>
+  
+  
   <Target Name="Coverage" DependsOnTargets="RunTests">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
