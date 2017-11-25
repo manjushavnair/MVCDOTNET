@@ -72,7 +72,7 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   <Target Name="BuildSolution" DependsOnTargets="Init" >
-    <Message Text="BuildSolution called = @(Solution) " />
+ 
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
  
