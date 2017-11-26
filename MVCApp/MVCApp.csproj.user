@@ -26,7 +26,7 @@
     <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Solution Include="MVCApp.csproj.user">
+    <Solution Include="MVCApp.sln">
       <Properties>
                      $(SolutionProperties)
                  </Properties>
