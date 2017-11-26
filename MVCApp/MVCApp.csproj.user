@@ -66,7 +66,7 @@
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug\MVCAppTests.dll">
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem>
     <Message Text=" SolutionProperties = @(TestAssembly)" />
