@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
-  <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCAppTests\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
+<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCAppTests\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
+  <Import Project="..\MVCAppTests\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCAppTests\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
@@ -45,49 +46,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\Mono.Cecil.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.Engine.3.7.0\lib\Mono.Cecil.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit-agent, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
   <!--  <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
     -->
     <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.engine.api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.Api.3.7.0\lib\nunit.engine.api.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.Engine.Api.3.7.0\lib\nunit.engine.api.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sharp2City, Version=1.2.0.0, Culture=neutral, PublicKeyToken=60fd7e7e2bef8082, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Sharp2City.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Sharp2City.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=3.0.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
+      <HintPath>..\MVCAppTests\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -143,10 +144,38 @@
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
+
+
+  <Target Name="BuildAndTest" DependsOnTargets="Init">
+    <Message Text="BuildSolution called" />
+    
+   
+    <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
+    
+    <ItemGroup>
+      <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
+    </ItemGroup>
+    <Message Text="*** NUnit tests starting ..Creating Items" />
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+      <Output TaskParameter="Include" ItemName="TestAssembly" />
+    </CreateItem> 
+     <Message Text=" NUnit tests starting  Created Items" />
+    <Message Text=" SolutionProperties = @(TestAssembly)" />
+    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
+    
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCAppTests\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" Process="Single" TestTimeout="2000"   OutputXmlFile="$(NUnitResultsFile)"/>
+    
+  </Target>
+  
+  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
+  
+  
   <Target Name="AfterBuild">
   </Target>
   -->
