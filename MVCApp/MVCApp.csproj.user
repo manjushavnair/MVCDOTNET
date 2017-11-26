@@ -80,7 +80,8 @@
     
       
   </Target>
-  
+      <Message Text=" Starting Coverage " />
+
   <Target Name="Coverage" DependsOnTargets="BuildCode">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
