@@ -19,7 +19,7 @@
         Configuration=$(Configuration)
       </SolutionProperties>
     <!-- Configuration -->
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
   </PropertyGroup>
   <PropertyGroup>
@@ -66,7 +66,7 @@
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\$(Configuration)\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem>
     <Message Text=" SolutionProperties = @(TestAssembly)" />
