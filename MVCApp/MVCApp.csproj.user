@@ -60,24 +60,30 @@
   </Target>
   <Target Name="BuildAndTest" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
+    
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
  
-    <Message Text="*** NUnit tests beginning..." />
+    <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
+    
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\$(Configuration)\MVCAppTests.dll">
+    <Message Text="*** NUnit tests starting ..Creating Items" />
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
-    </CreateItem>
+    </CreateItem> 
+     <Message Text=" NUnit tests starting  Created Items" />
     <Message Text=" SolutionProperties = @(TestAssembly)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"      ContinueOnError="false" Process="Single" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
+    
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" Process="Single" TestTimeout="2000"   OutputXmlFile="$(NUnitResultsFile)"/>
+    
   </Target>
   
   <Target Name="Coverage" DependsOnTargets="BuildAndTest">
-    <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
+    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
   
   
@@ -87,10 +93,7 @@
 </Target>
 
 
-  <Target Name="ExecuteNUnit">
-    <Message Text="*** NUnit tests beginning..." />
-    <NUnit3 Assemblies="@(TestAssembly)" ContinueOnError="false" OutputXmlFile="$(NUnitArtifactFileName).$(NUnitArtifactFileExtension)" ToolPath="$(NUnitPath)" />
-  </Target>
+ 
   <Target Name="Run">
     <CallTarget Targets="BuildAndTest" />
  
