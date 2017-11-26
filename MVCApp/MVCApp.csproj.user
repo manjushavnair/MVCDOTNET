@@ -20,7 +20,7 @@
       </SolutionProperties>
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
+    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">x86</BuildPlatform>
   </PropertyGroup>
   <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
@@ -75,6 +75,7 @@
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"      ContinueOnError="false" Process="Single" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
+  
   <Target Name="Coverage" DependsOnTargets="BuildAndTest">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
