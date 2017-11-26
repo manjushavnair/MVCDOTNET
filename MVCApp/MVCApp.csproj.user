@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
-  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildAndTest" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
 
   <PropertyGroup>
@@ -55,10 +55,10 @@
   <Target Name="Clean" DependsOnTargets="ShowParameters">
     <RemoveDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="Init" DependsOnTargets="Clean;BeforeBuild">
+  <Target Name="Init" DependsOnTargets="Clean">
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="BuildAndTest" DependsOnTargets="Init">
+  <Target Name="BuildCode" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
     
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
@@ -78,11 +78,10 @@
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" Process="Single" TestTimeout="2000"   OutputXmlFile="$(NUnitResultsFile)"/>
-    
+      
   </Target>
   
-  <Target Name="Coverage" DependsOnTargets="BuildAndTest">
+  <Target Name="Coverage" DependsOnTargets="BuildCode">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
   
@@ -95,7 +94,7 @@
 
  
   <Target Name="Run">
-    <CallTarget Targets="BuildAndTest" />
+    <CallTarget Targets="BuildCode" />
  
   </Target>
   <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
