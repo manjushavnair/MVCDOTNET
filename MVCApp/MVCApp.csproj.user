@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunTests">
-  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="RunTests" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildAndTest" />
+<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
+
   <PropertyGroup>
     <UseIISExpress>false</UseIISExpress>
     <ProjectView>ProjectFiles</ProjectView>
@@ -9,7 +11,7 @@
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\MVCApp\bin\</OutDir>
+    <OutDir>.\bin\</OutDir>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
@@ -53,14 +55,13 @@
   <Target Name="Clean" DependsOnTargets="ShowParameters">
     <RemoveDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="Init">
+  <Target Name="Init" DependsOnTargets="Clean;BeforeBuild">
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
-  <Target Name="BuildSolution" DependsOnTargets="Init">
+  <Target Name="BuildAndTest" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
-  </Target>
-  <Target Name="RunTests" DependsOnTargets="Init">
+ 
     <Message Text="*** NUnit tests beginning..." />
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
@@ -72,18 +73,24 @@
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ShowLabels="All" NoHeader="true" NoColor="true" ContinueOnError="false" Process="Single" Workers="10" EnableShadowCopy="true" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"      ContinueOnError="false" Process="Single" TestTimeout="2000" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
-  <Target Name="Coverage" DependsOnTargets="RunTests">
+  <Target Name="Coverage" DependsOnTargets="BuildAndTest">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
+
+<Target Name="BeforeBuild">
+  <Exec Command=".\.nuget\nuget restore MVCApp.sln"  ContinueOnError="true"/>
+</Target>
+
+
   <Target Name="ExecuteNUnit">
     <Message Text="*** NUnit tests beginning..." />
     <NUnit3 Assemblies="@(TestAssembly)" ContinueOnError="false" OutputXmlFile="$(NUnitArtifactFileName).$(NUnitArtifactFileExtension)" ToolPath="$(NUnitPath)" />
   </Target>
   <Target Name="Run">
-    <CallTarget Targets="BuildSolution" />
-    <CallTarget Targets="RunTests" />
+    <CallTarget Targets="BuildAndTest" />
+ 
   </Target>
   <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
     <!-- Create a collection of files to scan -->
