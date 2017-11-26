@@ -78,6 +78,7 @@
   <Target Name="Coverage" DependsOnTargets="BuildAndTest">
     <NCover ToolPath="C:\Program Files\NCover Code Central\" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
+  
 
 <Target Name="BeforeBuild">
   <Exec Command="..\.nuget\nuget restore MVCApp.sln"  ContinueOnError="true"/>

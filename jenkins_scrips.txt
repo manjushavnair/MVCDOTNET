@@ -1,4 +1,12 @@
+Bulding as solution  
+.\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
 ${WORKSPACE}\MVCApp\MVCApp.sln  
+/p:Configuration=Debug
 
+
+Bulding as project  
+.\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
 ${WORKSPACE}\MVCApp\MVCApp.csproj.user  
 /t:BuildAndTest /p:Configuration=Debug 
+
+
