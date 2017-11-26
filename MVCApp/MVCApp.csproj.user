@@ -15,7 +15,7 @@
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
-        Platform=Any CPU;
+        Platform=$(BuildPlatform);
         Configuration=$(Configuration)
       </SolutionProperties>
     <!-- Configuration -->
