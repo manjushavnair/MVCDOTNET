@@ -1,0 +1,4 @@
+${WORKSPACE}\MVCApp\MVCApp.sln  
+
+${WORKSPACE}\MVCApp\MVCApp.csproj.user  
+/t:BuildAndTest /p:Configuration=Debug 

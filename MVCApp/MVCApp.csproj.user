@@ -80,7 +80,7 @@
   </Target>
 
 <Target Name="BeforeBuild">
-  <Exec Command=".\.nuget\nuget restore MVCApp.sln"  ContinueOnError="true"/>
+  <Exec Command="..\.nuget\nuget restore MVCApp.sln"  ContinueOnError="true"/>
 </Target>
 
 
