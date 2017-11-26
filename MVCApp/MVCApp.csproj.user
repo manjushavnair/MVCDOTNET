@@ -15,12 +15,12 @@
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
-        Platform=$(BuildPlatform);
+        Platform=$(Platform);
         Configuration=$(Configuration)
       </SolutionProperties>
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">x86</BuildPlatform>
+    <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
   </PropertyGroup>
   <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
@@ -60,7 +60,7 @@
   </Target>
   <Target Name="BuildAndTest" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
-    <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+    <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
  
     <Message Text="*** NUnit tests beginning..." />
     <ItemGroup>
