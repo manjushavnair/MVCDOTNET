@@ -1,11 +1,11 @@
 #https://ferritedog.wordpress.com/2011/05/27/1-hour-guide-to-continuous-integration-setup-jenkins-meets-net/
 REM Path variables
-SET FolderPath=C:\Projects\ASP.NET-master\MVCDOTNET
-SET ResultsPath=C:\Projects\ASP.NET-master\MVCDOTNET\UnitTestResults
-SET CoverageHistoryPath=C:\Projects\ASP.NET-master\MVCDOTNET\CoverageHistory
+SET JENKINSWORKSPACE=C:\Program Files (x86)\Jenkins\workspace
+SET FolderPath=%JENKINSWORKSPACE%
+SET ResultsPath=%JENKINSWORKSPACE%\UnitTestResults
+SET CoverageHistoryPath=%JENKINSWORKSPACE%\CoverageHistory
  
-
-
+ 
 SET NunitPath=%FolderPath%\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools
 SET ReportUnitPath=%FolderPath%\MVCApp\packages\ReportUnit.1.2.1\tools
 SET OpenCoverPath=%FolderPath%\MVCApp\packages\OpenCover.4.6.519\tools
@@ -13,6 +13,17 @@ SET ReportGeneratorPath=%FolderPath%\MVCApp\packages\ReportGenerator.3.1.0-beta4
 
 SET UnitTestProj=%FolderPath%\MVCAppTests\MVCAppTests.csproj
 
+echo %JENKINSWORKSPACE%
+echo %FolderPath%
+echo %ResultsPath%
+echo %CoverageHistoryPath%
+echo %NunitPath%
+echo %ReportUnitPath%
+echo %OpenCoverPath%
+echo %ReportGeneratorPath%
+echo %UnitTestProj%
+
+ 
 REM Recreate Results Folder
 rd /S /Q %ResultsPath%
 md %ResultsPath%
