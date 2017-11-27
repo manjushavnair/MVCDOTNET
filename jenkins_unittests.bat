@@ -6,6 +6,7 @@ SET ResultsPath=%JENKINSWORKSPACE%\MVCTesting\UnitTestResults
 SET CoverageHistoryPath=%JENKINSWORKSPACE%\\MVCTesting\CoverageHistory
  
  
+ 
 SET NunitPath=%FolderPath%\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools
 SET ReportUnitPath=%FolderPath%\MVCApp\packages\ReportUnit.1.2.1\tools
 SET OpenCoverPath=%FolderPath%\MVCApp\packages\OpenCover.4.6.519\tools
