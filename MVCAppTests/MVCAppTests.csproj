@@ -12,6 +12,10 @@
 <PropertyGroup>
     <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
+  
+<PropertyGroup>
+    <CodeCoverageResultsFolder>..\CoverageHistory</CodeCoverageResultsFolder>
+  </PropertyGroup>
 
   
   <PropertyGroup>
@@ -195,19 +199,19 @@
               ExcludeByAttribute="System.ObsoleteAttribute"
               ToolExe="OpenCover.Console.exe"
               Register="True"
-              ShowUnvisited="True" 
-              
+              ShowUnvisited="True"               
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
               TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFolder)\TestResult.xml&quot; --dispose-runners $(Traits)"
-              Output="./CoverageHistory/coverage-results.xml" >
+              Output=&quot;$(CodeCoverageResultsFolder)\coverage-results.xml&quot; >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
+              
         </OpenCover>
    </Target>
   
     <Target Name="CoverageNC" DependsOnTargets="Test">
     <Message Text=" Starting Coverage " />
-      <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
+      <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./$(CodeCoverageResultsFolder)/coverage-results.xml" />
     </Target>
     
 
