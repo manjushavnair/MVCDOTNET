@@ -24,8 +24,7 @@ echo %UnitTestProj%
 
  
 REM Recreate Results Folder
-rd /S /Q "%ResultsPath%"
-md "%ResultsPath%"
+if not exist "%ResultsPath%"  md "%ResultsPath%"
 
 REM Create coverage history folder if not exists
 if not exist "%CoverageHistoryPath%" mkdir "%CoverageHistoryPath%"
