@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="TestAndCoverage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
+<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover"  />
+
+
    <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
 <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
+  
+<PropertyGroup>
+    <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
+  </PropertyGroup>
+
+  
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
@@ -149,7 +158,8 @@
 
  <Target Name="TestAndCoverage" >
   <CallTarget Targets="Test" />
- <!--  <CallTarget Targets="Coverage" /> -->
+  <CallTarget Targets="CoverageOC" />
+ <!--  <CallTarget Targets="CoverageNC" /> -->
   </Target>
  
   <Target Name="Test" >
@@ -177,7 +187,25 @@
   </Target>
   
   
-    <Target Name="Coverage" DependsOnTargets="Test">
+   <Target Name="CoverageOC" DependsOnTargets="Test">
+         <OpenCover
+              ReturnTargetCode="True"
+              ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools"
+              Filter="+[*]* -[*.Tests]* -[Autofac*]* -[Newtonsoft.Json]*"
+              ExcludeByAttribute="System.ObsoleteAttribute"
+              ToolExe="OpenCover.Console.exe"
+              Register="True"
+              ShowUnvisited="True" 
+              
+              Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
+              TargetWorkingDir="$(TestsBuildOutputFolder)"
+              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFolder)\TestResult.xml&quot; --dispose-runners $(Traits)"
+              Output="./CoverageHistory/coverage-results.xml" >
+              <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
+        </OpenCover>
+   </Target>
+  
+    <Target Name="CoverageNC" DependsOnTargets="Test">
     <Message Text=" Starting Coverage " />
       <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
     </Target>
