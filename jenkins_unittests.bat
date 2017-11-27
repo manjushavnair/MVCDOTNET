@@ -39,6 +39,7 @@ REM SET NunitError=%ERRORLEVEL%
 REM Run ReportUnit to create HTML Report from Nunit XML report
 "%ReportUnitPath%"\ReportUnit.exe "%ResultsPath%"\TestResult.xml
 
+
 REM Run OpenCover to create coverage XML report
 "%OpenCoverPath%"\OpenCover.Console.exe -register:user -register:user -target:%NunitPath%\nunit3-console.exe -targetargs:%UnitTestProj% -output:%ResultsPath%\opencovertests.xml
 
