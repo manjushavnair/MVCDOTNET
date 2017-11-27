@@ -59,18 +59,13 @@
     
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
  
-    <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
-    
-    <ItemGroup>
+     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
-    <Message Text="*** NUnit tests starting ..Creating Items" />
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+      <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem> 
-     <Message Text=" NUnit tests starting  Created Items" />
-    <Message Text=" SolutionProperties = @(TestAssembly)" />
-    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     
       
