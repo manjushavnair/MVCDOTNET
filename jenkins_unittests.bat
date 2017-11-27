@@ -40,10 +40,10 @@ REM Run ReportUnit to create HTML Report from Nunit XML report
 
 
 REM Run OpenCover to create coverage XML report
-"%OpenCoverPath%"\OpenCover.Console.exe -register:user -register:user -target:"%NunitPath%"\nunit3-console.exe -targetargs:"%UnitTestProj%" -output:"%ResultsPath%"\opencovertests.xml
+"%OpenCoverPath%"\OpenCover.Console.exe -register:user -register:user -target:"%NunitPath%"\nunit3-console.exe -targetargs:\"%UnitTestProj%\" -output:"%ResultsPath%"\opencovertests.xml
 
 REM Run ReportGenerator to create coverage HTML report from coverage XML
-"%ReportGeneratorPath%"\ReportGenerator.exe -reports:"%ResultsPath%"\opencovertests.xml -targetDir:"%ResultsPath%" -historydir:"%CoverageHistoryPath%"
+"%ReportGeneratorPath%"\ReportGenerator.exe -reports:"%ResultsPath%"\opencovertests.xml -targetDir:"%ResultsPath%" -historydir:%CoverageHistoryPath%"
 
 REM Fail if Nunit has found an error on tests
 exit /b %NunitError%
