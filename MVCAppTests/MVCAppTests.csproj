@@ -211,7 +211,7 @@
               Filter="+[*]* +[*Test]* -[Autofac*]* -[Newtonsoft.Json]*"
               ExcludeByAttribute="System.ObsoleteAttribute"
               ToolExe="OpenCover.Console.exe"
-              Register="True"
+              Register="False"
               ShowUnvisited="True"             
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
