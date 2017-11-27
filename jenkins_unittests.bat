@@ -9,7 +9,7 @@ SET CoverageHistoryPath=C:\Projects\ASP.NET-master\MVCDOTNET\CoverageHistory
 SET NunitPath=%FolderPath%\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools
 SET ReportUnitPath=%FolderPath%\MVCApp\packages\ReportUnit.1.2.1\tools
 SET OpenCoverPath=%FolderPath%\MVCApp\packages\OpenCover.4.6.519\tools
-SET ReportGeneratorPath=%FolderPath%\MVCApp\packages\ReportGenerator.3.0.2\tools
+SET ReportGeneratorPath=%FolderPath%\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools
 
 SET UnitTestProj=%FolderPath%\MVCAppTests\MVCAppTests.csproj
 
