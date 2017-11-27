@@ -22,10 +22,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
   </PropertyGroup>
-  <PropertyGroup>
-    <NUnitResultsFile>..\UnitTestResults\nunit-result.xml</NUnitResultsFile>
-  </PropertyGroup>
-  <ItemGroup>
+   <ItemGroup>
     <Solution Include="MVCApp.sln">
       <Properties>
                      $(SolutionProperties)
@@ -43,8 +40,7 @@
   <Target Name="ShowParameters" DependsOnTargets="EchoDate">
     <Message Text=" TestAssembly = @(TestAssembly)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-    <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <Message Text=" SolutionProperties = $(SolutionProperties)" />
+     <Message Text=" SolutionProperties = $(SolutionProperties)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" WebSiteFolderFullPath = $(WebSiteFolderFullPath)" />
     <Message Text=" MSBuildExtensionsPath = $(MSBuildExtensionsPath)" />
@@ -76,7 +72,6 @@
     <Message Text=" SolutionProperties = @(TestAssembly)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-    <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     
       
   </Target>
@@ -84,7 +79,7 @@
 
   <Target Name="Coverage" DependsOnTargets="BuildCode">
   <Message Text=" Starting Coverage " />
-    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="TestAssembly1.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
+    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./CoverageHistory/Coverage.xml" />
   </Target>
   
   
