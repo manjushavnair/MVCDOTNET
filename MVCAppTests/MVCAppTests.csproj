@@ -206,8 +206,7 @@
               ShowUnvisited="True"             
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
-              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFolder)\TestResult.xml&quot; --dispose-runners $(Traits)"
-              Output=&quot;$(CodeCoverageResultsFolder)\coverage-results.xml&quot; >      
+              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFolder)\TestResult.xml&quot; --dispose-runners $(Traits)" Output='&quot;..\$(CodeCoverageResultsFolder)\coverage-results.xml&quot;' >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
         </OpenCover>
