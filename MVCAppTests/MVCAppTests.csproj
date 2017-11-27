@@ -149,7 +149,7 @@
 
  <Target Name="TestAndCoverage" >
   <CallTarget Targets="Test" />
-   <CallTarget Targets="Coverage" />
+ <!--  <CallTarget Targets="Coverage" /> -->
   </Target>
  
   <Target Name="Test" >
