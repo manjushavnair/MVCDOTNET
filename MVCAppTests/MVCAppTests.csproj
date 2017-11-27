@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Test" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="TestAndCoverage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
    <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
 <PropertyGroup>
@@ -147,7 +147,11 @@
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
 
-
+ <Target Name="TestAndCoverage" >
+  <CallTarget Targets="Test" />
+   <CallTarget Targets="Coverage" />
+  </Target>
+ 
   <Target Name="Test" >
     <Message Text="BuildSolution called" />
     
