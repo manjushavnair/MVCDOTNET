@@ -12,12 +12,20 @@
 <PropertyGroup>
     <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
+ <PropertyGroup>
+    <ReportGeneratorPath>..\UnitTestResults</ReportGeneratorPath>
+  </PropertyGroup>
+  
+  
   
 <PropertyGroup>
     <CodeCoverageResultsFolder>..\CoverageHistory</CodeCoverageResultsFolder>
+        <CoverageFilesPattern>./$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
+
   </PropertyGroup>
   <PropertyGroup>
       <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
+      
     </PropertyGroup>
 
 
@@ -166,8 +174,8 @@
 
  <Target Name="TestAndCoverage" >
   <CallTarget Targets="Test" />
-  <CallTarget Targets="CoverageOC" />
- <!--  <CallTarget Targets="CoverageNC" /> -->
+ <!-- <CallTarget Targets="CoverageOC" />-->
+  <CallTarget Targets="ReportGenerate" /> 
   </Target>
  
   <Target Name="Test" >
@@ -195,6 +203,24 @@
   </Target>
   
   
+   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
+    <ItemGroup>
+         <CoverageFiles Include="$(CoverageFilesPattern)" />
+    </ItemGroup>
+  
+   <ItemGroup>
+        <SourceDirectories Include="$(MSBuildProjectDirectory)" />
+    </ItemGroup>
+   
+  <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
+  -->
+  
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="./$(CodeCoverageResultsFolder)"  />
+    <Message Text="Coverage report has been generated: $(MSBuildProjectDirectory)\report\index.htm" /> 
+
+  </Target>
+  
+   
    <Target Name="CoverageOC" DependsOnTargets="Test">
          <OpenCover
               ReturnTargetCode="True"
