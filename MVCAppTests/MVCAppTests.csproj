@@ -215,7 +215,7 @@
   <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
   -->
   
-    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="./$(CodeCoverageResultsFolder)"  />
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="./$(MSBuildProjectDirectory)/CoverageHistory"  />
     <Message Text="Coverage report has been generated: $(MSBuildProjectDirectory)\report\index.htm" /> 
 
   </Target>
