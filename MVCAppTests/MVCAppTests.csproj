@@ -19,8 +19,8 @@
   
   
 <PropertyGroup>
-    <CodeCoverageResultsFolder>..\CoverageHistory</CodeCoverageResultsFolder>
-        <CoverageFilesPattern>./$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
+    <CodeCoverageResultsFolder>../CoverageHistory</CodeCoverageResultsFolder>
+        <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
 
   </PropertyGroup>
   <PropertyGroup>
@@ -233,7 +233,7 @@
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
               TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFolder)\TestResult.xml&quot; --dispose-runners $(Traits)" 
-              Output='$(CodeCoverageResultsFolder)\coverage-results.xml' >      
+              Output='$(MSBuildStartupDirectory)\CoverageHistory\coverage-results.xml' >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
         </OpenCover>
