@@ -14,13 +14,20 @@
     <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
  <PropertyGroup>
-    <ReportGeneratorPath>..\UnitTestResults</ReportGeneratorPath>
+    <ReportGeneratorPath>..\Report</ReportGeneratorPath>
   </PropertyGroup>
+ <PropertyGroup>
+   <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
+   </PropertyGroup>
+
+ <PropertyGroup>
+   <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
+   </PropertyGroup>
+  
   
   
   
 <PropertyGroup>
-    <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
         <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
 
   </PropertyGroup>
@@ -218,8 +225,8 @@
               ShowUnvisited="True"             
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
-              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(MSBuildStartupDirectory)\UnitTestResults\TestResult.xml&quot; --dispose-runners $(Traits)" 
-              Output="$(CodeCoverageResultsFolder)\coverage-results.xml" >      
+              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;c:\temp\UnitTestResults\TestResult.xml&quot; --dispose-runners $(Traits)" 
+              Output="c:\temp\Coverage\coverage-results.xml" >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
         </OpenCover>
