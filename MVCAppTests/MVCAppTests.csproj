@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="TestAndCoverage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="ReportGenerate" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover"  />
 
@@ -174,13 +174,14 @@
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
 
  <Target Name="TestAndCoverage" >
-  <CallTarget Targets="Test" />
+ <!-- <CallTarget Targets="Test" /> -->
  <!-- <CallTarget Targets="CoverageOC" />-->
-  <CallTarget Targets="ReportGenerate" /> 
+<!--  <CallTarget Targets="ReportGenerate" /> -->
   </Target>
  
   <Target Name="Test" >
-    <Message Text="BuildSolution called" />
+  
+    <Message Text="Test called" />
     
    
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -218,7 +219,7 @@
               TargetWorkingDir="$(TestsBuildOutputFolder)"
               TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') 
               --result=c:\temp\UnitTestResults\TestResult.xml --dispose-runners $(Traits)" 
-              Output='c:\temp\Coverage\coverage-results.xml' >      
+              Output="c:\temp\Coverage\coverage-results.xml" >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
         </OpenCover>
