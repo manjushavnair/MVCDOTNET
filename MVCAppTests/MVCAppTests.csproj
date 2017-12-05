@@ -211,7 +211,7 @@
          <OpenCover
               ReturnTargetCode="True"
               ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools"
-              Filter="+[*]*"
+              Filter="+[(*)](.*)"
               ExcludeByAttribute="System.ObsoleteAttribute"
               ToolExe="OpenCover.Console.exe"
               Register="True"
