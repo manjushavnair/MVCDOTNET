@@ -208,7 +208,6 @@
    <Target Name="CoverageOC" DependsOnTargets="Test">
        <Message Text="CoverageOC called" />
 
-
          <OpenCover
               ReturnTargetCode="True"
               ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools"
