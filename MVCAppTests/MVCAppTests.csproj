@@ -218,10 +218,7 @@
               ToolExe="OpenCover.Console.exe"
               Register="True"
               ShowUnvisited="True"             
-              Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
-              TargetWorkingDir="$(TestsBuildOutputFolder)"
-              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') 
-              --result=c:\temp\UnitTestResults\TestResult.xml --dispose-runners $(Traits)" 
+               
               Output="c:\temp\Coverage\coverage-results.xml" >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
