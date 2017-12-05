@@ -208,7 +208,7 @@
    
    <Target Name="CoverageOC" DependsOnTargets="Test">
    
-     <Message Text="CoverageOC called" />
+     <Message Text="CoverageOC called TestsBuildOutputFolder: $(TestsBuildOutputFolder)" />
    
          <OpenCover
               ReturnTargetCode="True"
@@ -216,7 +216,7 @@
               Filter="+[*]* +[*Test]* -[Autofac*]* -[Newtonsoft.Json]*"
               ExcludeByAttribute="System.ObsoleteAttribute"
               ToolExe="OpenCover.Console.exe"
-              Register="False"
+              Register="True"
               ShowUnvisited="True"             
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
