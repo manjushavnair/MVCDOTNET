@@ -180,7 +180,7 @@
   </Target>
  
   <Target Name="Test" >
-    <Message Text="BuildSolution called" />
+    <Message Text="Test called" />
     
    
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -206,6 +206,8 @@
 
    
    <Target Name="CoverageOC" DependsOnTargets="Test">
+       <Message Text="CoverageOC called" />
+
          <OpenCover
               ReturnTargetCode="True"
               ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools"
@@ -235,6 +237,10 @@
   
   
       <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
+      
+       <Message Text="ReportGenerate called" />
+      
+      
 		<ItemGroup>
 		<CoverageFiles Include="$(CoverageFilesPattern)" />
 		</ItemGroup>
