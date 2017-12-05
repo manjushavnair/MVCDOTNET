@@ -7,21 +7,21 @@
 
    <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
 <PropertyGroup>
-    <NUnitResultsFile>c:\temp\UnitTestResults\TestResult.xml</NUnitResultsFile>
+    <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
   
 <PropertyGroup>
-    <NUnitResultsFolder>c:\temp\UnitTestResults</NUnitResultsFolder>
+    <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
  <PropertyGroup>
-    <ReportGeneratorPath>c:\temp\Report</ReportGeneratorPath>
+    <ReportGeneratorPath>..\UnitTestResults</ReportGeneratorPath>
   </PropertyGroup>
   
   
   
 <PropertyGroup>
-    <CodeCoverageResultsFolder>c:\temp\Coverage</CodeCoverageResultsFolder>
-        <CoverageFilesPattern>$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
+    <CodeCoverageResultsFolder>../Coverage</CodeCoverageResultsFolder>
+        <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
 
   </PropertyGroup>
   <PropertyGroup>
@@ -217,13 +217,12 @@
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
               TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') 
-              --result=c:\temp\UnitTestResults\TestResult.xml --dispose-runners $(Traits)" 
-              Output='c:\temp\Coverage\coverage-results.xml' >      
+              --result=$(MSBuildStartupDirectory)\UnitTestResults\TestResult.xml --dispose-runners $(Traits)" 
+              Output='$(MSBuildStartupDirectory)\Coverage\coverage-results.xml' >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
         </OpenCover>
    </Target>
-   
    
       <ItemGroup>
          <CoverageFiles Include="$(MSBuildStartupDirectory)/Coverage/coverage-results.xml" />
