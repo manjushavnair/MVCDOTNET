@@ -227,10 +227,10 @@
    
    
       <ItemGroup>
-         <CoverageFiles Include="$(MSBuildStartupDirectory)/Coverage/coverage-results.xml" />
+         <CoverageFiles Include="c:/temp/Coverage/coverage-results.xml" />
          <SourceDirectories Include="$(MSBuildStartupDirectory)" />
-         <ReportDirectory Include="$(MSBuildStartupDirectory)/Report" />
-         <CoverageHistoryDirectory Include="$(MSBuildStartupDirectory)/CoverageHistory" />
+         <ReportDirectory Include="c:/temp/Report" />
+         <CoverageHistoryDirectory Include="c:/temp/CoverageHistory" />
          
          
       </ItemGroup>
