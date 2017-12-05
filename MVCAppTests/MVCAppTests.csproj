@@ -7,7 +7,7 @@
 
    <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
 <PropertyGroup>
-    <NUnitResultsFile>..\UnitTestResults\TestResult1.xml</NUnitResultsFile>
+    <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
   
 <PropertyGroup>
@@ -225,7 +225,7 @@
               ShowUnvisited="True"             
               Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
               TargetWorkingDir="$(TestsBuildOutputFolder)"
-              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;C:\Program Files (x86)\Jenkins\workspace\MVCTesting\UnitTestResults\TestResult.xml&quot; --dispose-runners $(Traits)" 
+              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;$(NUnitResultsFile)&quot; --dispose-runners $(Traits)" 
               Output="c:\temp\Coverage\coverage-results.xml" >      
               <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
               
