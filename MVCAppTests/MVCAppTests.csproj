@@ -197,7 +197,7 @@
     
   </Target>
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
-    <Message Text="ReportGenerate called" />
+    <Message Text="ReportGenerate called @(ReportDirectory)" />
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)" />
     </ItemGroup>
