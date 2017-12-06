@@ -20,7 +20,7 @@
     <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
   </PropertyGroup>
   <PropertyGroup>
-    <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
+    <CoverageFilesPattern>$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
   </PropertyGroup>
   <PropertyGroup>
     <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
@@ -211,7 +211,7 @@
     <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
 		-->
 		
-    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="@(ReportDirectory)" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="c:\temp\report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
     
@@ -220,7 +220,7 @@
   
   <Target Name="CoverageNC" DependsOnTargets="Test">
     <Message Text=" Starting Coverage " />
-    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./$(CodeCoverageResultsFolder)/coverage-results.xml" />
+    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="$(CodeCoverageResultsFolder)\coverage-results.xml" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
