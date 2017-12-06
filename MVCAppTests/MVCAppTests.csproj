@@ -190,9 +190,11 @@
   </Target>
   <Target Name="CoverageOC" DependsOnTargets="Test">
     <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
-    <OpenCover ReturnTargetCode="True" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools" Filter="+[*.*]* +[*Test]*" ExcludeByAttribute="System.ObsoleteAttribute" ToolExe="OpenCover.Console.exe" Register="True" ShowUnvisited="True" Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TargetWorkingDir="$(TestsBuildOutputFolder)" TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;..\UnitTestResults&quot; --dispose-runners $(Traits)" Output="c:\temp\Coverage\coverage-results.xml">
-      <Output TaskParameter="ExitCode" PropertyName="TestExitCode" />
-    </OpenCover>
+  
+  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe -register:user -returntargetcode -target:&quot;$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools\nunit3-console.exe&quot; -targetargs:&quot;/testcontainer:%(MSTestTestAssemblies.Identity) /resultsfile:..\UnitTestResults\TestResult.xml /nologo&quot; -filter:&quot;+[*.*]* +[*Test]*&quot; -output:c:\temp\Coverage\coverage-results.xml" Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
+  
+  
+    
   </Target>
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
     <Message Text="ReportGenerate called" />
