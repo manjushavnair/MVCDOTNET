@@ -1,44 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="ReportGenerate" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
- 
-<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover"  />
-
-<UsingTask TaskName="ReportGenerator" AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
-
-   <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
-<PropertyGroup>
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
+  <UsingTask TaskName="ReportGenerator" AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
+  <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
-  
-<PropertyGroup>
+  <PropertyGroup>
     <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
- <PropertyGroup>
+  <PropertyGroup>
     <ReportGeneratorPath>..\Report</ReportGeneratorPath>
   </PropertyGroup>
- <PropertyGroup>
-   <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
-   </PropertyGroup>
-
- <PropertyGroup>
-   <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
-   </PropertyGroup>
-  
-  
-  
-  
-<PropertyGroup>
-        <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
-
+  <PropertyGroup>
+    <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
-      <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
-      
-    </PropertyGroup>
-
-
-  
+    <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CoverageFilesPattern>./$(CodeCoverageResultsFolder)/*coverage-results.xml</CoverageFilesPattern>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
@@ -59,9 +45,9 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
-  <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-     <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
-     <DebugType>full</DebugType>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
+    <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>obj\Debug\</OutputPath>
@@ -70,9 +56,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-  <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-     <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
-
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>true</Optimize>
@@ -102,7 +87,7 @@
       <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
-  <!--  <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <!--  <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
@@ -181,95 +166,54 @@
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
-
- <Target Name="TestAndCoverage" >
-  <CallTarget Targets="Test" />
- <!-- <CallTarget Targets="CoverageOC" />-->
-  <CallTarget Targets="ReportGenerate" /> 
+  <Target Name="TestAndCoverage">
+    <CallTarget Targets="Test" />
+    <!-- <CallTarget Targets="CoverageOC" />-->
+    <CallTarget Targets="ReportGenerate" />
   </Target>
- 
-  <Target Name="Test" >
+  <Target Name="Test">
     <Message Text="Test called" />
-    
-   
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
-    
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
     <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
-    </CreateItem> 
-     <Message Text=" NUnit tests starting  Created Items" />
+    </CreateItem>
+    <Message Text=" NUnit tests starting  Created Items" />
     <Message Text=" SolutionProperties = @(TestAssembly)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" 
-    ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"
-    ContinueOnError="false"    OutputXmlFile="$(NUnitResultsFile)"/>
-    
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
-  
-
-   
-   <Target Name="CoverageOC" DependsOnTargets="Test">
-       <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
-
-         <OpenCover
-              ReturnTargetCode="True"
-              ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools"
-              Filter="+[*.*]* +[*Test]*"
-              ExcludeByAttribute="System.ObsoleteAttribute"
-              ToolExe="OpenCover.Console.exe"
-              Register="True"
-              ShowUnvisited="True"             
-              Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe"
-              TargetWorkingDir="$(TestsBuildOutputFolder)"
-              TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;..\UnitTestResults&quot; --dispose-runners $(Traits)" 
-              Output="c:\temp\Coverage\coverage-results.xml" >      
-              <Output TaskParameter="ExitCode" PropertyName="TestExitCode"/>
-              
-        </OpenCover>
-   </Target>
-   
-      <ItemGroup>
-         <CoverageFiles Include="$(MSBuildStartupDirectory)/Coverage/coverage-results.xml" />
-         <SourceDirectories Include="$(MSBuildStartupDirectory)" />
-         <ReportDirectory Include="$(MSBuildStartupDirectory)/Report" />
-         <CoverageHistoryDirectory Include="$(MSBuildStartupDirectory)/CoverageHistory" />
-         
-         
-      </ItemGroup>
-  
-  
-      <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
-      
-       <Message Text="ReportGenerate called" />
-      
-      
-		<ItemGroup>
-		<CoverageFiles Include="$(CoverageFilesPattern)" />
-		</ItemGroup>
- 		<ItemGroup>
-		<SourceDirectories Include="$(MSBuildProjectDirectory)" />
-		</ItemGroup>
- 		<!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
+  <Target Name="CoverageOC" DependsOnTargets="Test">
+    <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
+    <OpenCover ReturnTargetCode="True" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools" Filter="+[*.*]* +[*Test]*" ExcludeByAttribute="System.ObsoleteAttribute" ToolExe="OpenCover.Console.exe" Register="True" ShowUnvisited="True" Target="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TargetWorkingDir="$(TestsBuildOutputFolder)" TargetArgs="@(TestAssemblies->'&quot;$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll&quot;', ' ') --result=&quot;..\UnitTestResults&quot; --dispose-runners $(Traits)" Output="c:\temp\Coverage\coverage-results.xml">
+      <Output TaskParameter="ExitCode" PropertyName="TestExitCode" />
+    </OpenCover>
+  </Target>
+  <ItemGroup>
+    <SourceDirectories Include="$(MSBuildStartupDirectory)" />
+  </ItemGroup>
+  <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
+    <Message Text="ReportGenerate called" />
+    <ItemGroup>
+      <CoverageFiles Include="$(CoverageFilesPattern)" />
+    </ItemGroup>
+    <ItemGroup>
+      <SourceDirectories Include="$(MSBuildProjectDirectory)" />
+    </ItemGroup>
+    <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
 		-->
- 		<ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="@(ReportDirectory)"  ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)"   AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose"/>
-		
-		<Message Text="Coverage report has been generated: @(ReportDirectory) " /> 
-
-     </Target>
-  
-  
-    <Target Name="CoverageNC" DependsOnTargets="Test">
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="@(ReportDirectory)" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <Message Text="Coverage report has been generated: @(ReportDirectory) " />
+  </Target>
+  <Target Name="CoverageNC" DependsOnTargets="Test">
     <Message Text=" Starting Coverage " />
-      <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single"  TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./$(CodeCoverageResultsFolder)/coverage-results.xml" />
-    </Target>
-    
-
+    <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./$(CodeCoverageResultsFolder)/coverage-results.xml" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
