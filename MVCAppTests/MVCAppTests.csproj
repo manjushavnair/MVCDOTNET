@@ -196,6 +196,7 @@
   
     
   </Target>
+  
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
     <Message Text="ReportGenerate called @(ReportDirectory)" />
     <ItemGroup>
@@ -206,7 +207,9 @@
     </ItemGroup>
     <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
 		-->
+		
     <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="@(ReportDirectory)" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
   </Target>
   <Target Name="CoverageNC" DependsOnTargets="Test">
