@@ -208,8 +208,7 @@
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
     </ItemGroup>
-    <!--  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe"  ContinueOnError="true"/>
-		-->
+   
 		
     <ReportGenerator ReportFiles="$(CodeCoverageResultsFolder)" TargetDirectory="c:\temp\report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
