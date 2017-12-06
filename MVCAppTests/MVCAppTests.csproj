@@ -191,7 +191,7 @@
   <Target Name="CoverageOC" DependsOnTargets="Test">
     <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
   
-  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe -register:user -returntargetcode -target:&quot;$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools\nunit3-console.exe&quot; -targetargs:&quot;/testcontainer:%(MSTestTestAssemblies.Identity) /resultsfile:..\UnitTestResults\TestResult.xml /nologo&quot; -filter:&quot;+[*.*]* +[*Test]*&quot; -output:c:\temp\Coverage\coverage-results.xml" Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
+  <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe -register:user -returntargetcode -target:&quot;$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools\nunit3-console.exe&quot; -targetargs:&quot;/testcontainer:%(MSTestTestAssemblies.Identity) /resultsfile:..\UnitTestResults\TestResult.xml /nologo&quot; -filter:&quot;+[*.*]* +[*Test]*&quot; -output:$(CodeCoverageResultsFolder)\coverage-results.xml" Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
   
   
     
