@@ -11,7 +11,7 @@
     <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
-    <ReportGeneratorPath>..\Report</ReportGeneratorPath>
+    <ReportDirectory>..\Report</ReportDirectory>
   </PropertyGroup>
   <PropertyGroup>
     <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
