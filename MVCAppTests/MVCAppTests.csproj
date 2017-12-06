@@ -213,7 +213,7 @@
 
    
    <Target Name="CoverageOC" DependsOnTargets="Test">
-       <Message Text="CoverageOC called $(CodeCoverageResultsFolder)" />
+       <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
 
          <OpenCover
               ReturnTargetCode="True"
