@@ -200,7 +200,7 @@
   
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
   
-    <Message Text="ReportGenerate called ReportDirectory: @(ReportDirectory) CoverageHistoryDirectory: @(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+    <Message Text="ReportGenerate called ReportDirectory: $(ReportDirectory) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
     
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)  " />
@@ -210,7 +210,7 @@
     </ItemGroup>
    
 		
-    <ReportGenerator ReportFiles="$(CodeCoverageResultsFolder)" TargetDirectory="c:\temp\report" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="$(CodeCoverageResultsFolder)" TargetDirectory="$(ReportDirectory)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
     
