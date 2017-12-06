@@ -194,9 +194,6 @@
       <Output TaskParameter="ExitCode" PropertyName="TestExitCode" />
     </OpenCover>
   </Target>
-  <ItemGroup>
-    <SourceDirectories Include="$(MSBuildStartupDirectory)" />
-  </ItemGroup>
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
     <Message Text="ReportGenerate called" />
     <ItemGroup>
