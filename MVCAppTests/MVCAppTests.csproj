@@ -188,19 +188,22 @@
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
+  
   <Target Name="CoverageOC" DependsOnTargets="Test">
+  
     <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
   
   <Exec Command="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe -register:user -returntargetcode -target:&quot;$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\tools\nunit3-console.exe&quot; -targetargs:&quot;/testcontainer:%(MSTestTestAssemblies.Identity) /resultsfile:..\UnitTestResults\TestResult.xml /nologo&quot; -filter:&quot;+[*.*]* +[*Test]*&quot; -output:$(CodeCoverageResultsFolder)\coverage-results.xml" Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
-  
-  
-    
+     
   </Target>
   
+  
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
-    <Message Text="ReportGenerate called @(ReportDirectory)" />
+  
+    <Message Text="ReportGenerate called ReportDirectory: @(ReportDirectory) CoverageHistoryDirectory: @(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+    
     <ItemGroup>
-      <CoverageFiles Include="$(CoverageFilesPattern)" />
+      <CoverageFiles Include="$(CoverageFilesPattern)  " />
     </ItemGroup>
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
@@ -211,7 +214,10 @@
     <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="@(ReportDirectory)" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" HistoryDirectory="@(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
+    
   </Target>
+  
+  
   <Target Name="CoverageNC" DependsOnTargets="Test">
     <Message Text=" Starting Coverage " />
     <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="./$(CodeCoverageResultsFolder)/coverage-results.xml" />
