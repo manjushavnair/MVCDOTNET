@@ -231,11 +231,7 @@
 
 	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
 
-  </Target>
-  
- 
-  
-  
+  </Target> 
    <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     
   	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
