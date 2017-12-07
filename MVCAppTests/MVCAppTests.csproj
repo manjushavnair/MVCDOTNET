@@ -207,16 +207,16 @@
 
   </Target>
  
-  <Target Name="CoverageOC"  DependsOnTargets="TestResultsReport">
+  <Target Name="CoverageOC1"  DependsOnTargets="TestResultsReport">
   
 	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
 	
-	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /trace=Debug"  />
+	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /trace=Debug" />
 	
 	<Message Text="CoverageOC Completed " />
   
   </Target>
-  <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
+  <Target Name="CodeCoverageReport1" DependsOnTargets="CoverageOC">
   
 	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
 	
@@ -236,7 +236,7 @@
  
   
   
-   <Target Name="CoverageOC1" DependsOnTargets="TestResultsReport">
+   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     
   	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
   	
@@ -247,7 +247,7 @@
     </Target>
     <!-- 
      
-    <Target Name="CodeCoverageReport1" DependsOnTargets="CoverageOC1">
+    <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC1">
     
   	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
   	
