@@ -194,9 +194,9 @@
 
   <Target Name="ReportTestResults" DependsOnTargets="Test">
   
-      <Message Text="ReportTestResults Calling ,Creating unit testing report " />
+      <Message Text="ReportTestResults Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults" />
 
-   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults"  />
+   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\ReportUnitResults&quot;"  />
 
     <Message Text="ReportTestResults Called " />
 
