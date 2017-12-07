@@ -211,30 +211,30 @@
   
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
   
-    <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
-  
-  <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) --debug --result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml&quot;"  />
-     
-       <Message Text="CoverageOC Completed " />
+	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
+	
+	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) --debug --result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml&quot;"  />
+	
+	<Message Text="CoverageOC Completed " />
   
   </Target>
   
   
   <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
   
-    <Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
-    
-    <ItemGroup>
-      <CoverageFiles Include="$(CoverageFilesPattern)  " />
-    </ItemGroup>
-    <ItemGroup>
-      <SourceDirectories Include="$(MSBuildProjectDirectory)" />
-    </ItemGroup> 
-    
-    <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
-    
-    <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
-    
+	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+	
+	<ItemGroup>
+	<CoverageFiles Include="$(CoverageFilesPattern)  " />
+	</ItemGroup>
+	<ItemGroup>
+	<SourceDirectories Include="$(MSBuildProjectDirectory)" />
+	</ItemGroup> 
+
+	<ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+
+	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
+
     
   </Target>
   
