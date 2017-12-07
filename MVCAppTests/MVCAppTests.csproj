@@ -196,7 +196,7 @@
   
       <Message Text="ReportTestResults Calling ,Creating unit testing report " />
 
-   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
+   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults"  />
 
     <Message Text="ReportTestResults Called " />
 
