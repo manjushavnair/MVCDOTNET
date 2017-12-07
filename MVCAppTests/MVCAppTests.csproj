@@ -14,7 +14,10 @@
     <ReportDirectory>..\Report</ReportDirectory>
   </PropertyGroup>
   <PropertyGroup>
-    <CodeCoverageResultsFolder>..\Coverage</CodeCoverageResultsFolder>
+    <CodeCoverageResultsFolder>..\CoverageResults</CodeCoverageResultsFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CodeCoverageReportFolder>..\CoverageReport</CodeCoverageReportFolder>
   </PropertyGroup>
   <PropertyGroup>
     <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
@@ -224,7 +227,7 @@
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
     </ItemGroup> 
-    <ReportGenerator ReportFiles="C:\TEMP\Coverage\*.xml" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="C:\TEMP\CoverageResults\*.xml" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
     
