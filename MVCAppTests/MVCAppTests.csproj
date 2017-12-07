@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="ReportGenerate" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="CodeCoverageReport" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
   <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+
+
   <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
@@ -11,11 +13,11 @@
     <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
-    <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
+    <UnitTestReportFolder>UnitTestReport</UnitTestReportFolder>
   </PropertyGroup>
   
   <PropertyGroup>
-    <CodeCoverageResultsFolder>..\CoverageResults</CodeCoverageResultsFolder>
+    <CodeCoverageResultsFolder>CoverageResults</CodeCoverageResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
     <CodeCoverageReportFolder>..\CoverageReport</CodeCoverageReportFolder>
@@ -24,7 +26,7 @@
     <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
   </PropertyGroup>
   <PropertyGroup>
-    <CoverageFilesPattern>$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
+    <CoverageFilesPattern>..\$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
   </PropertyGroup>
   <PropertyGroup>
     <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
@@ -173,7 +175,7 @@
   <Target Name="TestAndCoverage">
     <CallTarget Targets="Test" />
     <!-- <CallTarget Targets="CoverageOC" />-->
-    <CallTarget Targets="ReportGenerate" />
+    <CallTarget Targets="CodeCoverageReport" />
   </Target>
   
   
@@ -196,31 +198,31 @@
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
 
-  <Target Name="ReportTestResults" DependsOnTargets="Test">
+  <Target Name="TestResultsReport" DependsOnTargets="Test">
   
-      <Message Text="ReportTestResults Reportunit Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
+      <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
 
-   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;"  />
+   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
 
 
-    <Message Text="ReportTestResults Reportunit Called " />
+    <Message Text="TestResultsReport Reportunit Called " />
 
   </Target>
   
-  <Target Name="CoverageOC" DependsOnTargets="ReportTestResults">
+  <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
   
-    <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
+    <Message Text="CoverageOC called ..$(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
   
-  <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;%(MSTestTestAssemblies.Identity) --debug --result=C:\TEMP\UnitTestResults\TestResult.xml &quot; -output:C:\TEMP\CoverageResults\coverage-results.xml"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
+  <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;%(MSTestTestAssemblies.Identity) --debug --result=$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
      
        <Message Text="CoverageOC Completed " />
   
   </Target>
   
   
-  <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
+  <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
   
-    <Message Text="ReportGenerate called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+    <Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
     
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)  " />
@@ -228,7 +230,8 @@
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
     </ItemGroup> 
-    <ReportGenerator ReportFiles="C:\TEMP\CoverageResults\*.xml" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    
+    <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
     
