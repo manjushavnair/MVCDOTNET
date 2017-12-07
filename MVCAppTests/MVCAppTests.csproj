@@ -8,7 +8,7 @@
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
   <PropertyGroup>
-    <NUnitResultsFolder>..\UnitTestResults</NUnitResultsFolder>
+    <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
     <ReportDirectory>..\Report</ReportDirectory>
@@ -194,7 +194,7 @@
 
   <Target Name="ReportTestResults" DependsOnTargets="Test">
   
-      <Message Text="ReportTestResults Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults" />
+      <Message Text="ReportTestResults Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults" />
 
    <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\ReportUnitResults&quot;"  />
 
