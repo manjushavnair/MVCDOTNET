@@ -240,7 +240,7 @@
     
   	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
   	
-  	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /trace=Debug /result=$(MSBuildStartupDirectory)/$(NUnitResultsFolder)/TestResult.xml&quot; -output:&quot;$(MSBuildStartupDirectory)/$(CodeCoverageResultsFolder)/coverage-results.xml"  />
+  	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /trace=Debug /result=$(MSBuildStartupDirectory)/$(NUnitResultsFolder)/TestResult.xml /noshadow&quot; -output:$(MSBuildStartupDirectory)/$(CodeCoverageResultsFolder)/coverage-results.xml"  />
   	
   	<Message Text="CoverageOC Completed " />
     
