@@ -212,7 +212,7 @@
     </ItemGroup>
    
 		
-    <ReportGenerator ReportFiles="$(CodeCoverageResultsFolder)" TargetDirectory="C:\TEMP\UnitTestResults\TestResult.xml" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="$(CodeCoverageResultsFolder)" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
     
