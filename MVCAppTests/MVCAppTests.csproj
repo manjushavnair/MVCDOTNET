@@ -229,7 +229,7 @@
   	</ItemGroup> 
   	
   
-  	<ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+  	<ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
   
   	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   
