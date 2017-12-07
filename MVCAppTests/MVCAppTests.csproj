@@ -171,6 +171,9 @@
     <!-- <CallTarget Targets="CoverageOC" />-->
     <CallTarget Targets="ReportGenerate" />
   </Target>
+  
+  
+  
   <Target Name="Test">
     <Message Text="Test called" />
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -188,8 +191,18 @@
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
+
+  <Target Name="ReportTestResults" DependsOnTargets="Test">
   
-  <Target Name="CoverageOC" DependsOnTargets="Test">
+      <Message Text="ReportTestResults Calling ,Creating unit testing report " />
+
+   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
+
+    <Message Text="ReportTestResults Called " />
+
+  </Target>
+  
+  <Target Name="CoverageOC" DependsOnTargets="ReportTestResults">
   
     <Message Text="CoverageOC called $(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
   
@@ -209,10 +222,7 @@
     </ItemGroup>
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
-    </ItemGroup>
-   
-   
-		
+    </ItemGroup> 
     <ReportGenerator ReportFiles="C:\TEMP\Coverage\*.xml" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />

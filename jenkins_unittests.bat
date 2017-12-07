@@ -11,6 +11,7 @@ SET OpenCoverPath=%FolderPath%\MVCApp\packages\OpenCover.4.6.519\tools
 SET ReportGeneratorPath=%FolderPath%\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools
 SET UnitTestProj=%FolderPath%\MVCAppTests\MVCAppTests.csproj
 
+SET ReportUnitOutputPath=c:\temp\ReportUnitResults
 
 echo JENKINSWORKSPACE %JENKINSWORKSPACE%
 echo FolderPath %FolderPath%
@@ -36,15 +37,15 @@ REM Get nunit command errorlevel
 REM SET NunitError=%ERRORLEVEL%
 
 REM Run ReportUnit to create HTML Report from Nunit XML report
-"%ReportUnitPath%"\ReportUnit.exe "%ResultsPath%"\TestResult.xml
+"%ReportUnitPath%"\ReportUnit.exe "%ResultsPath%" "%ReportUnitOutputPath%"
 
+pause
 
 REM Run OpenCover to create coverage XML report 
 echo  ------------
 
 "%UnitTestProj%" 
-"%NunitPath%"\nunit3-console.exe
-
+"%NunitPath%"
 echo  ------------
 
 REM "%OpenCoverPath%"\OpenCover.Console.exe -register:user -register:user -target:"%NunitPath%"\nunit3-console.exe -targetargs:"%UnitTestProj%" -output:"%ResultsPath%"\opencovertests.xml
