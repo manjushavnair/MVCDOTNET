@@ -207,7 +207,7 @@
 
   </Target>
  
-  <Target Name="CoverageOC"  >
+  <Target Name="CoverageOC"  DependsOnTargets="TestResultsReport">
   
 	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
 	
