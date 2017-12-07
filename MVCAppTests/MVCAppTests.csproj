@@ -211,7 +211,7 @@
   
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
   
-    <Message Text="CoverageOC called ..$(CodeCoverageResultsFolder) $(TestsBuildOutputFolder) " />
+    <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder) " />
   
   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;%(MSTestTestAssemblies.Identity) --debug --result=$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  />
      
