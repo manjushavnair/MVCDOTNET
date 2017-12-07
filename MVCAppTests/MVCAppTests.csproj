@@ -211,7 +211,7 @@
   
 	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
 	
-	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly)&quot; --result=&quot;C:\TEMP\UnitTestResults&quot; -output:&quot;C:\TEMP\CoverageResults\coverage-results.xml"  />
+	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /result=C:\TEMP\UnitTestResults&quot; -output:&quot;C:\TEMP\CoverageResults\coverage-results.xml"  />
 	
 	<Message Text="CoverageOC Completed " />
   
@@ -235,15 +235,18 @@
   
  
   
+  
    <Target Name="CoverageOC1" DependsOnTargets="TestResultsReport">
     
   	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
   	
-  	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  />
+  	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) --result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  />
   	
   	<Message Text="CoverageOC Completed " />
     
     </Target>
+    <!-- 
+     
     <Target Name="CodeCoverageReport1" DependsOnTargets="CoverageOC1">
     
   	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
@@ -260,7 +263,7 @@
   	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   
   </Target>
-   <!-- 
+  
 
   To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
