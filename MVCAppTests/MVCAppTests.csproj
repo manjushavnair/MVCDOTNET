@@ -11,8 +11,9 @@
     <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
-    <ReportDirectory>..\Report</ReportDirectory>
+    <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
+  
   <PropertyGroup>
     <CodeCoverageResultsFolder>..\CoverageResults</CodeCoverageResultsFolder>
   </PropertyGroup>
@@ -197,12 +198,12 @@
 
   <Target Name="ReportTestResults" DependsOnTargets="Test">
   
-      <Message Text="ReportTestResults Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\ReportUnitResults" />
+      <Message Text="ReportTestResults Reportunit Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
 
-   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\ReportUnitResults&quot;"  />
+   <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;"  />
 
 
-    <Message Text="ReportTestResults Called " />
+    <Message Text="ReportTestResults Reportunit Called " />
 
   </Target>
   
@@ -219,7 +220,7 @@
   
   <Target Name="ReportGenerate" DependsOnTargets="CoverageOC">
   
-    <Message Text="ReportGenerate called ReportDirectory: $(ReportDirectory) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+    <Message Text="ReportGenerate called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
     
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)  " />
@@ -229,7 +230,7 @@
     </ItemGroup> 
     <ReportGenerator ReportFiles="C:\TEMP\CoverageResults\*.xml" TargetDirectory="C:\TEMP\UnitTestResults" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     
-    <Message Text="Coverage report has been generated: @(ReportDirectory) " />
+    <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
     
     
   </Target>
