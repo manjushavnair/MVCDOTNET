@@ -231,6 +231,7 @@
     
     <Message Text="Coverage report has been generated: @(ReportDirectory) " />
     
+    
   </Target>
   
   
