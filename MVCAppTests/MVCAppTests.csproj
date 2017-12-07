@@ -203,38 +203,10 @@
       <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
 
    <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;"  Condition=" @(MSTestTestAssemblies) != '' And $(IncludeCoverage) == 'True' " ContinueOnError="$(ContinueOnTestError)" />
-
-
-    <Message Text="TestResultsReport Reportunit Called " />
+     <Message Text="TestResultsReport Reportunit Called " />
 
   </Target>
-
-  <Target Name="CoverageOC1" DependsOnTargets="TestResultsReport">
-  
-	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
-	
-	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) --result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  />
-	
-	<Message Text="CoverageOC Completed " />
-  
-  </Target>
-  <Target Name="CodeCoverageReport1" DependsOnTargets="CoverageOC1">
-  
-	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
-	
-	<ItemGroup>
-	<CoverageFiles Include="$(CoverageFilesPattern)  " />
-	</ItemGroup>
-	<ItemGroup>
-	<SourceDirectories Include="$(MSBuildProjectDirectory)" />
-	</ItemGroup> 
-
-	<ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
-
-	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
-
-  </Target>
-  
+ 
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
   
 	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
@@ -261,9 +233,36 @@
 
   </Target>
   
+ 
   
+   <Target Name="CoverageOC1" DependsOnTargets="TestResultsReport">
+    
+  	<Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
+  	
+  	<Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -returntargetcode -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:%(MSTestTestAssemblies.Identity) --result=&quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; -output:&quot;$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\coverage-results.xml"  />
+  	
+  	<Message Text="CoverageOC Completed " />
+    
+    </Target>
+    <Target Name="CodeCoverageReport1" DependsOnTargets="CoverageOC1">
+    
+  	<Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+  	
+  	<ItemGroup>
+  	<CoverageFiles Include="$(CoverageFilesPattern)  " />
+  	</ItemGroup>
+  	<ItemGroup>
+  	<SourceDirectories Include="$(MSBuildProjectDirectory)" />
+  	</ItemGroup> 
+  
+  	<ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="Html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+  
+  	<Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
+  
+  </Target>
+   <!-- 
 
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
