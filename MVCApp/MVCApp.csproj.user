@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
-<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
-<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3"  />
-
-
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <PropertyGroup>
     <UseIISExpress>false</UseIISExpress>
     <ProjectView>ProjectFiles</ProjectView>
@@ -23,7 +21,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
   </PropertyGroup>
-   <ItemGroup>
+  <ItemGroup>
     <Solution Include="MVCApp.sln">
       <Properties>
                      $(SolutionProperties)
@@ -41,7 +39,7 @@
   <Target Name="ShowParameters" DependsOnTargets="EchoDate">
     <Message Text=" TestAssembly = @(TestAssembly)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-     <Message Text=" SolutionProperties = $(SolutionProperties)" />
+    <Message Text=" SolutionProperties = $(SolutionProperties)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" WebSiteFolderFullPath = $(WebSiteFolderFullPath)" />
     <Message Text=" MSBuildExtensionsPath = $(MSBuildExtensionsPath)" />
@@ -57,33 +55,21 @@
   </Target>
   <Target Name="BuildCode" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
-    
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
- 
-     <ItemGroup>
+    <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
-      <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
-    </CreateItem> 
-     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    </CreateItem>
+    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-    
-      
   </Target>
-      
-
-  
-
-<Target Name="BeforeBuild">
-  <Exec Command="..\.nuget\nuget restore MVCApp.sln"  ContinueOnError="true"/>
-</Target>
-
-
- 
+  <Target Name="BeforeBuild">
+    <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
+  </Target>
   <Target Name="Run">
     <CallTarget Targets="BuildCode" />
- 
   </Target>
   <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
     <!-- Create a collection of files to scan -->
