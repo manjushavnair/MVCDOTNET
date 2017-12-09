@@ -40,8 +40,9 @@ namespace MVCAppTests.UITest.Common
 
         public static void Initialize()
         {
-            System.Environment.SetEnvironmentVariable("webdriver.gecko.driver", @"/Software/selenium/geckodriver-v0.19.1-win64/geckodriver.exe");
-            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"/Software/selenium/chromedriver_win32/chromedriver.exe");
+            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe");
+           
+           // System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"/Software/selenium/chromedriver_win32/chromedriver.exe");
             driver = new ChromeDriver();
             TurnOnWait();
         }

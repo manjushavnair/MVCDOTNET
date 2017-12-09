@@ -352,12 +352,13 @@
    <ItemGroup>
       <None Include="App.config" />
   </ItemGroup>
-
+<!--
  <ItemGroup>
-    <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.33.0\driver\win32\geckodriver.exe">
+    <Content Include="../../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/geckodriver.exe">
       <Link>geckodriver.exe</Link>
     </Content>
   </ItemGroup>
+  -->
   
   <ItemGroup>
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
