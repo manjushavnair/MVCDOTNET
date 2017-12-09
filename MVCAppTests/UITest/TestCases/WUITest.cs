@@ -28,7 +28,7 @@ namespace MVCAppTests.UITest.TestCases
        
         [TestMethod]
         [TestCategory("Selenium")]
-        [Priority(1)]
+        [Priority(2)]
         public void Can_Navigate_To_GoToHome()
 
         {
@@ -52,7 +52,7 @@ namespace MVCAppTests.UITest.TestCases
 
         [TestMethod]
         [TestCategory("Selenium")]
-        [Priority(2)]
+        [Priority(3)]
         public void Can_Navigate_To_Login()
 
 
