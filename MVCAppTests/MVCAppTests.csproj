@@ -78,6 +78,9 @@
       <HintPath>..\MVCApp\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +120,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="TestToolsToXunitProxy, Version=0.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\TestToolsToXunitProxy.0.0.4\lib\net45\TestToolsToXunitProxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebDriver, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\Selenium.WebDriver.3.8.0\lib\net45\WebDriver.dll</HintPath>
       <Private>True</Private>
@@ -141,6 +148,11 @@
   <ItemGroup>
     <Compile Include="Controllers\RegisterControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UITest\PageObjects\LoginPage.cs" />
+    <Compile Include="UITest\PageObjects\HomePage.cs" />
+    <Compile Include="UITest\TestCases\WUITest.cs" />
+    <Compile Include="UITest\TestCases\UITest.cs" />
+    <Compile Include="UITest\Common\Driver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -151,6 +163,10 @@
       <Project>{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}</Project>
       <Name>MVCApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UITest\Exceptions\" />
+    <Folder Include="UITest\Utils\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
