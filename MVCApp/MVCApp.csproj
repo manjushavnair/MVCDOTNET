@@ -349,6 +349,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+   <ItemGroup>
+      <None Include="App.config" />
+  </ItemGroup>
+
+ <ItemGroup>
+    <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.33.0\driver\win32\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+    </Content>
+  </ItemGroup>
+  
   <ItemGroup>
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
   </ItemGroup>
@@ -411,6 +421,9 @@
   <Import Project="packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
+
+ 
+
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
