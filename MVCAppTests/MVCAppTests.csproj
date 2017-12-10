@@ -252,7 +252,7 @@
     <ItemGroup>
       <SourceDirectories Include="$(MSBuildProjectDirectory)" />
     </ItemGroup>
-    <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(MSBuildStartupDirectory)\$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
