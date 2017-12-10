@@ -21,13 +21,12 @@ using MVCAppTests.UITest.PageObjects;
 namespace MVCAppTests.UITest.TestCases
 {
 
-    [TestFixture]
+    
     [TestClass]
     public class WUITest :UITest
     {
        
-        [TestMethod]
-  
+        [TestMethod] 
         public void Can_Navigate_To_GoToHome()
 
         {
@@ -49,9 +48,7 @@ namespace MVCAppTests.UITest.TestCases
         }
        
 
-        [TestMethod]
- 
-  
+        [TestMethod] 
         public void Can_Navigate_To_Login()
 
 
