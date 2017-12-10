@@ -20,7 +20,7 @@ using MVCAppTests.UITest.PageObjects;
 
 namespace MVCAppTests.UITest.Common
 {
-    [TestFixture()]
+    [TestClass]
     public class Driver
     {
 
@@ -37,7 +37,7 @@ namespace MVCAppTests.UITest.Common
                 return url;
             }
         }
-        [TestFixtureSetUp]
+         
         public static void Initialize()
         {
             System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe");
@@ -47,7 +47,7 @@ namespace MVCAppTests.UITest.Common
             TurnOnWait();
         }
 
-        [TearDown]
+      
         public static void Close()
         {
            // driver.Close();
