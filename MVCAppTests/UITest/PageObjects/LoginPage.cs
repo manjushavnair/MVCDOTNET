@@ -28,7 +28,7 @@ namespace MVCAppTests.UITest.PageObjects
         {
             get
             {
-                var title = Driver.driver.FindElement(By.Id("loginLink"));
+                var title = Driver.driver.FindElement(By.Id("registerLink"));
                 Console.WriteLine("title" + title);
      
                 if (title != null)
@@ -47,7 +47,7 @@ namespace MVCAppTests.UITest.PageObjects
             Driver.driver.FindElement(By.Id("FirstName")).SendKeys("HoneyWell");
             Thread.Sleep(2000);
             Driver.driver.FindElement(By.Id("LastName")).SendKeys("Chennai");
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
             Driver.driver.FindElement(By.Id("LastName")).Clear();
             Thread.Sleep(3000);
             Driver.driver.FindElement(By.Id("LastName")).SendKeys("Bangalore");

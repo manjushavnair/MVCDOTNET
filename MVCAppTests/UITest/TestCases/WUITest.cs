@@ -60,20 +60,20 @@ namespace MVCAppTests.UITest.TestCases
             HomePage.home("Log in");
             Driver.driver.Manage().Window.Maximize();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
             Driver.driver.FindElement(By.Id("loginLink")).Click();
 
 
-            Thread.Sleep(8000);
+            Thread.Sleep(4000);
 
             Driver.driver.FindElement(By.Id("registerLink")).Click();
 
-            LoginPage.register("Join Us"); 
+           LoginPage.register("Register"); 
 
-            Thread.Sleep(8000);
+            Thread.Sleep(4000);
 
-            NUnit.Framework.Assert.AreEqual(LoginPage.Name, "Join Us");
+            NUnit.Framework.Assert.AreEqual(LoginPage.Name, "Register");
 
  
 
