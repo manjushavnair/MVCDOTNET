@@ -12,9 +12,9 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.PhantomJS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Firefox;
+ 
 
-namespace MVCApp.Controllers.Tests
+namespace MVCApp.Controllers
 {
    
     [TestClass]
@@ -23,7 +23,7 @@ namespace MVCApp.Controllers.Tests
         [TestMethod] 
         public void UserAddTest()
         {
-            NUnit.Framework.Assert.Pass();
+           // NUnit.Framework.Assert.Pass();
         }
     }
 }
