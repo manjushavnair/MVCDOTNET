@@ -16,11 +16,11 @@ using OpenQA.Selenium.Firefox;
 
 namespace MVCApp.Controllers.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class RegisterControllerTests
     {
         [TestMethod]
-        [Priority(1)]
+ 
         public void UserAddTest()
         {
             NUnit.Framework.Assert.Pass();
