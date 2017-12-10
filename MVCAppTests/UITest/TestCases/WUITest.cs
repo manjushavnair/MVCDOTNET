@@ -22,13 +22,13 @@ namespace MVCAppTests.UITest.TestCases
 {
 
 
-    
+    [TestClass]
     public class WUITest :UITest
     {
        
         [TestMethod]
  
-        [Priority(2)]
+        [Priority(1)]
         public void Can_Navigate_To_GoToHome()
 
         {
@@ -52,7 +52,7 @@ namespace MVCAppTests.UITest.TestCases
 
         [TestMethod]
  
-        [Priority(3)]
+        [Priority(2)]
         public void Can_Navigate_To_Login()
 
 
