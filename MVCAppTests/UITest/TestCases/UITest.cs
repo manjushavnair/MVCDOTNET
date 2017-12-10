@@ -20,6 +20,7 @@ using MVCAppTests.UITest.PageObjects;
 
 namespace MVCAppTests.UITest.TestCases
 {
+    [TestFixture]
     [TestClass]
     public class UITest
     {
