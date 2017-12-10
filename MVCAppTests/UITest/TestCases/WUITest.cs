@@ -21,8 +21,8 @@ using MVCAppTests.UITest.PageObjects;
 namespace MVCAppTests.UITest.TestCases
 {
 
-    
-    [TestClass]
+
+    [TestFixture]
     public class WUITest :UITest
     {
        

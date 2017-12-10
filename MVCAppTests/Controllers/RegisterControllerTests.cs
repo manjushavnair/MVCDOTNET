@@ -16,7 +16,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace MVCApp.Controllers.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RegisterControllerTests
     {
         [TestMethod]
