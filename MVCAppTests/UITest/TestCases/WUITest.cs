@@ -22,12 +22,12 @@ namespace MVCAppTests.UITest.TestCases
 {
 
 
-    [TestFixture]
+    
     public class WUITest :UITest
     {
        
         [TestMethod]
-        [TestCategory("Selenium")]
+ 
         [Priority(2)]
         public void Can_Navigate_To_GoToHome()
 
@@ -51,7 +51,7 @@ namespace MVCAppTests.UITest.TestCases
        
 
         [TestMethod]
-        [TestCategory("Selenium")]
+ 
         [Priority(3)]
         public void Can_Navigate_To_Login()
 
