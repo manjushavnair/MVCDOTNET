@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="CodeCoverageReport" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <UsingTask AssemblyFile="../MVCApp/packages/MSBuild.Extension.Pack.1.9.1/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6927F05A-E08D-4F96-B407-1B6CC02E4C98}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>false</Optimize>
@@ -63,7 +63,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>true</Optimize>
@@ -96,11 +96,11 @@
       <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <!--  <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=x86">
       <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    -->
+    
     <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
       <Private>True</Private>

@@ -12,7 +12,6 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.PhantomJS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Firefox;
 using System;
 using System.Threading;
 using MVCAppTests.UITest.Common;
