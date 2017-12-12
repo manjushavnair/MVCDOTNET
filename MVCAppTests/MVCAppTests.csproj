@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="CodeCoverageReport" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets')" />
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+
   <PropertyGroup>
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
@@ -223,7 +224,7 @@
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
-    <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+    <CreateItem Include="..\MVCAppTests\obj\Debug\MVCAppTests.dll">
       <Output TaskParameter="Include" ItemName="TestAssembly" />
     </CreateItem>
     <Message Text=" NUnit tests starting  Created Items" />
@@ -231,16 +232,16 @@
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
   <Target Name="TestResultsReport" DependsOnTargets="Test">
-    <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe $(MSBuildStartupDirectory)$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
-    <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;$(MSBuildStartupDirectory)\$(NUnitResultsFolder)&quot; &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;" />
+    <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
+    <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
-    <Exec Command="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -targetdir:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -target:&quot;C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /shadowcopy /trace=Debug /config=Debug /result=$(MSBuildStartupDirectory)\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*.*]*&quot; -output:&quot;$(MSBuildStartupDirectory)\CoverageResults\coverage-results.xml&quot;" />
+    <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /shadowcopy /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*.*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" />
     <Message Text="CoverageOC Completed " />
   </Target>
   <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
