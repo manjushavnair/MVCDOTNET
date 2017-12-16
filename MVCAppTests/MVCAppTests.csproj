@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Rebuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
@@ -201,10 +201,9 @@
   <Target Name="Clean">
     <Delete Files="$(OutputPath)$(AssemblyName)" />
   </Target>
-  <Target Name="Building">
-    <Csc Sources="@(Compile)" OutputAssembly="$(AssemblyName)" />
-  </Target>
+ 
   <Target Name="Rebuild" DependsOnTargets="Build;Test" />
+  
   <Target Name="Test">
     <Message Text="Test called" />
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -244,13 +243,12 @@
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
   <Target Name="BeforeBuild">
-    <Message Text="BeforeBuild called " />
+    <Message Text="BeforeBuild called " Importance="high" />
   </Target>
+  
   <Target Name="AfterBuild">
-    <Message Text="AfterBuild called " />
-    <CallTarget Targets="Test" />
-    <!-- <CallTarget Targets="CoverageOC" /> 
-    <CallTarget Targets="CodeCoverageReport" />
-    -->
+    <Message Text="AfterBuild called " Importance="high"  />
+    <CallTarget Targets="Test"/>
+  
   </Target>
 </Project>
