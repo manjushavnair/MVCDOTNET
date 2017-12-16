@@ -106,11 +106,11 @@
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <!--<Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+     <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    -->
+    
     <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
       <Private>True</Private>
