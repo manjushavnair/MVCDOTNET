@@ -188,7 +188,7 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <Message Text="PrepareForBuild called " />
+    <Message Text="PrepareForBuild called " Importance="high"/>
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
@@ -198,15 +198,15 @@
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
-  <Target Name="Clean">
+  <Target Name="Clean" >
     <Delete Files="$(OutputPath)$(AssemblyName)" />
   </Target>
  
   <Target Name="Rebuild" DependsOnTargets="Build;Test" />
   
   
-  <Target Name="Test">
-    <Message Text="Test called" />
+  <Target Name="Test" >
+    <Message Text="Test called" Importance="high" />
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
@@ -223,18 +223,18 @@
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
   
-  <Target Name="TestResultsReport" DependsOnTargets="Test">
-    <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
+  <Target Name="TestResultsReport" DependsOnTargets="Test" >
+    <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
-  <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
-    <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " />
+  <Target Name="CoverageOC" DependsOnTargets="TestResultsReport" >
+    <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high"/>
     <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /shadowcopy /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*.*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" />
     <Message Text="CoverageOC Completed " />
   </Target>
-  <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
-    <Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" />
+  <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC" >
+    <Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)  " />
     </ItemGroup>
