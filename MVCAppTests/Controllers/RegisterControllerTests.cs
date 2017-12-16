@@ -19,7 +19,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MVCApp.Controllers
 {
 
-    [TestClass]
+    [TestFixture]
     public class RegisterControllerTests
     {
         [TestMethod]
