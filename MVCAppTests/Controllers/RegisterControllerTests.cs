@@ -22,7 +22,7 @@ namespace MVCApp.Controllers
     [TestClass]
     public class RegisterControllerTests
     {
-        [TestMethod]
+        [Test]
         public void UserAddTest()
         {
              NUnit.Framework.Assert.Pass();
