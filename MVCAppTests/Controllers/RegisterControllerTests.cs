@@ -18,14 +18,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MVCApp.Controllers
 {
-   
-     
+
+    [TestClass]
     public class RegisterControllerTests
     {
-      
+        [TestMethod]
         public void UserAddTest()
         {
-           // NUnit.Framework.Assert.Pass();
+             NUnit.Framework.Assert.Pass();
         }
     }
 }
