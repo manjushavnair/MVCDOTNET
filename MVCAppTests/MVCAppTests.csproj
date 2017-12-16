@@ -204,6 +204,7 @@
  
   <Target Name="Rebuild" DependsOnTargets="Build;Test" />
   
+  
   <Target Name="Test">
     <Message Text="Test called" />
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -221,6 +222,7 @@
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
+  
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
@@ -248,7 +250,7 @@
   
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high"  />
-    <CallTarget Targets="Test"/>
+    <CallTarget Targets="CodeCoverageReport"/>
   
   </Target>
 </Project>
