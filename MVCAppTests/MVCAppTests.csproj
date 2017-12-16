@@ -224,6 +224,7 @@
   </Target>
   
   <Target Name="TestResultsReport" DependsOnTargets="Test" >
+  
     <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
