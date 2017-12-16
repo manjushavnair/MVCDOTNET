@@ -19,10 +19,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MVCApp.Controllers
 {
 
-    [TestClass]
+    //[TestClass]
     public class RegisterControllerTests
     {
-        [Test]
+        //[Test]
         public void UserAddTest()
         {
              NUnit.Framework.Assert.Pass();
