@@ -1,20 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="0" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-12-16" time="08:21:46">
+<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-12-16" time="18:30:29">
   <environment nunit-version="3.5.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Success" success="True" time="0.036" asserts="0">
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Success" success="True" time="0.132" asserts="0">
     <properties>
-      <property name="_PID" value="179252" />
+      <property name="_PID" value="199476" />
       <property name="_APPDOMAIN" value="domain-" />
     </properties>
     <results>
-      <test-suite type="TestSuite" name="MVCApp" executed="True" result="Success" success="True" time="0.011" asserts="0">
+      <test-suite type="TestSuite" name="MVCApp" executed="True" result="Success" success="True" time="0.105" asserts="0">
         <results>
-          <test-suite type="TestSuite" name="Controllers" executed="True" result="Success" success="True" time="0.010" asserts="0">
+          <test-suite type="TestSuite" name="Controllers" executed="True" result="Success" success="True" time="0.103" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="RegisterControllerTests" executed="True" result="Success" success="True" time="0.001" asserts="0">
-                <results />
+              <test-suite type="TestFixture" name="RegisterControllerTests" executed="True" result="Success" success="True" time="0.097" asserts="0">
+                <results>
+                  <test-case name="MVCApp.Controllers.RegisterControllerTests.UserAddTest" executed="True" result="Success" success="True" time="0.070" asserts="0" />
+                </results>
               </test-suite>
             </results>
           </test-suite>
