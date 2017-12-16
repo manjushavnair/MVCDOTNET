@@ -12,7 +12,8 @@ namespace MVCAppTests.UITest.TestCases
     public class WUITest :UITest
     {
        
-        [TestMethod] 
+        [TestMethod]
+        
         public void Can_Navigate_To_GoToHome()
 
         {
