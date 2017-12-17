@@ -4,15 +4,25 @@ using MVCAppTests.UITest.PageObjects;
 using OpenQA.Selenium;
 using System;
 using System.Threading;
+using NUnit.Framework;
 namespace MVCAppTests.UITest.TestCases
 {
 
 
-    //[NUnit.Framework.TestFixture]
-    [TestClass]
-    public class WUITest :UITest
+    [TestFixture("chrome", "63", "Windows 7", "", "")]
+   // [TestClass]
+    public class WUITest : UITest
     {
-       
+        private IWebDriver driver;
+        private string browser;
+        private string version;
+        private string os;
+
+        public WUITest(String browser, String version, String os) : base(browser, version, os)
+        { 
+           
+        }
+
         [TestMethod]
         
         public void Can_Navigate_To_GoToHome()

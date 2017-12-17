@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Threading;
 namespace MVCAppTests.UITest.Common
@@ -26,9 +27,15 @@ namespace MVCAppTests.UITest.Common
         public static void Initialize()
         {
            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe");
-           
-         // System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"c:/Software/selenium/chromedriver_win32/chromedriver.exe");
-            driver = new ChromeDriver();
+            // System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"c:/Software/selenium/chromedriver_win32/chromedriver.exe");
+           // driver = new ChromeDriver();
+
+
+            ChromeOptions options = new ChromeOptions();
+            options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
+            driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities());  
+
+
             TurnOnWait();
         }
 
