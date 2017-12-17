@@ -82,12 +82,12 @@ namespace MVCAppTests.UITest.TestCases
         }
 
 
-        /*[TearDown]
+        [TearDown]
         public void close()
         {
 
+            Driver.driver.Close();
 
-
-        }*/
+        } 
     }
 }
