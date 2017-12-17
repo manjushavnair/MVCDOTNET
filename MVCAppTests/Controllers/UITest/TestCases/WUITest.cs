@@ -18,6 +18,10 @@ namespace MVCAppTests.UITest.TestCases
         private string version;
         private string os;
 
+        public WUITest()
+        {
+
+        }
         public WUITest(String browser, String version, String os) : base(browser, version, os)
         { 
            
