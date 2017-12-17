@@ -9,6 +9,7 @@ using System.Threading;
 namespace MVCAppTests.UITest.TestCases
 {
 
+
     [TestClass]
   // [TestFixture("chrome", "63", "Windows 10")]
     public class UITest

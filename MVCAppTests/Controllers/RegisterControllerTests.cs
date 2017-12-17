@@ -16,7 +16,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
  
  
 
-namespace MVCApp.Controllers
+namespace MVCAppTests.Controllers
 {
 
     [TestClass]
