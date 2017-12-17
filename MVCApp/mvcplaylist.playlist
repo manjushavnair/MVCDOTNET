@@ -1,0 +1,2 @@
+<Playlist Version="1.0"><Add Test="MVCApp.Controllers.RegisterControllerTests.UserAddTest" /></Playlist>
+<Playlist Version="1.0"><Add Test="MVCAppTests.UITest.TestCases.Can_Navigate_To_GoToHome" /></Playlist>
