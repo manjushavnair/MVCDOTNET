@@ -32,9 +32,7 @@ namespace MVCAppTests.UITest.TestCases
         public void Can_Navigate_To_GoToHome()
 
         {
-
-
-            HomePage.GoTo();
+         HomePage.GoTo();
 
             System.Diagnostics.Debug.WriteLine(HomePage.Name);
             Console.WriteLine(HomePage.Name);
