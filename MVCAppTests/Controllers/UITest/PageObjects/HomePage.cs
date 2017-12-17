@@ -5,6 +5,7 @@ using System;
 namespace MVCAppTests.UITest.PageObjects
 {
 
+
     public class HomePage
     {
         public static void GoTo()

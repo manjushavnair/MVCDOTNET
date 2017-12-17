@@ -5,6 +5,7 @@ using OpenQA.Selenium.Remote;
 using System;
 using System.Threading;
 namespace MVCAppTests.UITest.Common
+
 {
     [TestClass]
     public class Driver
