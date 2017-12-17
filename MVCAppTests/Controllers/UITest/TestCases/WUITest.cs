@@ -8,6 +8,7 @@ namespace MVCAppTests.UITest.TestCases
 {
 
 
+    //[NUnit.Framework.TestFixture]
     [TestClass]
     public class WUITest :UITest
     {
