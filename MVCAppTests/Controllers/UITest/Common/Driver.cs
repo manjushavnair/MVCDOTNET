@@ -28,12 +28,14 @@ namespace MVCAppTests.UITest.Common
         {
            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe");
             // System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"c:/Software/selenium/chromedriver_win32/chromedriver.exe");
-           // driver = new ChromeDriver();
-
+           driver = new ChromeDriver();
+ 
 
             ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
-            driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities());  
+
+            //   options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
+            //  driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities(),TimeSpan.FromSeconds(600));  
+           // driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), DesiredCapabilities.Chrome(),TimeSpan.FromSeconds(600));  
 
 
             TurnOnWait();

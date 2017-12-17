@@ -9,8 +9,8 @@ using System.Threading;
 namespace MVCAppTests.UITest.TestCases
 {
 
-   // [TestClass]
-    [TestFixture("chrome", "63", "Windows 10")]
+    [TestClass]
+  // [TestFixture("chrome", "63", "Windows 10")]
     public class UITest
     {
         private IWebDriver driver;
@@ -19,28 +19,30 @@ namespace MVCAppTests.UITest.TestCases
         private string os;
 
 
-        public UITest(String browser, String version, String os)
-        {
-            this.browser = browser;
-            this.version = version;
-            this.os = os;
+        /*   public UITest(String browser, String version, String os)
+           {
+               this.browser = browser;
+               this.version = version;
+               this.os = os;
 
 
-        }
+           }
 
-        public UITest()
-        { 
-
-
-        }
+           public UITest()
+           { 
 
 
-        [TestInitialize]
+           }*/
+
+
+        [SetUp]
         public void Init()
         {
             
             Driver.Initialize();
         }
+
+        //[TearDown]
 
         [TestCleanup]
         public void Cleanup()

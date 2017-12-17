@@ -9,8 +9,8 @@ namespace MVCAppTests.UITest.TestCases
 {
 
 
-    [TestFixture("chrome", "63", "Windows 7", "", "")]
-   // [TestClass]
+   // [TestFixture("chrome", "63", "Windows 7", "", "")]
+      [TestClass]
     public class WUITest : UITest
     {
         private IWebDriver driver;
@@ -18,17 +18,17 @@ namespace MVCAppTests.UITest.TestCases
         private string version;
         private string os;
 
-        public WUITest()
-        {
+        /*  public WUITest()
+          {
 
-        }
-        public WUITest(String browser, String version, String os) : base(browser, version, os)
-        { 
-           
-        }
+          }
+          public WUITest(String browser, String version, String os) : base(browser, version, os)
+          { 
 
-        [TestMethod]
-        
+          }*/
+
+        [Test]
+
         public void Can_Navigate_To_GoToHome()
 
         {
@@ -38,19 +38,19 @@ namespace MVCAppTests.UITest.TestCases
             System.Diagnostics.Debug.WriteLine(HomePage.Name);
             Console.WriteLine(HomePage.Name);
             Console.Write("MyPage.Name" + HomePage.Name);
-           // Driver.driver.Manage().Window.Maximize();
+            // Driver.driver.Manage().Window.Maximize();
 
             HomePage.home("Log in");
             Driver.driver.FindElement(By.Id("loginLink")).Click();
 
-            Thread.Sleep(2000); 
+            Thread.Sleep(2000);
             NUnit.Framework.Assert.AreEqual(HomePage.Name, "Log in");
-          
-             
-        }
-       
 
-        [TestMethod] 
+
+        }
+
+
+        [Test]
         public void Can_Navigate_To_Login()
 
 
@@ -68,20 +68,26 @@ namespace MVCAppTests.UITest.TestCases
 
             Driver.driver.FindElement(By.Id("registerLink")).Click();
 
-           LoginPage.register("Register"); 
+            LoginPage.register("Register");
 
             Thread.Sleep(4000);
 
             NUnit.Framework.Assert.AreEqual(LoginPage.Name, "Register");
 
- 
+
 
 
 
 
         }
 
-   
 
+        [TearDown]
+        public void close()
+        {
+
+
+
+        }
     }
 }
