@@ -33,6 +33,7 @@ namespace MVCAppTests.UITest.TestCases
 
         {
 
+
             HomePage.GoTo();
 
             System.Diagnostics.Debug.WriteLine(HomePage.Name);
