@@ -15,13 +15,13 @@ namespace MVCAppTests.UITest.TestCases
   // [TestFixture("chrome", "63", "Windows 10")]
     public class UITest
     {
-        private IWebDriver driver;
+      /*  private IWebDriver driver;
         private string browser;
         private string version;
         private string os;
 
 
-        /*   public UITest(String browser, String version, String os)
+           public UITest(String browser, String version, String os)
            {
                this.browser = browser;
                this.version = version;

@@ -13,12 +13,12 @@ namespace MVCAppTests.UITest.TestCases
       [TestClass]
     public class WUITest : UITest
     {
-        private IWebDriver driver;
+      /*  private IWebDriver driver;
         private string browser;
         private string version;
         private string os;
 
-        /*  public WUITest()
+   public WUITest()
           {
 
           }
@@ -27,7 +27,7 @@ namespace MVCAppTests.UITest.TestCases
 
           }*/
 
-        [Test]
+        [TestMethod]
 
         public void Can_Navigate_To_GoToHome()
 
@@ -50,7 +50,7 @@ namespace MVCAppTests.UITest.TestCases
         }
 
 
-        [Test]
+        [TestMethod]
         public void Can_Navigate_To_Login()
 
 

@@ -7,7 +7,7 @@ using System.Threading;
 namespace MVCAppTests.UITest.Common
 
 {
-    [TestClass]
+    
     public class Driver
     {
 
@@ -32,14 +32,13 @@ namespace MVCAppTests.UITest.Common
            driver = new ChromeDriver();
  
 
-            ChromeOptions options = new ChromeOptions();
+           // ChromeOptions options = new ChromeOptions();
 
             //   options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
             //  driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities(),TimeSpan.FromSeconds(600));  
            // driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), DesiredCapabilities.Chrome(),TimeSpan.FromSeconds(600));  
 
-
-            TurnOnWait();
+             
         }
 
       
