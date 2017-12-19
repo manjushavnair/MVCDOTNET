@@ -27,7 +27,7 @@ namespace MVCAppTests.UITest.TestCases
 
           }*/
 
-        [TestMethod]
+        [Test]
 
         public void Can_Navigate_To_GoToHome()
 
@@ -50,7 +50,7 @@ namespace MVCAppTests.UITest.TestCases
         }
 
 
-        [TestMethod]
+        [Test]
         public void Can_Navigate_To_Login()
 
 
