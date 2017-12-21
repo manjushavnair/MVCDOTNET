@@ -5,6 +5,7 @@
   <UsingTask AssemblyFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
 
   <PropertyGroup>
+  <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
