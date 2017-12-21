@@ -8,6 +8,9 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup>
+   <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->

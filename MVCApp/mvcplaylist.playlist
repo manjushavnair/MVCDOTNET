@@ -1,6 +1,6 @@
 <Playlist Version="1.0">
 <Add Test="MVCApp.Controllers.RegisterControllerTests.UserAddTest" />
-<!--<Add Test="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" />
+<Add Test="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" />
 <Add Test="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_Login" />
--->
+ 
 </Playlist>
