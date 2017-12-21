@@ -55,7 +55,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>obj\Release\</OutputPath>
@@ -66,7 +66,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>obj\Debug\</OutputPath>
