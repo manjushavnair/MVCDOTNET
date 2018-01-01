@@ -49,7 +49,7 @@ namespace MVCAppTests.UITest.TestCases
         [TestCleanup]
         public void Cleanup()
         {
-            Driver.Close();
+            Driver.driver.Close();
         }
 
     }
