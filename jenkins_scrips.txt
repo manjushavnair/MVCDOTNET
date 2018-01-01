@@ -1,12 +1,22 @@
 Bulding as solution  
 .\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
+
 ${WORKSPACE}\MVCApp\MVCApp.sln  
 /p:Configuration=Debug
 
 
 Bulding as project  
 .\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
+
 ${WORKSPACE}\MVCApp\MVCApp.csproj.user  
 /t:BuildAndTest /p:Configuration=Debug 
 
+jenkins configs below
+.\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
+
+MSBuild
+${WORKSPACE}\MVCAppTests\MVCAppTests.csproj
+
+winodws executable
+MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe MVCAppTests\obj\Debug\MVCAppTests.dll
 
