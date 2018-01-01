@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Threading;
+
 namespace MVCAppTests.UITest.Common
 
 {
@@ -29,16 +30,23 @@ namespace MVCAppTests.UITest.Common
         {
            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe");
             // System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"c:/Software/selenium/chromedriver_win32/chromedriver.exe");
-           driver = new ChromeDriver();
- 
+        
 
-           // ChromeOptions options = new ChromeOptions();
+
+           ChromeOptions options = new ChromeOptions();
 
             //   options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
             //  driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities(),TimeSpan.FromSeconds(600));  
-           // driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), DesiredCapabilities.Chrome(),TimeSpan.FromSeconds(600));  
+            // driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), DesiredCapabilities.Chrome(),TimeSpan.FromSeconds(600));  
 
-             
+            options.AddArguments("test-type");
+            options.AddArgument("incognito"); // works
+        //    options.AddArgument("--disable-bundled-ppapi-flash"); // works! this turns off shockwave
+            options.AddArgument("--disable-extensions"); // works
+            options.AddArguments("--start-fullscreen");
+
+            driver = new ChromeDriver(options);
+
         }
 
       
