@@ -44,7 +44,7 @@ namespace MVCAppTests.UITest.TestCases
 
             Thread.Sleep(2000);
             NUnit.Framework.Assert.AreEqual(HomePage.Name, "Log in");
-            close();
+         
 
         }
 
@@ -73,7 +73,7 @@ namespace MVCAppTests.UITest.TestCases
 
             NUnit.Framework.Assert.AreEqual(LoginPage.Name, "Register");
 
-            close();
+         
 
 
 
