@@ -59,8 +59,8 @@ namespace MVCAppTests.UITest.Common
         {
 
             driver.Close();
-            driver.Quit();
-          //  driver.Dispose();
+         //   driver.Quit();
+         driver.Dispose();
             
         }
 
