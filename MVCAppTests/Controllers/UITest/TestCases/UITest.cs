@@ -50,8 +50,7 @@ namespace MVCAppTests.UITest.TestCases
         public void Cleanup()
         {
             Driver.driver.Close();
-            Driver.driver.Quit();
-            Driver.driver.Dispose();
+          
         }
 
     }

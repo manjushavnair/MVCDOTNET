@@ -57,7 +57,11 @@ namespace MVCAppTests.UITest.Common
       
         public static void Close()
         {
-          driver.Close();
+
+            driver.Close();
+            driver.Quit();
+          //  driver.Dispose();
+            
         }
 
         public static void Wait(TimeSpan timeSpan)
