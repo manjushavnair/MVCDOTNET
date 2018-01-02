@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="3" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-01-01" time="13:24:58">
+<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="2" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-01-02" time="12:02:38">
   <environment nunit-version="3.5.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Failure" success="False" time="71.024" asserts="2">
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Failure" success="False" time="108.333" asserts="2">
     <properties>
-      <property name="_PID" value="8200" />
+      <property name="_PID" value="33200" />
       <property name="_APPDOMAIN" value="domain-" />
     </properties>
     <failure>
@@ -13,55 +13,66 @@
       <stack-trace />
     </failure>
     <results>
-      <test-suite type="TestSuite" name="MVCAppTests" executed="True" result="Failure" success="False" time="71.005" asserts="2">
+      <test-suite type="TestSuite" name="MVCAppTests" executed="True" result="Failure" success="False" time="108.313" asserts="2">
         <failure>
           <message><![CDATA[One or more child tests had errors]]></message>
           <stack-trace />
         </failure>
         <results>
-          <test-suite type="TestSuite" name="Controllers" executed="True" result="Success" success="True" time="0.073" asserts="0">
-            <results>
-              <test-suite type="TestFixture" name="RegisterControllerTests" executed="True" result="Success" success="True" time="0.067" asserts="0">
-                <results>
-                  <test-case name="MVCAppTests.Controllers.RegisterControllerTests.UserAddTest" executed="True" result="Success" success="True" time="0.053" asserts="0" />
-                </results>
-              </test-suite>
-            </results>
-          </test-suite>
-          <test-suite type="TestSuite" name="UITest" executed="True" result="Failure" success="False" time="71.004" asserts="2">
+          <test-suite type="TestSuite" name="UITest" executed="True" result="Failure" success="False" time="108.312" asserts="2">
             <failure>
               <message><![CDATA[One or more child tests had errors]]></message>
               <stack-trace />
             </failure>
             <results>
-              <test-suite type="TestSuite" name="TestCases" executed="True" result="Failure" success="False" time="71.004" asserts="2">
+              <test-suite type="TestSuite" name="TestCases" executed="True" result="Failure" success="False" time="108.312" asserts="2">
                 <failure>
                   <message><![CDATA[One or more child tests had errors]]></message>
                   <stack-trace />
                 </failure>
                 <results>
-                  <test-suite type="TestFixture" name="WUITest" executed="True" result="Failure" success="False" time="70.929" asserts="2">
+                  <test-suite type="TestFixture" name="WUITest" executed="True" result="Failure" success="False" time="108.305" asserts="2">
                     <failure>
                       <message><![CDATA[One or more child tests had errors]]></message>
                       <stack-trace />
                     </failure>
                     <results>
-                      <test-case name="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" executed="True" result="Error" success="False" time="21.423" asserts="1">
+                      <test-case name="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" executed="True" result="Error" success="False" time="52.046" asserts="1">
                         <failure>
-                          <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : no such session
-  (Driver info: chromedriver=2.32.498550 (9dec58e66c31bcc53a9ce3c7226f0c1c5810906a),platform=Windows NT 10.0.10586 x86_64)]]></message>
+                          <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61014/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+  ----> System.Net.WebException : Unable to connect to the remote server
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61014]]></message>
                           <stack-trace><![CDATA[--TearDown
-   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
-   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)]]></stack-trace>
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at MVCAppTests.UITest.TestCases.WUITest.close() in C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\Controllers\UITest\TestCases\WUITest.cs:line 88
+--WebException
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+--SocketException
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_Login" executed="True" result="Error" success="False" time="49.505" asserts="1">
+                      <test-case name="MVCAppTests.UITest.TestCases.WUITest.Can_Navigate_To_Login" executed="True" result="Error" success="False" time="56.239" asserts="1">
                         <failure>
-                          <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : no such session
-  (Driver info: chromedriver=2.32.498550 (9dec58e66c31bcc53a9ce3c7226f0c1c5810906a),platform=Windows NT 10.0.10586 x86_64)]]></message>
+                          <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61087/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+  ----> System.Net.WebException : Unable to connect to the remote server
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61087]]></message>
                           <stack-trace><![CDATA[--TearDown
-   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
-   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)]]></stack-trace>
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at MVCAppTests.UITest.TestCases.WUITest.close() in C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\Controllers\UITest\TestCases\WUITest.cs:line 88
+--WebException
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+--SocketException
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)]]></stack-trace>
                         </failure>
                       </test-case>
                     </results>

@@ -86,6 +86,8 @@ namespace MVCAppTests.UITest.TestCases
         {
 
             Driver.driver.Close();
+            Driver.driver.Quit();
+            Driver.driver.Dispose();
 
         } 
     }
