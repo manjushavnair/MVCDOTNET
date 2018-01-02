@@ -36,19 +36,21 @@ namespace MVCAppTests.UITest.Common
              * https://peter.sh/experiments/chromium-command-line-switches/
             */
 
-            ChromeOptions options = new ChromeOptions();
+            //  ChromeOptions options = new ChromeOptions();
+ 
 
             //   options.BinaryLocation = "../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/chromedriver.exe";
             //  driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"),options.ToCapabilities(),TimeSpan.FromSeconds(600));  
             // driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), DesiredCapabilities.Chrome(),TimeSpan.FromSeconds(600));  
 
-          //  options.AddArguments("test-type");
-         //   options.AddArgument("incognito"); // works
-        //    options.AddArgument("--disable-bundled-ppapi-flash"); // works! this turns off shockwave
-        //    options.AddArgument("--disable-extensions"); // works
-            options.AddArguments("--start-fullscreen");
-
-            driver = new ChromeDriver(options);
+            //  options.AddArguments("test-type");
+            //   options.AddArgument("incognito"); // works
+            //    options.AddArgument("--disable-bundled-ppapi-flash"); // works! this turns off shockwave
+            //    options.AddArgument("--disable-extensions"); // works
+            // options.AddArguments("--start-fullscreen");
+          //  driver = new ChromeDriver(options);
+            driver = new ChromeDriver( );
+       
 
         }
 
