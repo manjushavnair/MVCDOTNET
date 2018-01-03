@@ -278,6 +278,8 @@
 	    </ItemGroup>
 	    
 	     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="FxCopReport.html" Rules="$(FxCopPath)Rules" FxCopPath="C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="$(FxCopPath)Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" Condition=" $(SkipAnalysis) == 'False' " />
+	     
+	     <Message Text="AnalyzeWithFxCop  Done" />
 	
   </Target>
   
