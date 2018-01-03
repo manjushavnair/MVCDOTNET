@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props" Condition="Exists('..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" />
   <Import Project="..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props" Condition="Exists('..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" />
   <Import Project="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
   <Import Project="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
@@ -229,6 +230,7 @@
     <Error Condition="!Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props'))" />
     <Error Condition="!Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
     <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props'))" />
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
