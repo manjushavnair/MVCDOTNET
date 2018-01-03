@@ -256,25 +256,21 @@
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
-  <Target Name="AnalyzeWithFxCop" DependsOnTargets="Build">
-    <!-- Include all assemblies that are generated from our own projects -->
-    <ItemGroup>
-      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
-      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
-    </ItemGroup>
-    <Message Text="AnalyzeWithFxCop generated: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
-    <ItemGroup>
-      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll') " />
-      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\%(ProjectsToAnalyze.Filename).dll') " />
-    </ItemGroup>
-    <!-- Run fxcop for AssembliesToAnalyze -->
-    <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(CodeAnalysisDirectory)FxCopReport.html" Rules="$(FxCopPath)Rules" FxCopPath="$(FxCopPath)FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="$(FxCopPath)Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" Condition=" $(SkipAnalysis) == 'False' " />
+  
+  <Target Name="AnalyzeWithFxCop"  >
+	     <ItemGroup>
+	      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+	      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
+	    </ItemGroup>
+	    <Message Text="AnalyzeWithFxCop generated: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
   </Target>
+  
   <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called " Importance="high" />
   </Target>
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high" />
     <CallTarget Targets="CodeCoverageReport" />
+    <CallTarget Targets="AnalyzeWithFxCop" />
   </Target>
 </Project>
