@@ -262,7 +262,8 @@
 	      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
 	      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
 	    </ItemGroup>
-	    <Message Text="AnalyzeWithFxCop generated: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
+	    <Message Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
+	    
   </Target>
   
   <Target Name="BeforeBuild">
