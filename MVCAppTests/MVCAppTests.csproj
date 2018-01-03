@@ -3,11 +3,7 @@
   <Import Project="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
   <Import Project="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
- 
-   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.CodeQuality.FxCop" />
-
-  
- 
+  <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.CodeQuality.FxCop" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="..\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
@@ -90,7 +86,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
+      <HintPath>..\MVCApp\packages\Microsoft.VisualStudio.QualityTools.UnitTestFramework.Updated.15.0.26228\lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -260,29 +257,19 @@
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
-  
-  <Target Name="AnalyzeWithFxCop"  >
-	     <ItemGroup>
-	      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
-	      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
-	    </ItemGroup>
-	    <Message Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
-	
-	 <ItemGroup>
-		    
-	      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll') " />
-
-
-	      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration\%(ProjectsToAnalyze.Filename).dll') " />
-		      
-	    </ItemGroup>
-	    
-	     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="FxCopReport.html" Rules="C:\Program Files (x86)\Microsoft Fxcop 10.0\Rules" FxCopPath="C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="true" ReportXsl="C:\Program Files (x86)\Microsoft Fxcop 10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" />
-	     
-	     <Message Text="AnalyzeWithFxCop  Done" />
-	
+  <Target Name="AnalyzeWithFxCop">
+    <ItemGroup>
+      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
+    </ItemGroup>
+    <Message Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
+    <ItemGroup>
+      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll') " />
+      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration\%(ProjectsToAnalyze.Filename).dll') " />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="FxCopReport.html" Rules="C:\Program Files (x86)\Microsoft Fxcop 10.0\Rules" FxCopPath="C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="true" ReportXsl="C:\Program Files (x86)\Microsoft Fxcop 10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" />
+    <Message Text="AnalyzeWithFxCop  Done" />
   </Target>
-  
   <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called " Importance="high" />
   </Target>
