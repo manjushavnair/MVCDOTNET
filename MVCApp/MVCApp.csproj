@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
+  <Import Project="packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
   <Import Project="packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <UsingTask AssemblyFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
-
   <PropertyGroup>
-  <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
+    <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
@@ -107,11 +108,10 @@
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
-     <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    
     <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
       <Private>True</Private>
@@ -350,19 +350,20 @@
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
-   <ItemGroup>
-      <None Include="App.config" />
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
-<!--
+  <!--
  <ItemGroup>
     <Content Include="../../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/geckodriver.exe">
       <Link>geckodriver.exe</Link>
     </Content>
   </ItemGroup>
   -->
-  
   <ItemGroup>
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
   </ItemGroup>
@@ -371,6 +372,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.Analyzers.dll" />
+    <Analyzer Include="packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.CSharp.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.Common.dll" />
+    <Analyzer Include="packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.CSharp.dll" />
+    <Analyzer Include="packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.Analyzers.dll" />
+    <Analyzer Include="packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll" />
+    <Analyzer Include="packages\System.Runtime.InteropServices.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.InteropServices.Analyzers.dll" />
+    <Analyzer Include="packages\System.Runtime.InteropServices.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.InteropServices.CSharp.Analyzers.dll" />
+    <Analyzer Include="packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.Analyzers.dll" />
+    <Analyzer Include="packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.CSharp.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -417,6 +430,8 @@
     <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props'))" />
+    <Error Condition="!Exists('packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props'))" />
   </Target>
   <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
   <Import Project="packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />

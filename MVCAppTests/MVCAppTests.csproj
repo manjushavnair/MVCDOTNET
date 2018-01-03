@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
+  <Import Project="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+ 
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="..\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
   <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
@@ -9,7 +12,6 @@
   <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <PropertyGroup>
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
-
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
   </PropertyGroup>
   <PropertyGroup>
@@ -152,14 +154,11 @@
   <ItemGroup>
     <Compile Include="Controllers\RegisterControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-   
-   <Compile Include="Controllers\UITest\PageObjects\LoginPage.cs" />
+    <Compile Include="Controllers\UITest\PageObjects\LoginPage.cs" />
     <Compile Include="Controllers\UITest\PageObjects\HomePage.cs" />
     <Compile Include="Controllers\UITest\TestCases\WUITest.cs" />
     <Compile Include="Controllers\UITest\TestCases\UITest.cs" />
     <Compile Include="Controllers\UITest\Common\Driver.cs" />
- 
-     
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -173,6 +172,14 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.Common.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.CSharp.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -202,6 +209,8 @@
     <Error Condition="!Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets'))" />
     <Error Condition="!Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props'))" />
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
@@ -246,6 +255,20 @@
     </ItemGroup>
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
+  </Target>
+  <Target Name="AnalyzeWithFxCop" DependsOnTargets="Build">
+    <!-- Include all assemblies that are generated from our own projects -->
+    <ItemGroup>
+      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+      <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
+    </ItemGroup>
+    <Message Text="AnalyzeWithFxCop generated: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
+    <ItemGroup>
+      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll') " />
+      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\%(ProjectsToAnalyze.Filename).dll') " />
+    </ItemGroup>
+    <!-- Run fxcop for AssembliesToAnalyze -->
+    <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(CodeAnalysisDirectory)FxCopReport.html" Rules="$(FxCopPath)Rules" FxCopPath="$(FxCopPath)FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="$(FxCopPath)Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" Condition=" $(SkipAnalysis) == 'False' " />
   </Target>
   <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called " Importance="high" />

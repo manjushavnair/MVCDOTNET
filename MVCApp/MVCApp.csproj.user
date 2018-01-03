@@ -3,12 +3,12 @@
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <PropertyGroup>
-  <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
+    <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <UseIISExpress>false</UseIISExpress>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup>
-   <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
     <!-- After Compile: Result will be saved in OutDir -->
