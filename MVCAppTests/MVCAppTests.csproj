@@ -277,7 +277,7 @@
 		      
 	    </ItemGroup>
 	    
-	     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="FxCopReport.html" Rules="$(FxCopPath)Rules" FxCopPath="C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="true" ReportXsl="C:\Program Files (x86)\Microsoft Fxcop 10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" />
+	     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="FxCopReport.html" Rules="C:\Program Files (x86)\Microsoft Fxcop 10.0\Rules" FxCopPath="C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="true" ReportXsl="C:\Program Files (x86)\Microsoft Fxcop 10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" />
 	     
 	     <Message Text="AnalyzeWithFxCop  Done" />
 	
