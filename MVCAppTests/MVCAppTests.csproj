@@ -31,8 +31,10 @@
     <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
   </PropertyGroup>
   <PropertyGroup>
-    <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+    <SourceAnalysisOutputFile>..\StyleCopResult</SourceAnalysisOutputFile>
   </PropertyGroup>
+  
+  
   <PropertyGroup>
     <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
   </PropertyGroup>  

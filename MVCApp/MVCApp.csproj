@@ -54,7 +54,7 @@
     <StyleCopTreatErrorsAsWarnings>False</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
     <PropertyGroup>
-      <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+      <SourceAnalysisOutputFile>..\StyleCopResult</SourceAnalysisOutputFile>
     </PropertyGroup>
     <PropertyGroup>
       <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
