@@ -18,6 +18,9 @@
     <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
     <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
   </PropertyGroup>
+  
+  
+  
   <PropertyGroup>
     <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
   </PropertyGroup>
@@ -26,6 +29,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
   </PropertyGroup>
   <PropertyGroup>
     <CodeCoverageResultsFolder>CoverageResults</CodeCoverageResultsFolder>

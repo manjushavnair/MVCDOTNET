@@ -75,20 +75,8 @@
   <Target Name="Run">
     <CallTarget Targets="BuildCode" />
   </Target>
-  <Target Name="ExecuteStyleCop" DependsOnTargets="ShowParameters">
-    <!-- Create a collection of files to scan -->
-    <CreateItem Include="$(MSBuildStartupDirectory)\**\*.cs">
-      <Output TaskParameter="Include" ItemName="StyleCopFiles" />
-    </CreateItem>
-    <!-- Run the StyleCop MSBuild task -->
-    <MSBuild.ExtensionPack.CodeQuality.StyleCop TaskAction="Scan" SourceFiles="@(StyleCopFiles)" ShowOutput="true" ForceFullAnalysis="true" CacheResults="false" logFile="$(StyleCopArtifactPath)\StyleCopLog.txt" SettingsFile="$(StyleCopPath)\Settings.StyleCop">
-      <Output TaskParameter="Succeeded" PropertyName="AllPassed" />
-      <Output TaskParameter="ViolationCount" PropertyName="Violations" />
-      <Output TaskParameter="FailedFiles" ItemName="Failures" />
-    </MSBuild.ExtensionPack.CodeQuality.StyleCop>
-    <Message Text="Succeeded: $(AllPassed), Violations: $(Violations)" />
-    <Message Text="%(Failures.Identity) - Failed on Line %(Failures.LineNumber). %(Failures.CheckId): %(Failures.Message)" />
-  </Target>
+  
+  
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
