@@ -31,7 +31,7 @@
     <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
   </PropertyGroup>
    <PropertyGroup>
-    <IntermediateOutputPath>..\StyleCopResult</IntermediateOutputPath>
+    <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
   </PropertyGroup>
   
   

@@ -58,7 +58,7 @@
       <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
   </PropertyGroup>  
     <PropertyGroup>
-      <IntermediateOutputPath>..\StyleCopResult</IntermediateOutputPath>
+      <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
     </PropertyGroup>
     
   
