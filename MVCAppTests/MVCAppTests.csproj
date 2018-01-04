@@ -273,6 +273,17 @@
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
+  
+   <Target Name="StyleCopReport" DependsOnTargets="StyleCop">
+      <Message Text="StyleCopReport called IntermediateOutputPath: $(IntermediateOutputPath) StyleCopHistoryDirectory: $(StyleCopHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
+   
+      <ItemGroup>
+        <SourceDirectories Include="$(MSBuildProjectDirectory)" />
+      </ItemGroup>
+      <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(IntermediateOutputPath)\*.xml" TargetDirectory="$(IntermediateOutputPath)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" VerbosityLevel="Verbose" />
+      <Message Text="StyleCop report has been generated: @(StyleCopReportFolder) " />
+  </Target>
+  
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high" />
     <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /shadowcopy /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*.*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" />
