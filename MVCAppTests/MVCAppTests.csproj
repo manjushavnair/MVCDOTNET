@@ -274,15 +274,7 @@
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
   
-   <Target Name="StyleCopReport" >
-      <Message Text="StyleCopReport called IntermediateOutputPath: $(IntermediateOutputPath) StyleCopHistoryDirectory: $(StyleCopHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
    
-      <ItemGroup>
-        <SourceDirectories Include="$(MSBuildProjectDirectory)" />
-      </ItemGroup>
-      <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(IntermediateOutputPath)\*.xml" TargetDirectory="$(IntermediateOutputPath)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" VerbosityLevel="Verbose" />
-      <Message Text="StyleCop report has been generated: @(StyleCopReportFolder) " />
-  </Target>
   
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high" />
@@ -321,7 +313,7 @@
 
     <CallTarget Targets="AnalyzeWithFxCop" />
 
-        <CallTarget Targets="StyleCopReport" />
+        
   </Target>
   <Import Project="..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
   <Import Project="..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets" Condition="Exists('..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets')" />
