@@ -59,6 +59,11 @@
     <PropertyGroup>
       <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
   </PropertyGroup>  
+    <PropertyGroup>
+      <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+    </PropertyGroup>
+    
+  
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>

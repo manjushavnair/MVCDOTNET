@@ -33,6 +33,10 @@
   <PropertyGroup>
     <SourceAnalysisOutputFile>..\StyleCopResult</SourceAnalysisOutputFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+  </PropertyGroup>
+  
   
   
   <PropertyGroup>
