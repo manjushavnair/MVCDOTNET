@@ -34,6 +34,10 @@
     <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
   </PropertyGroup>
   <PropertyGroup>
+    <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
+  </PropertyGroup>  
+  
+  <PropertyGroup>
     <CodeCoverageResultsFolder>CoverageResults</CodeCoverageResultsFolder>
   </PropertyGroup>
   <PropertyGroup>
