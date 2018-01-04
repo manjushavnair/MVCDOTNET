@@ -53,14 +53,12 @@
     <StyleCopEnabled>True</StyleCopEnabled>
     <StyleCopTreatErrorsAsWarnings>False</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
-    <PropertyGroup>
-      <SourceAnalysisOutputFile>..\StyleCopResult</SourceAnalysisOutputFile>
-    </PropertyGroup>
+ 
     <PropertyGroup>
       <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
   </PropertyGroup>  
     <PropertyGroup>
-      <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+      <IntermediateOutputPath>..\StyleCopResult</IntermediateOutputPath>
     </PropertyGroup>
     
   

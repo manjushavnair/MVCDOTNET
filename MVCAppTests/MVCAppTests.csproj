@@ -30,11 +30,8 @@
   <PropertyGroup>
     <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
   </PropertyGroup>
-  <PropertyGroup>
-    <SourceAnalysisOutputFile>..\StyleCopResult</SourceAnalysisOutputFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StyleCopOutputFile>..\StyleCopResult</StyleCopOutputFile>
+   <PropertyGroup>
+    <IntermediateOutputPath>..\StyleCopResult</IntermediateOutputPath>
   </PropertyGroup>
   
   
