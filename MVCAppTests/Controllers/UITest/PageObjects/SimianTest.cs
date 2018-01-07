@@ -6,7 +6,7 @@ namespace MVCAppTests.UITest.PageObjects
 {
 
 
-    public class SimianTest
+    public class HomePage
     {
         public static void GoTo()
         {
