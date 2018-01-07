@@ -378,7 +378,7 @@
     
             <Message Text="Starting Sonar " Importance="high" />
 
-    <Exec Command="&quot;C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe&quot; $(SonarConnectionParameters)  -D sonar.projectVersion=2 -D sonar.projectKey=&quot;mvctest1&quot; -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; -D csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+    <Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  -D sonar.projectVersion=2 -D sonar.projectKey=&quot;mvctest1&quot; -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; -D csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
     
     
     
