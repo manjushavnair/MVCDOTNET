@@ -362,8 +362,12 @@
     	</SolutionsToAnalyze>        
     
     </ItemGroup>
+        <Message Text="SonarRunnerPath $(SonarRunnerPath) CSharpSourceDirectory $(CSharpSourceDirectory) SonarConnectionParameters $(SonarConnectionParameters)" Importance="high" />
+
     
     <PropertyGroup>
+    
+    
     	<ExcludeFromCoverage>@(AssembliesToExludeFromCoverage -> '%(Filename)', ',')</ExcludeFromCoverage>
     
     	<SonarConnectionParameters>-D sonar.host.url=&quot;$(SonarHostUrl)&quot; -D sonar.fxcop.mode=&quot;skip&quot; -D sonar.sources=&quot;.&quot;</SonarConnectionParameters>
@@ -371,8 +375,9 @@
     	<SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) -D sonar.profile=&quot;$(SonarProfile)&quot;</SonarConnectionParameters>
     
     </PropertyGroup>
+    
      
-    <Exec Command="&quot;$(SonarRunnerPath)&quot; $(SonarConnectionParameters)  -D sonar.projectVersion=2 -D sonar.projectKey=&quot;mvctest1&quot; -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; -D csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+    <Exec Command="&quot;C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892&quot; $(SonarConnectionParameters)  -D sonar.projectVersion=2 -D sonar.projectKey=&quot;mvctest1&quot; -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; -D csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
     
     
     
