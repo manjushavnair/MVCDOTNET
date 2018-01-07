@@ -47,7 +47,7 @@
 	<!-- Simian -->
 	<SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
 	<SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile> 
-	<SimianCommand>&quot;$(SimianExeToolPath)&quot; -formatter=xml:&quot;$(SimianOutputFile)&quot; -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs </SimianCommand>
+	<SimianCommand>&quot;$(SimianExeToolPath)&quot; -formatter=xml:&quot;$(SimianOutputFile)&quot;  -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
 
 
   </PropertyGroup>  
