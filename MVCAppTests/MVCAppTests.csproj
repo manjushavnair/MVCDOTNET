@@ -331,6 +331,9 @@
   	<Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
   
+  
+
+
 
   <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called " Importance="high" />
@@ -341,6 +344,8 @@
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
+    <CallTarget Targets="AnalyzeWithSonar" />
+
 
         
   </Target>
