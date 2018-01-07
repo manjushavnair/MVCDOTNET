@@ -13,20 +13,30 @@ namespace MVCAppTests.UITest.TestCases
       [TestClass]
     public class WUITest : UITest
     {
-      /*  private IWebDriver driver;
-        private string browser;
-        private string version;
-        private string os;
+        /*  private IWebDriver driver;
+          private string browser;
+          private string version;
+          private string os;
 
-   public WUITest()
-          {
+     public WUITest()
+            {
 
-          }
-          public WUITest(String browser, String version, String os) : base(browser, version, os)
-          { 
+            }
+            public WUITest(String browser, String version, String os) : base(browser, version, os)
+            { 
 
-          }*/
+            }*/
 
+
+        /**
+        * a normal member  
+        * @param s a constant character pointer.
+        * @see Can_Navigate_To_GoToHome()
+        * @see ~Can_Navigate_To_GoToHome()
+        * @see Can_Navigate_To_GoToHome()
+        * @see publicVar()
+        * @return The test results
+        */
         [Test]
 
         public void Can_Navigate_To_GoToHome()

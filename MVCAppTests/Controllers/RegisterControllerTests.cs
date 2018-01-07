@@ -22,6 +22,13 @@ namespace MVCAppTests.Controllers
     [TestClass]
     public class RegisterControllerTests
     {
+
+        /**   
+        <summary>RegisterControllerTests Test docuemntation</summary>   
+        */
+        /** 
+         <param name=""></param>
+         */
         [Test]
         public void UserAddTest()
         {
