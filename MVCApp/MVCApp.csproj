@@ -225,6 +225,10 @@
       <HintPath>packages\TestToolsToXunitProxy.0.0.4\lib\net45\TestToolsToXunitProxy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="TextifyLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TextifyLib.1.5.0\lib\TextifyLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebDriver, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Selenium.WebDriver.3.8.0\lib\net45\WebDriver.dll</HintPath>
       <Private>True</Private>
@@ -247,6 +251,10 @@
     </Reference>
     <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=3.0.20.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WpfMath, Version=0.3.1.40510, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfMath.0.4.0\lib\net40\WpfMath.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
