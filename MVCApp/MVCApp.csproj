@@ -53,15 +53,12 @@
     <StyleCopEnabled>True</StyleCopEnabled>
     <StyleCopTreatErrorsAsWarnings>False</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
- 
-    <PropertyGroup>
-      <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
-  </PropertyGroup>  
-    <PropertyGroup>
-      <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
-    </PropertyGroup>
-    
-  
+  <PropertyGroup>
+    <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
@@ -314,6 +311,8 @@
     <Content Include="deleteme.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="NOTICE" />
+    <Content Include="LICENSE" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
