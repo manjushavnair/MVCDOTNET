@@ -37,7 +37,19 @@
   
   
   <PropertyGroup>
+  <!-- StyleCop -->
     <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
+    
+	<!-- Doxygen -->
+	<DoxygenExePath>..\MVCApp\packages\Doxygen.1.8.13\tools\doxygen.exe</DoxygenExePath>
+	<DoxygenConfigFile>..\MVCApp\doxygen.config</DoxygenConfigFile> 
+
+	<!-- Simian -->
+	<SimianExeToolPath>..\ExternalTools\simian-2.5.8\bin\simian-2.5.8.exe</SimianExeToolPath>
+	<SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile> 
+	<SimianCommand>&quot;$(SimianExeToolPath)&quot; -formatter=xml:&quot;$(SimianOutputFile)&quot; -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs </SimianCommand>
+
+
   </PropertyGroup>  
   
   <PropertyGroup>
@@ -304,14 +316,31 @@
     </ItemGroup>
     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="C:\Software\Fxcop10.0\Rules" FxCopPath="C:\Software\Fxcop10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="C:\Software\Fxcop10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(BinDirectory)" />
   </Target>
+  
+  
+  
+<!-- Generates Apidoc -->
+<Target Name="ApiDoc">	
+    <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
+</Target>
+
+<!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
+  <Target Name="CodeDuplicated">
+  	<!-- tools\simian-2.3.33\bin\simian-2.3.33.exe -formatter=xml:artifacts\Simian.Result.xml -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs  -->
+  	<Message Text="$(SimianCommand)" />
+  	<Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
+  </Target>
+  
+
   <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called " Importance="high" />
   </Target>
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high" />
     <CallTarget Targets="CodeCoverageReport" />
-
     <CallTarget Targets="AnalyzeWithFxCop" />
+    <CallTarget Targets="ApiDoc" />
+    <CallTarget Targets="CodeDuplicated" />
 
         
   </Target>
