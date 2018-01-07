@@ -344,7 +344,7 @@
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
-    <CallTarget Targets="AnalyzeWithSonar" />
+   
   </Target>
   <Import Project="..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
   <Import Project="..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets" Condition="Exists('..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets')" />
