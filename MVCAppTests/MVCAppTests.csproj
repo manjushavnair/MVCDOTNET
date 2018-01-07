@@ -345,7 +345,40 @@
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
+      <CallTarget Targets="AnalyzeWithSonar" />
   </Target>
+  
+    <Target Name="AnalyzeWithSonar">
+    
+    <ItemGroup>		
+    	<_SolutionsToAnalyze Include="..\MVCApp\MVCApp.sln" />
+    
+    	<!-- if none of the above exist, look for any solution -->
+    	<_SolutionsToAnalyze Include="$(CSharpSourceDirectory)**\*.sln" Condition=" @(_SolutionsToAnalyze) == '' " />
+    
+    	<SolutionsToAnalyze Include="%(_SolutionsToAnalyze.RelativeDir)%(_SolutionsToAnalyze.Filename)%(_SolutionsToAnalyze.Extension)">
+    		<ProjectName>MVCApp</ProjectName>
+    
+    	</SolutionsToAnalyze>        
+    
+    </ItemGroup>
+    
+    <PropertyGroup>
+    	<ExcludeFromCoverage>@(AssembliesToExludeFromCoverage -> '%(Filename)', ',')</ExcludeFromCoverage>
+    
+    	<SonarConnectionParameters>-D sonar.host.url=&quot;$(SonarHostUrl)&quot; -D sonar.fxcop.mode=&quot;skip&quot; -D sonar.sources=&quot;.&quot;</SonarConnectionParameters>
+    	
+    	<SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) -D sonar.profile=&quot;$(SonarProfile)&quot;</SonarConnectionParameters>
+    
+    </PropertyGroup>
+     
+    <Exec Command="&quot;$(SonarRunnerPath)&quot; $(SonarConnectionParameters)  -D sonar.projectVersion=2 -D sonar.projectKey=&quot;mvctest1&quot; -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; -D csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+    
+    
+    
+    </Target>
+  
+  
   <Import Project="..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
   <Import Project="..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets" Condition="Exists('..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets')" />
   <Target Name="___MVCApp_packages_BuildTools_StyleCop_4_7_49_0_tools_StyleCop_targets" Condition="$(StyleCopOutputFile)==''" BeforeTargets="BeforeBuild">
