@@ -52,3 +52,16 @@ C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\System.Web.WebPages.D
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCAppTests.csprojResolveAssemblyReference.cache
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCAppTests.dll
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCAppTests.pdb
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\System.Net.Http.Extensions.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\System.Net.Http.Primitives.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\WpfMath.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\WebGrease.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\Newtonsoft.Json.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\Antlr3.Runtime.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\System.Net.Http.Extensions.xml
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\System.Net.Http.Primitives.xml
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\WpfMath.pdb
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\WpfMath.xml
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\Newtonsoft.Json.xml
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\Antlr3.Runtime.pdb
+C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCAppTests.csproj.App.config

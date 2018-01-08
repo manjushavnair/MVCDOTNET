@@ -88,3 +88,6 @@ C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCApp.csproj.App.config
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCApp.csprojResolveAssemblyReference.cache
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCApp.dll
 C:\Projects\ASP.NET-master\MVCDOTNET\StyleCopResult\MVCApp.pdb
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\bin\WpfMath.dll
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\bin\WpfMath.pdb
+C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\bin\WpfMath.xml
