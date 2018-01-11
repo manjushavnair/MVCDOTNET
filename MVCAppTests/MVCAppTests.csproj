@@ -346,6 +346,9 @@
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
+    <CallTarget Targets="RunSpecs" />
+    
+    
    </Target>
   
     <Target Name="AnalyzeWithSonar">
@@ -393,7 +396,17 @@
  <Target Name="___MVCApp_packages_BuildTools_StyleCop_4_7_49_0_tools_StyleCop_targets" Condition="$(StyleCopOutputFile)==''" BeforeTargets="BeforeBuild">
     <Error Text="BuildTools_StyleCop - the BuildTools_StyleCop package has not been restored.&#xD;&#xA;If you are running this from an IDE, make sure NuGet Package Restore has been enabled, then reload the solution and re-run the build.&#xD;&#xA;If you are running this from the command line, run the build again.&#xD;&#xA;If this is a CI server, you may want to make sure NuGet Package Restore runs before your build with:&#xD;&#xA;	msbuild solution.sln /t:restorepackages" />
   </Target>
-  
+ 
+   
+    <Target Name="RunSpecs">
+        <PropertyGroup>
+          <MSpecCommand>
+            $(MSBuildStartupDirectory)\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec.exe $(AdditionalSettings) obj\Debug\MVCApp.dll </MSpecCommand>
+        </PropertyGroup>
+        <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+        <Exec Command="$(MSpecCommand)" />
+     </Target>
+
   
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 
