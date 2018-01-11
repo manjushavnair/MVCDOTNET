@@ -296,7 +296,7 @@
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"  EnableShadowCopy="true"  ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"  ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
