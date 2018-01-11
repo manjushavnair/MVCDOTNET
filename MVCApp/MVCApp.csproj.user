@@ -59,7 +59,7 @@
   </Target>
   <Target Name="BuildCode" DependsOnTargets="Init">
     <Message Text="BuildSolution called" />
-    <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+    <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" Targets="RunSpecs"/>
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
     </ItemGroup>
@@ -75,6 +75,17 @@
   <Target Name="Run">
     <CallTarget Targets="BuildCode" />
   </Target>
+  
+   <Target Name="RunSpecs">
+       <PropertyGroup>
+         <MSpecCommand>
+           $(MSBuildStartupDirectory)\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec.exe $(AdditionalSettings) obj\Debug\MVCApp.dll </MSpecCommand>
+       </PropertyGroup>
+       <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+       <Exec Command="$(MSpecCommand)" />
+    </Target>
+
+
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
