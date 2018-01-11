@@ -296,7 +296,7 @@
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"  EnableShadowCopy="false"  ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
@@ -400,6 +400,7 @@
  <Target Name="___MVCApp_packages_BuildTools_StyleCop_4_7_49_0_tools_StyleCop_targets" Condition="$(StyleCopOutputFile)==''" BeforeTargets="BeforeBuild">
     <Error Text="BuildTools_StyleCop - the BuildTools_StyleCop package has not been restored.&#xD;&#xA;If you are running this from an IDE, make sure NuGet Package Restore has been enabled, then reload the solution and re-run the build.&#xD;&#xA;If you are running this from the command line, run the build again.&#xD;&#xA;If this is a CI server, you may want to make sure NuGet Package Restore runs before your build with:&#xD;&#xA;	msbuild solution.sln /t:restorepackages" />
   </Target>
+  
  
    
     <Target Name="RunSpecs">
