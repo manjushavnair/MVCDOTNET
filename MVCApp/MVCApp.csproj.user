@@ -24,7 +24,11 @@
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
+    
+   
   </PropertyGroup>
+  
+  
   <ItemGroup>
     <Solution Include="MVCApp.sln">
       <Properties>
@@ -82,8 +86,7 @@
   
    <Target Name="RunSpecs">
        <PropertyGroup>
-         <MSpecCommand>
-           $(MSBuildStartupDirectory)\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec.exe $(AdditionalSettings) obj\Debug\MVCApp.dll </MSpecCommand>
+         <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec.exe -s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" obj\Debug\MVCApp.dll </MSpecCommand>
        </PropertyGroup>
        <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
        <Exec Command="$(MSpecCommand)" />
