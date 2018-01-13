@@ -85,7 +85,7 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   <Target Name="BuildCode" DependsOnTargets="Init">
-    <Message Text="BuildCode called" />
+    <Message Text="----------------BuildCode called-----------------" />
     <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" Targets="RunSpecs"/>
     <ItemGroup>
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
