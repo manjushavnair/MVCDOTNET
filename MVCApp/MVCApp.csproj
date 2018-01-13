@@ -530,6 +530,7 @@
     </Target>
     
      <Target Name="RunSpecs">
+       <Message Text="Starting the RunSpecs $$$$$$$$$$$$" /> 
          <PropertyGroup>
            <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
          </PropertyGroup>
