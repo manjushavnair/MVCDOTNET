@@ -33,7 +33,17 @@
    
   </PropertyGroup>
   
+  <ItemGroup>
+    <MsDeploySkipRules Include="CustomSkipFile">
+      <ObjectName>filePath</ObjectName>
+      <AbsolutePath>Views\\Home\\About1.cshtml</AbsolutePath>
+    </MsDeploySkipRules>
   
+    <MsDeploySkipRules Include="CustomSkipFile">
+      <ObjectName>filePath</ObjectName>
+      <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
+  </MsDeploySkipRules>
+   </ItemGroup>
   <ItemGroup>
     <Solution Include="MVCApp.sln">
       <Properties>
