@@ -6,6 +6,8 @@
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <UseIISExpress>false</UseIISExpress>
     <ProjectView>ProjectFiles</ProjectView>
+    <ProjectName>MVCApp</ProjectName>
+    
   </PropertyGroup>
   <PropertyGroup>
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +94,45 @@
        <Exec Command="$(MSpecCommand)" />
     </Target>
 
+
+  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Assembly"/>
+  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Zip"/>
+  
+  <Target Name="Pack">	
+  
+      <Message Text="Starting the Pack" /> 
+
+    <PropertyGroup>
+      <BinaryFolder>.\bin\</BinaryFolder>
+      <MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
+    </PropertyGroup>
+    <Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
+      <Output TaskParameter="OutputItems" ItemName="Info"/> 
+    </Assembly>
+    <Message Text="Identity: %(Info.Identity)" /> 
+    <Message Text="FullName: %(Info.FullName)" /> 
+    <Message Text="FileVersion: %(Info.FileVersion)" /> 
+    <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
+  
+    <PropertyGroup>
+      <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
+      <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
+    </PropertyGroup>	
+  
+    <MSBuild Targets="Package" Projects="$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
+      Properties="PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName)" />
+    
+    <CreateItem Include="$(PackageFolder)\*.*" >
+      <Output ItemName="ZipFiles" TaskParameter="Include"/>
+    </CreateItem>
+  
+    <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
+      <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+    </ConvertToAbsolutePath>
+  
+    <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
+    <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+  </Target>
 
   <ProjectExtensions>
     <VisualStudio>
