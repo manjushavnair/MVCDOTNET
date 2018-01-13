@@ -309,7 +309,7 @@
     <Message Text="CoverageOC Completed " />
   </Target>
   <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
-    <Message Text="CodeCoverageReport called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
+    <Message Text="CodeCoverageReport Test ######## called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
     <ItemGroup>
       <CoverageFiles Include="$(CoverageFilesPattern)  " />
     </ItemGroup>
