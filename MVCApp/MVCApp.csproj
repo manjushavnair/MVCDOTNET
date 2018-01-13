@@ -665,6 +665,8 @@
       <CallTarget Targets="CodeDuplicated" />
       <CallTarget Targets="RunSpecs" />
 
+     <CallTarget Targets="Pack" />
+
   </Target> 
  
 </Project>
