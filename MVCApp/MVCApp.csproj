@@ -539,9 +539,9 @@
   
   
     
-    <Target Name="Pack">	
+    <Target Name="PackageCode">	
     
-        <Message Text="Starting the Pack" /> 
+        <Message Text="Starting the PackageCode" /> 
   
       <PropertyGroup>
         <BinaryFolder>.\bin\</BinaryFolder>
@@ -665,7 +665,7 @@
       <CallTarget Targets="CodeDuplicated" />
       <CallTarget Targets="RunSpecs" />
 
-     <CallTarget Targets="Pack" />
+     <CallTarget Targets="PackageCode" />
 
   </Target> 
  
