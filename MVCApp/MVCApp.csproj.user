@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Assembly"/>
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Zip"/>
+
   <PropertyGroup>
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <UseIISExpress>false</UseIISExpress>
@@ -95,8 +98,6 @@
     </Target>
 
 
-  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Assembly"/>
-  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Zip"/>
   
   <Target Name="Pack">	
   
