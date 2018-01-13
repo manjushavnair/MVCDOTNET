@@ -525,9 +525,13 @@
     <Target Name="BeforeBuild">
       <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
     </Target>
+    
     <Target Name="Run">
+           <Message Text="Starting the RunSpecs @@@@@@@@@@@@" /> 
+
       <CallTarget Targets="BuildCode" />
     </Target>
+    
     
      <Target Name="RunSpecs">
        <Message Text="Starting the RunSpecs $$$$$$$$$$$$" /> 
