@@ -1,8 +1,8 @@
-﻿using MVCAppTests.UITest.Common;
+﻿using MVCAppTests.Controllers.UITest.Common;
 using OpenQA.Selenium;
 using System;
 
-namespace MVCAppTests.UITest.PageObjects
+namespace MVCAppTests.Controllers.UITest.PageObjects
 {
 
 

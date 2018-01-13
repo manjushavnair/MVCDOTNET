@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MVCAppTests.UITest.Common;
-using MVCAppTests.UITest.PageObjects;
+using MVCAppTests.Controllers.UITest.Common;
+using MVCAppTests.Controllers.UITest.PageObjects;
 using OpenQA.Selenium;
 using System;
 using System.Threading;
 using NUnit.Framework;
-namespace MVCAppTests.UITest.TestCases
+namespace MVCAppTests.Controllers.UITest.TestCases
 {
 
 

@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MVCAppTests.UITest.Common;
+using MVCAppTests.Controllers.UITest.Common;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Threading;
 
-namespace MVCAppTests.UITest.TestCases
+namespace MVCAppTests.Controllers.UITest.TestCases
 
 {
 

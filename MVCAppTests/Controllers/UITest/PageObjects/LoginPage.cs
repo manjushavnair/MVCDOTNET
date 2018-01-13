@@ -1,9 +1,9 @@
-﻿using MVCAppTests.UITest.Common;
+﻿using MVCAppTests.Controllers.UITest.Common;
 using OpenQA.Selenium;
 using System;
 using System.Threading;
 
-namespace MVCAppTests.UITest.PageObjects
+namespace MVCAppTests.Controllers.UITest.PageObjects
 {
 
     public class LoginPage
