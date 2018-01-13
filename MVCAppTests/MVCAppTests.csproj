@@ -334,10 +334,14 @@
   </Target>
   <!-- Generates Apidoc -->
   <Target Name="ApiDoc">
+             <Message  Importance="high" Text="Starting the ApiDoc in Test ###########" /> 
+
     <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
   </Target>
   <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
   <Target Name="CodeDuplicated">
+              <Message  Importance="high" Text="Starting the CodeDuplicated in Test ###########" /> 
+
     <Message Text="$(SimianCommand)" />
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
@@ -356,6 +360,8 @@
    </Target>
   
     <Target Name="AnalyzeWithSonar">
+             <Message Text="Starting the AnalyzeWithSonar in Test ###########" /> 
+
     
     <ItemGroup>		
     	<_SolutionsToAnalyze Include="..\MVCApp\MVCApp.sln" />
@@ -404,6 +410,8 @@
  
    
     <Target Name="RunSpecs">
+         <Message  Importance="high"  Text="Starting the RunSpecs in Test ###########" /> 
+  
         <PropertyGroup>
           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
           
