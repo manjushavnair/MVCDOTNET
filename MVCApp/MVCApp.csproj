@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="BuildCode" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props" Condition="Exists('packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" />
   <Import Project="packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props" Condition="Exists('packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" />
   <Import Project="packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
   <Import Project="packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
   <Import Project="packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll" TaskName="BuildCode" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Assembly"/>
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Zip"/>
   <UsingTask AssemblyFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
-  <PropertyGroup>
+
+   <PropertyGroup>
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
     </ProductVersion>
+    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectName>MVCApp</ProjectName>
+
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -427,6 +435,147 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+
+
+<PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <!-- After Compile: Result will be saved in OutDir -->
+    <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
+    <!-- MAke this Solution to work in Visusl Studio   -->
+    <OutDir>.\bin\</OutDir>
+    <!-- Solutionproperties -->
+    <SolutionProperties>
+        OutDir=$(OutDir);
+        Platform=$(Platform);
+        Configuration=$(Configuration)
+      </SolutionProperties>
+    <!-- Configuration -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
+    
+   
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <MsDeploySkipRules Include="CustomSkipFile">
+      <ObjectName>filePath</ObjectName>
+      <AbsolutePath>Views\\Home\\About1.cshtml</AbsolutePath>
+    </MsDeploySkipRules>
+  
+    <MsDeploySkipRules Include="CustomSkipFile">
+      <ObjectName>filePath</ObjectName>
+      <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
+  </MsDeploySkipRules>
+   </ItemGroup>
+   
+  <ItemGroup>
+    <Solution Include="MVCApp.sln">
+      <Properties>
+                     $(SolutionProperties)
+                 </Properties>
+    </Solution>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <BuildArtifactsDir Include="BuildArtifacts\" />
+    <SolutionFile Include="MVCApp.sln" />
+  </ItemGroup>
+  
+  <Target Name="EchoDate">
+    <Exec Command="echo %25date%25" />
+    <Message Text=" About to Call External EchoDate 	 " />
+  </Target>
+  
+  <Target Name="ShowParameters" DependsOnTargets="EchoDate">
+    <Message Text=" TestAssembly = @(TestAssembly)" />
+    <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    <Message Text=" SolutionProperties = $(SolutionProperties)" />
+    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    <Message Text=" WebSiteFolderFullPath = $(WebSiteFolderFullPath)" />
+    <Message Text=" MSBuildExtensionsPath = $(MSBuildExtensionsPath)" />
+    <Message Text=" OutDir = $(OutDir)" />
+    <Message Text=" SrcBasePath = $(SrcBasePath)" />
+    <Message Text=" StyleCopArtifactPath = $(StyleCopArtifactPath)" />
+  </Target>
+  <Target Name="Clean" DependsOnTargets="ShowParameters">
+         <Message Importance="high" Text="Running Clean"/>
+
+    <RemoveDir Directories="@(BuildArtifactsDir)" />
+  </Target>
+  <Target Name="Init" DependsOnTargets="Clean">
+          <Message Importance="high" Text="Running Init"/>
+
+    <MakeDir Directories="@(BuildArtifactsDir)" />
+  </Target>
+  
+    <Target Name="BuildCode" DependsOnTargets="Init">
+      <Message Text="BuildCode called" />
+      <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" Targets="RunSpecs"/>
+      <ItemGroup>
+        <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
+      </ItemGroup>
+      <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+        <Output TaskParameter="Include" ItemName="TestAssembly" />
+      </CreateItem>
+      <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+      <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    </Target>
+    <Target Name="BeforeBuild">
+      <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
+    </Target>
+    <Target Name="Run">
+      <CallTarget Targets="BuildCode" />
+    </Target>
+    
+     <Target Name="RunSpecs">
+         <PropertyGroup>
+           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
+         </PropertyGroup>
+         <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+         <Exec Command="$(MSpecCommand)" />
+      </Target>
+  
+  
+    
+    <Target Name="Pack">	
+    
+        <Message Text="Starting the Pack" /> 
+  
+      <PropertyGroup>
+        <BinaryFolder>.\bin\</BinaryFolder>
+        <MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
+      </PropertyGroup>
+      <Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
+        <Output TaskParameter="OutputItems" ItemName="Info"/> 
+      </Assembly>
+      <Message Text="Identity: %(Info.Identity)" /> 
+      <Message Text="FullName: %(Info.FullName)" /> 
+      <Message Text="FileVersion: %(Info.FileVersion)" /> 
+      <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
+    
+      <PropertyGroup>
+        <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
+        <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
+      </PropertyGroup>	
+    
+      <MSBuild Targets="Package" Projects="$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
+        Properties="PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName)" />
+      
+      <CreateItem Include="$(PackageFolder)\*.*" >
+        <Output ItemName="ZipFiles" TaskParameter="Include"/>
+      </CreateItem>
+    
+      <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
+        <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+      </ConvertToAbsolutePath>
+    
+      <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
+      <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+    </Target>
+  
+ 
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
@@ -434,7 +583,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+	   <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61677</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -443,9 +592,20 @@
           <IISAppRootUrl>http://localhost/MVCApp</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <StartPageUrl></StartPageUrl>
+          <StartAction>SpecificPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram></ExternalProgram>
+          <StartExternalURL></StartExternalURL>
+          <StartCmdLineArguments></StartCmdLineArguments>
+          <StartWorkingDirectory></StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

@@ -44,6 +44,7 @@
       <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
   </MsDeploySkipRules>
    </ItemGroup>
+   
   <ItemGroup>
     <Solution Include="MVCApp.sln">
       <Properties>
@@ -51,14 +52,17 @@
                  </Properties>
     </Solution>
   </ItemGroup>
+  
   <ItemGroup>
     <BuildArtifactsDir Include="BuildArtifacts\" />
     <SolutionFile Include="MVCApp.sln" />
   </ItemGroup>
+  
   <Target Name="EchoDate">
     <Exec Command="echo %25date%25" />
     <Message Text=" About to Call External EchoDate 	 " />
   </Target>
+  
   <Target Name="ShowParameters" DependsOnTargets="EchoDate">
     <Message Text=" TestAssembly = @(TestAssembly)" />
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
@@ -149,21 +153,27 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>
-          </StartPageUrl>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61677</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/MVCApp</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/MVCApp</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl></CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <StartPageUrl></StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
-          <ExternalProgram>
-          </ExternalProgram>
-          <StartExternalURL>
-          </StartExternalURL>
-          <StartCmdLineArguments>
-          </StartCmdLineArguments>
-          <StartWorkingDirectory>
-          </StartWorkingDirectory>
+          <ExternalProgram></ExternalProgram>
+          <StartExternalURL></StartExternalURL>
+          <StartCmdLineArguments></StartCmdLineArguments>
+          <StartWorkingDirectory></StartWorkingDirectory>
           <EnableENC>False</EnableENC>
           <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
         </WebProjectProperties>
