@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApp", "MVCApp.csproj", "{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApp", "..\MVCAppTests\MVCApp.csproj", "{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCAppTests", "..\MVCAppTests\MVCAppTests.csproj", "{6927F05A-E08D-4F96-B407-1B6CC02E4C98}"
 EndProject
