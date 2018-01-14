@@ -526,13 +526,14 @@
       <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     </Target>
     <Target Name="BeforeBuild">
+    <Message Text="BeforeBuild called Development" Importance="high" />
       <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
     </Target>
     
   
      
      <Target Name="RunSpecs" DependsOnTargets="BuildCode">
-       <Message Text="Starting the RunSpecs $$$$$$$$$$$$" /> 
+       <Message Importance="high"  Text="Starting the RunSpecs $$$$$$$$$$$$" /> 
          <PropertyGroup>
            <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
          </PropertyGroup>
@@ -544,7 +545,7 @@
     
     <Target Name="PackageCode" DependsOnTargets="RunSpecs">	
     
-        <Message Text="Starting the PackageCode $$$$$$$$$$$$" /> 
+        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
       <PropertyGroup>
         <BinaryFolder>.\bin\</BinaryFolder>
@@ -557,7 +558,8 @@
       <Message Text="FullName: %(Info.FullName)" /> 
       <Message Text="FileVersion: %(Info.FileVersion)" /> 
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
-    
+       <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
+  
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
         <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>

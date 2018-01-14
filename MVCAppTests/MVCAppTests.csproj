@@ -346,7 +346,7 @@
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
   <Target Name="BeforeBuild">
-    <Message Text="BeforeBuild called " Importance="high" />
+	    <Message Text="BeforeBuild called Testing" Importance="high" />
   </Target>
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high" />
