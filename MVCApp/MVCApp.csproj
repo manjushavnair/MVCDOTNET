@@ -725,11 +725,14 @@
     
   <Target Name="AfterBuild">
 	<Message Text="AfterBuild called " Importance="high" />
- 	<CallTarget Targets="AnalyzeWithFxCop" />
+	
+	
+ 	<CallTarget Targets="AnalyzeWithSonar" />
+	<CallTarget Targets="AnalyzeWithFxCop" />
 	<CallTarget Targets="ApiDoc" />
 	<CallTarget Targets="CodeDuplicated" />
-	<CallTarget Targets="RunSpecs" />
-	<CallTarget Targets="PackageCode" />
+ 
+ 
   </Target> 
  
 </Project>
