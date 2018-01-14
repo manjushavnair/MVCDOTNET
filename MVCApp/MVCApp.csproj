@@ -685,7 +685,7 @@
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target> 
   
-    <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;AnalyzeWithSonar;ApiDoc;AnalyzeWithFxCop">
+    <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;ApiDoc;AnalyzeWithFxCop">
              <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
    
     </Target>
