@@ -564,7 +564,7 @@
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
-         <Message Importance="high"  Text="$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
+         <Message Importance="high"  Text="$(ZipFileName) $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
  
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
