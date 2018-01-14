@@ -564,12 +564,14 @@
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
+         <Message Importance="high"  Text="$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
+ 
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
         <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
       </PropertyGroup>	
     
-      <MSBuild Targets="Package" Projects="$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
+      <MSBuild Targets="Package" Projects="..\$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
         Properties="PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName)" />
       
       <CreateItem Include="$(PackageFolder)\*.*" >
