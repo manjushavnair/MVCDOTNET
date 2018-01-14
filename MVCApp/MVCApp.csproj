@@ -454,11 +454,15 @@
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
-<SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
-<SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile>
-<SimianCommand>"$(SimianExeToolPath)" -formatter=xml:"$(SimianOutputFile)"  -excludes=**/*. -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
+   <!-- Doxygen -->
+    <DoxygenExePath>..\MVCApp\packages\Doxygen.1.8.13\tools\doxygen.exe</DoxygenExePath>
+    <DoxygenConfigFile>..\MVCApp\doxygen.config</DoxygenConfigFile>
+    <!-- Simian -->
+    <SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
+    <SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile>
+    <SimianCommand>"$(SimianExeToolPath)" -formatter=xml:"$(SimianOutputFile)"  -excludes=**/*. -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
 
-   
+    
   </PropertyGroup>
   
   <ItemGroup>
