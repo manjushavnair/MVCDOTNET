@@ -681,8 +681,7 @@
   
     <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;AnalyzeWithSonar;ApiDoc;AnalyzeWithFxCop">
              <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
-  
-       
+   
     </Target>
     
     
@@ -711,15 +710,10 @@
   
     
   <Target Name="AfterBuild">
-	<Message Text="AfterBuild called " Importance="high" />
-	
-	
- 	<CallTarget Targets="AnalyzeWithSonar" />
-	<CallTarget Targets="AnalyzeWithFxCop" />
-	<CallTarget Targets="ApiDoc" />
-	<CallTarget Targets="CodeDuplicated" />
- 
- 
+	<Message Text="AfterBuild called Testing" Importance="high" />
+  	
+ 	<CallTarget Targets="RunAnalysis" />
+  
   </Target> 
  
 </Project>
