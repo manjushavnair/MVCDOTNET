@@ -502,19 +502,21 @@
     <Message Text=" SrcBasePath = $(SrcBasePath)" />
     <Message Text=" StyleCopArtifactPath = $(StyleCopArtifactPath)" />
   </Target>
+  
   <Target Name="Clean" DependsOnTargets="ShowParameters">
-         <Message Importance="high" Text="Running Clean"/>
+         <Message Importance="high" Text="Running Dev Clean"/>
 
     <RemoveDir Directories="@(BuildArtifactsDir)" />
   </Target>
+  
   <Target Name="Init" DependsOnTargets="Clean">
-          <Message Importance="high" Text="Running Init"/>
+          <Message Importance="high" Text="Running Dev Init"/>
 
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
     <Target Name="BuildCode" DependsOnTargets="Init">
-      <Message Text="BuildCode called$$$$$$$$$$$$$$$$$$$$$$$" />
+      <Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
       <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
       <ItemGroup>
         <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
@@ -525,6 +527,8 @@
       <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
       <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     </Target>
+    
+    
     <Target Name="BeforeBuild">
     <Message Text="BeforeBuild called Development" Importance="high" />
       <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
@@ -533,7 +537,7 @@
   
      
      <Target Name="RunSpecs" DependsOnTargets="BuildCode">
-       <Message Importance="high"  Text="Starting the RunSpecs $$$$$$$$$$$$" /> 
+       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
          <PropertyGroup>
            <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
          </PropertyGroup>
@@ -545,7 +549,7 @@
     
     <Target Name="PackageCode" DependsOnTargets="RunSpecs">	
     
-        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
+        <Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
   
       <PropertyGroup>
         <BinaryFolder>.\bin\</BinaryFolder>
@@ -667,13 +671,13 @@
   </Target>
   <!-- Generates Apidoc -->
   <Target Name="ApiDoc">
-             <Message  Importance="high" Text="Starting the ApiDoc in Test ###########" /> 
+             <Message  Importance="high" Text="Starting the ApiDoc in Dev ###########" /> 
 
     <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
   </Target>
   <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
   <Target Name="CodeDuplicated" >
-              <Message  Importance="high" Text="Starting the CodeDuplicated in Test ###########" /> 
+              <Message  Importance="high" Text="Starting the CodeDuplicated in Dev ###########" /> 
 
     <Message Text="$(SimianCommand)" />
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
@@ -686,7 +690,7 @@
     
     
       <Target Name="AnalyzeWithSonar">
-                 <Message Text="Starting the AnalyzeWithSonar in Test ###########" /> 
+                 <Message Text="Starting the AnalyzeWithSonar in Dev ###########" /> 
     
 
 		<ItemGroup>		
@@ -710,7 +714,7 @@
   
     
   <Target Name="AfterBuild">
-	<Message Text="AfterBuild called Testing" Importance="high" />
+	<Message Text="AfterBuild called Dev" Importance="high" />
   	
  	<CallTarget Targets="RunAnalysis" />
   
