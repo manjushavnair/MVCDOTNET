@@ -519,7 +519,7 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
-    <Target Name="BuildCode" DependsOnTargets="Init">
+    <Target Name="BuildCode" DependsOnTargets="Init;Analysis">
       <Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
       <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
       <ItemGroup>
@@ -719,7 +719,7 @@
         </Target>
   
     
-  <Target Name="AfterBuild">
+  <Target Name="Analysis">
 	<Message Text="AfterBuild called Dev" Importance="high" />
   	
  	<CallTarget Targets="RunAnalysis" />
