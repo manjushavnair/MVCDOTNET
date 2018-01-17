@@ -567,6 +567,7 @@
 
 		<!--<MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
 					       CompressFiles="@(Files)"
+					       CompressPath="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug" 
 					       ZipFileName="$(PackageFileName)"
 					       RemoveRoot="$(DeployFilesDirectory)"/>-->
 
