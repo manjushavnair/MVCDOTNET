@@ -519,7 +519,7 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
-    <Target Name="BuildCode" DependsOnTargets="Init">
+    <Target Name="BuildCode" DependsOnTargets="Init" BeforeTargets="BeforeBuild">
 		<Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
 		<PropertyGroup>
@@ -572,7 +572,8 @@
 					       RemoveRoot="$(DeployFilesDirectory)"/>-->
 
 		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
-		<RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+		
+		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
     </Target>
     
     
