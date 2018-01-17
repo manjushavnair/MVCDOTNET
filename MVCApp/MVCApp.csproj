@@ -537,13 +537,14 @@
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
-         <Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
- 
+   
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
         <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
       </PropertyGroup>
       
+            <Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
+ 
       <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
       
    
@@ -612,13 +613,14 @@
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
-         <Message Importance="high"  Text="$(ZipFileName) $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
  
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
         <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
       </PropertyGroup>	
     
+            <Message Importance="high"  Text="$(ZipFileName) $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
+ 
       <MSBuild Targets="Package" Projects="..\$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
         Properties="PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName)" />
 
