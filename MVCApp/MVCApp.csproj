@@ -537,7 +537,7 @@
       <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
        <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
   
-         <Message Importance="high"  Text="$(ZipFileName) $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
+         <Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
  
       <PropertyGroup>
         <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
@@ -546,6 +546,7 @@
       
       <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
       
+   
       
       <ItemGroup>
         <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
@@ -563,6 +564,12 @@
             <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
               <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
             </ConvertToAbsolutePath>
+              
+            <MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
+	                                               CompressFiles="@(Files)"
+	                                               ZipFileName="$(PackageFileName)"
+	                                               RemoveRoot="$(DeployFilesDirectory)"/>
+
           
             <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
             <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
@@ -614,10 +621,13 @@
     
       <MSBuild Targets="Package" Projects="..\$(ProjectName)/$(ProjectName).csproj" ContinueOnError="False" 
         Properties="PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName)" />
-      
-      <CreateItem Include="$(PackageFolder)\*.*" >
-        <Output ItemName="ZipFiles" TaskParameter="Include"/>
-      </CreateItem>
+
+     <CreateItem Include="$(PackageFolder)\*.*" >
+            <Output ItemName="ZipFiles" TaskParameter="Include"/>
+          </CreateItem>
+  
+  
+ 
     
       <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
         <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
