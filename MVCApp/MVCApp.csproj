@@ -520,65 +520,53 @@
   </Target>
   
     <Target Name="BuildCode" DependsOnTargets="Init">
-      <Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
+		<Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
+		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
+		<PropertyGroup>
+		<BinaryFolder>.\bin\</BinaryFolder>
+		<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
+		<TemporaryFolder>.\temp</TemporaryFolder>
+		</PropertyGroup>
 
-        <Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
-  
-      <PropertyGroup>
-        <BinaryFolder>.\bin\</BinaryFolder>
-        <MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
-        <TemporaryFolder>.\temp</TemporaryFolder>
-        
-        
-      </PropertyGroup>
-      <Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
-        <Output TaskParameter="OutputItems" ItemName="Info"/> 
-      </Assembly>
-      <Message Text="Identity: %(Info.Identity)" /> 
-      <Message Text="FullName: %(Info.FullName)" /> 
-      <Message Text="FileVersion: %(Info.FileVersion)" /> 
-      <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
-       <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
-  
- 
-      <PropertyGroup>
-        <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
-        <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
-      </PropertyGroup>
-   
-           <Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
- 
- 
-      <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
-      
-   
-      
-      <ItemGroup>
-        <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
-      </ItemGroup>
-      <CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
-        <Output TaskParameter="Include" ItemName="TestAssembly" />
-      </CreateItem>
-      <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
-      <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-      
-            <CreateItem Include="$(PackageFolder)\*.*" >
-              <Output ItemName="ZipFiles" TaskParameter="Include"/>
-            </CreateItem>
-          
-            <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
-              <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
-            </ConvertToAbsolutePath>
-              
-            <MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
-	                                               CompressFiles="@(Files)"
-	                                               ZipFileName="$(PackageFileName)"
-	                                               RemoveRoot="$(DeployFilesDirectory)"/>
+		<Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
+		<Output TaskParameter="OutputItems" ItemName="Info"/> 
+		</Assembly>
+		<Message Text="Identity: %(Info.Identity)" /> 
+		<Message Text="FullName: %(Info.FullName)" /> 
+		<Message Text="FileVersion: %(Info.FileVersion)" /> 
+		<Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
+		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
 
-          
-            <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
-            <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+		<PropertyGroup>
+		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
+		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
+		</PropertyGroup>
 
+		<Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
+		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+
+		<ItemGroup>
+		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
+		</ItemGroup>
+		<CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+		<Output TaskParameter="Include" ItemName="TestAssembly" />
+		</CreateItem>
+		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+		<CreateItem Include="$(PackageFolder)\*.*" >
+		<Output ItemName="ZipFiles" TaskParameter="Include"/>
+		</CreateItem>
+		<ConvertToAbsolutePath Paths="$(TemporaryFolder)">
+		<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+		</ConvertToAbsolutePath>
+
+		<MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
+					       CompressFiles="@(Files)"
+					       ZipFileName="$(PackageFileName)"
+					       RemoveRoot="$(DeployFilesDirectory)"/>
+
+		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
+		<RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
     </Target>
     
     
