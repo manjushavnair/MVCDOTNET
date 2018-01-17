@@ -521,7 +521,32 @@
   
     <Target Name="BuildCode" DependsOnTargets="Init">
       <Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
-      <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+
+        <Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
+  
+      <PropertyGroup>
+        <BinaryFolder>.\bin\</BinaryFolder>
+        <MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
+      </PropertyGroup>
+      <Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
+        <Output TaskParameter="OutputItems" ItemName="Info"/> 
+      </Assembly>
+      <Message Text="Identity: %(Info.Identity)" /> 
+      <Message Text="FullName: %(Info.FullName)" /> 
+      <Message Text="FileVersion: %(Info.FileVersion)" /> 
+      <Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
+       <Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
+  
+         <Message Importance="high"  Text="$(ZipFileName) $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  $(PackageFolder)" /> 
+ 
+      <PropertyGroup>
+        <PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
+        <ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
+      </PropertyGroup>
+      
+      <MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+      
+      
       <ItemGroup>
         <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
       </ItemGroup>
@@ -530,6 +555,18 @@
       </CreateItem>
       <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
       <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+      
+            <CreateItem Include="$(PackageFolder)\*.*" >
+              <Output ItemName="ZipFiles" TaskParameter="Include"/>
+            </CreateItem>
+          
+            <ConvertToAbsolutePath Paths="$(TemporaryFolder)">
+              <Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+            </ConvertToAbsolutePath>
+          
+            <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
+            <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+
     </Target>
     
     
@@ -588,6 +625,7 @@
     
       <Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
       <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
+      
     </Target>
   
  
