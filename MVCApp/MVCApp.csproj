@@ -565,10 +565,10 @@
 		<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
 		</ConvertToAbsolutePath>
 
-		<MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
+		<!--<MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
 					       CompressFiles="@(Files)"
 					       ZipFileName="$(PackageFileName)"
-					       RemoveRoot="$(DeployFilesDirectory)"/>
+					       RemoveRoot="$(DeployFilesDirectory)"/>-->
 
 		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
 		<RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/>
