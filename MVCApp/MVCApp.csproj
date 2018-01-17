@@ -537,12 +537,17 @@
 		<Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
 		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
 
+		<ItemGroup>
+		<!-- Set the collection of files to Zip-->
+		<ZipFiles Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\**\*"/>
+		</ItemGroup>
 		<PropertyGroup>
 		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
 		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
 		</PropertyGroup>
 
 		<Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
+		
 		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
 
 		<ItemGroup>
