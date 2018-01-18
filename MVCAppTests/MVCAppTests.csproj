@@ -348,9 +348,7 @@
   </Target>
   <Target Name="BeforeBuild">
 	    <Message Text="BeforeBuild called Testing" Importance="high" />
-	          <Message Text="BeforeBuild called Development" Importance="high" />
-	          <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
-
+  
   </Target>
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high" />
