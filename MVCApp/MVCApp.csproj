@@ -520,7 +520,7 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
-    <Target Name="BuildCode" DependsOnTargets="Init" BeforeTargets="BeforeBuild">
+    <Target Name="BuildCode" DependsOnTargets="Init;BeforeBuild">
 		<Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
 		<PropertyGroup>
@@ -547,9 +547,12 @@
 		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
 		</PropertyGroup>
 
-		<Message Importance="high"  Text="ZipFileName:$(ZipFileName) TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)  PackageFolder: $(PackageFolder)" /> 
+		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
+		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
+		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
+		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)" /> 
 		
-		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
 
 		<ItemGroup>
 		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
