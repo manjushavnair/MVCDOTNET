@@ -547,11 +547,6 @@
 		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
 		</PropertyGroup>
 
-		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
-		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
-		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
-		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)" /> 
-		
 		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
 
 		<ItemGroup>
@@ -575,7 +570,14 @@
 					       ZipFileName="$(PackageFileName)"
 					       RemoveRoot="$(DeployFilesDirectory)"/>-->
 
-		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName="$(ZipFileName)"/>
+
+		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
+		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
+		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
+		<Message Importance="high"  Text="TemporaryFolderAbsolute: $(TemporaryFolderAbsolute)" /> 
+		
+	
+		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
 		
 		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
     </Target>
