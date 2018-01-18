@@ -540,7 +540,7 @@
 
 		<ItemGroup>
 		<!-- Set the collection of files to Zip-->
-		<ZipFiles Include=".\bin\**\*"/>
+		<ZipFiles Include=".\bin\*"/>
 		</ItemGroup>
 		<PropertyGroup>
 		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
