@@ -540,28 +540,28 @@
 
 		<ItemGroup>
 		<!-- Set the collection of files to Zip-->
-		<ZipFiles Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\**\*"/>
+		<ZipFiles Include=".\bin\**\*"/>
 		</ItemGroup>
 		<PropertyGroup>
 		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
 		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
 		</PropertyGroup>
 
-		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=..\$(PackageFolder)\$(ZipFileName);DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
 
 		<ItemGroup>
 		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
 		</ItemGroup>
 		<CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
-		<Output TaskParameter="Include" ItemName="TestAssembly" />
+			<Output TaskParameter="Include" ItemName="TestAssembly" />
 		</CreateItem>
 		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
 		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
 		<CreateItem Include="$(PackageFolder)\*.*" >
-		<Output ItemName="ZipFiles" TaskParameter="Include"/>
+			<Output ItemName="ZipFiles" TaskParameter="Include"/>
 		</CreateItem>
 		<ConvertToAbsolutePath Paths="$(TemporaryFolder)">
-		<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+			<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
 		</ConvertToAbsolutePath>
 
 		<!--<MSBuild.ExtensionPack.Compression.Zip TaskAction="AddFiles"
