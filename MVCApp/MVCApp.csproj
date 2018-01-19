@@ -522,9 +522,10 @@
   
     <Target Name="BuildCode" DependsOnTargets="Init">
     
-     <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\CodePlex\MSBuildExtensionPack\Solutions\Main3.5\BuildBinaries\MSBuild.ExtensionPack.dll">
+ <!--    <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\CodePlex\MSBuildExtensionPack\Solutions\Main3.5\BuildBinaries\MSBuild.ExtensionPack.dll">
                 <Output TaskParameter="OutputItems" ItemName="Info"/>
         </MSBuild.ExtensionPack.Framework.Assembly>
+        -->
 		<Message Text="BuildCode called $$$$$$$$$$$$$$$$$$$$$$$" />
 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
 		<PropertyGroup>
