@@ -353,12 +353,12 @@
   </Target>
   <Target Name="AfterBuild">
     <Message Text="AfterBuild called " Importance="high" />
-    <CallTarget Targets="CodeCoverageReport" />
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="RunSpecs" />
     <CallTarget Targets="RunJMeterTests" />
+    <CallTarget Targets="CodeCoverageReport" />
     
     
    </Target>
