@@ -54,7 +54,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>Full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>output\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,7 +64,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>Full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>output\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -453,7 +453,7 @@
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\output\</OutDir>
+    <OutDir>.\bin\</OutDir>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
@@ -544,7 +544,7 @@
 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
 		
 		<PropertyGroup>
-			<BinaryFolder>.\output\</BinaryFolder>
+			<BinaryFolder>.\bin\</BinaryFolder>
 			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
 			<TemporaryFolder>.\temp</TemporaryFolder>
 		</PropertyGroup>
@@ -563,7 +563,7 @@
 
 		<ItemGroup>
 		<!-- Set the collection of files to Zip-->
-		<ZipFiles Include=".\output\*"/>
+		<ZipFiles Include=".\bin\*"/>
 		</ItemGroup>
 		
 		<PropertyGroup>

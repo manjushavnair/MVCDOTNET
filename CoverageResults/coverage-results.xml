@@ -8,7 +8,7 @@
       <ModuleName>mscorlib</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="Filter" hash="73-2C-23-38-69-24-C6-47-B0-15-58-8D-B3-63-F3-64-AC-79-40-D5">
+    <Module skippedDueTo="MissingPdb" hash="73-2C-23-38-69-24-C6-47-B0-15-58-8D-B3-63-F3-64-AC-79-40-D5">
       <ModulePath>C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe</ModulePath>
       <ModuleTime>2017-07-13T15:03:20Z</ModuleTime>
       <ModuleName>nunit3-console</ModuleName>
