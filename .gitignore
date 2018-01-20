@@ -241,3 +241,5 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /MVCApp/.sonarqube
+/MVCApp/output
+/MVCApp/MVCApp_Release_4.0.0.0.zip
