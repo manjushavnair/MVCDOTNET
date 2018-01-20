@@ -734,16 +734,16 @@
 		<Message Text="Starting Sonar " Importance="high" />
 	
 	
-	
+	<!--
 	
 		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe  begin /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;       " />
 		
-			 
+				<Exec Command="&quot;C:\Program Files (x86)\MSBuild\14.0\bin\MSBuild.exe&quot;  /m /t:Rebuild"  />
 				<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\\MSBuild.SonarQube.Runner.exe end /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;"  />
 	
 		
 	
-		<!--
+		
 		
 			<Exec Command="MSBuild.SonarQube.Runner.exe begin  /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;  "/>
 			
@@ -780,7 +780,6 @@
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="ApiDoc" />
  
-		<CallTarget Targets="AnalyzeWithSonar" />
 		<CallTarget Targets="RunSpecs" />
 	    
 	    </Target>
