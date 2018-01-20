@@ -618,7 +618,7 @@
     
 
  
-  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+  <Target Name="MvcBuildViews"  Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
   <ProjectExtensions>
@@ -781,16 +781,15 @@
 	  
 
         
-           <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;ApiDoc;AnalyzeWithFxCop;AnalyzeWithSonar">
+           <Target Name="RunAnalysis">
 	             <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
-	             
-	   
+	            <CallTarget Targets="CodeDuplicated" />
+	            <CallTarget Targets="ApiDoc" />
+	            <CallTarget Targets="AnalyzeWithFxCop" />
+	            <CallTarget Targets="AnalyzeWithSonar" />
+	    
 	    </Target>
    
-   
-	<Target Name="AfterBuild">
-		<Message Text="AfterBuild called Dev RunAnalysis" Importance="high" />
- 		<CallTarget Targets="RunAnalysis" />
-	</Target> 
+    
 	
 </Project>
