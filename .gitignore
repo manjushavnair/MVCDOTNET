@@ -19,7 +19,7 @@
 [Xx]86/
 [Bb]uild/
 bld/
-[Bb]in/
+#[Bb]in/
 [Oo]bj/
 
 # Visual Studio 2015 cache/options directory
@@ -243,3 +243,7 @@ ModelManifest.xml
 /MVCApp/.sonarqube
 /MVCApp/output
 /MVCApp/MVCApp_Release_4.0.0.0.zip
+/MVCApp/[Bb]in/
+/MVCAppTests/[Bb]in/
+/MVCApp/.sonarqube/[Bb]in/
+/ExternalTools/apache-jmeter-2.6/bin/examples
