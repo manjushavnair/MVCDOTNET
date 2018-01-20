@@ -437,9 +437,11 @@
  
   
   <Target Name="RunJMeterTests" DependsOnTargets="BeforeRunJMeterTests;CoreRunJMeterTests" />
+  
   <Target Name="BeforeRunJMeterTests">
            <Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high"/> 
-
+           <Message Text="Starting the BeforeRunJMeterTests in Test @(JMeterTestProjects)" Importance="high"/> 
+   
   	<ItemGroup>
   		<JMeterTestProjects Remove="@(JMeterTestProjects)" />
   		<JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
