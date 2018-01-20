@@ -612,6 +612,111 @@
   </Target>
  
  
+
+     
+       <Target Name="AnalyzeWithFxCop" DependsOnTargets="BuildCode">
+         <ItemGroup>
+           <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+           <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
+         </ItemGroup>
+         <Message Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
+         <ItemGroup>
+           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll') " />
+           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration\%(ProjectsToAnalyze.Filename).dll') " />
+         </ItemGroup>
+         <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="C:\Software\Fxcop10.0\Rules" FxCopPath="C:\Software\Fxcop10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="C:\Software\Fxcop10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(
+         Directory)" />
+       </Target>
+
+    
+   <!-- Generates Apidoc -->
+  <Target Name="ApiDoc" DependsOnTargets="BuildCode">
+             <Message  Importance="high" Text="Starting the ApiDoc in Dev ###########" /> 
+
+    <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
+  </Target>
+  <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
+  <Target Name="CodeDuplicated"  DependsOnTargets="BuildCode">
+              <Message  Importance="high" Text="Starting the CodeDuplicated in Dev ###########" /> 
+
+    <Message Text="$(SimianCommand)" />
+    <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
+  </Target> 
+  
+  
+    
+      <Target Name="AnalyzeWithSonar" DependsOnTargets="BuildCode">
+                 <Message Text="Starting the AnalyzeWithSonar in Dev ###########" /> 
+    
+
+		<ItemGroup>		
+		<_SolutionsToAnalyze Include="..\MVCApp\MVCApp.sln" />
+		<!-- if none of the above exist, look for any solution -->
+		<_SolutionsToAnalyze Include="$(CSharpSourceDirectory)**\*.sln" Condition=" @(_SolutionsToAnalyze) == '' " />
+		<SolutionsToAnalyze Include="%(_SolutionsToAnalyze.RelativeDir)%(_SolutionsToAnalyze.Filename)%(_SolutionsToAnalyze.Extension)">
+			<ProjectName>MVCApp</ProjectName>
+		</SolutionsToAnalyze>        
+		</ItemGroup>
+		<Message Text="SonarRunnerPath $(SonarRunnerPath) CSharpSourceDirectory $(CSharpSourceDirectory) SonarConnectionParameters $(SonarConnectionParameters)" Importance="high" />
+		<PropertyGroup>
+		<ExcludeFromCoverage>@(AssembliesToExludeFromCoverage -> '%(Filename)', ',')</ExcludeFromCoverage>
+		
+		<SonarConnectionParameters>/d:sonar.host.url=&quot;http://localhost:9000&quot; /d: sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot; /d:sonar.fxcop.mode=&quot;skip&quot; /d: sonar.sources=&quot;.&quot;</SonarConnectionParameters>
+		<SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) /d:sonar.profile=&quot;$(SonarProfile)&quot;</SonarConnectionParameters>
+		</PropertyGroup>
+		<Message Text="Starting Sonar " Importance="high" />
+	
+	
+	<!--
+	
+		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe  begin /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;       " />
+		
+				<Exec Command="&quot;C:\Program Files (x86)\MSBuild\14.0\bin\MSBuild.exe&quot;  /m /t:Rebuild"  />
+				<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\\MSBuild.SonarQube.Runner.exe end /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;"  />
+	
+		
+	
+		
+		
+			<Exec Command="MSBuild.SonarQube.Runner.exe begin  /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;  "/>
+			
+				<Exec Command="MSBuild.SonarQube.Runner.exe end /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;"  />
+	
+		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)   -D sonar.projectVersion=2  -D sonar.projectKey=&quot;mvctest1&quot;  -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs  -D sonar.dotnet.buildConfigurations=$(Configuration)  -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot;  -D sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+	
+		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  /d:sonar.projectVersion=2 /d:sonar.projectKey=&quot;mvctest1&quot; /d:sonar.projectName=&quot;mvctest&quot; /d:sonar.language=cs /d:sonar.dotnet.buildConfigurations=$(Configuration) /d:sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; /d:sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+		
+		<Exec Command="&quot;$(SonarRunnerPath)&quot; $(SonarConnectionParameters) -D sonar.projectVersion=$(BuildVersion) -D sonar.projectKey=%(SolutionsToAnalyze.Filename) -D sonar.projectName=%(SolutionsToAnalyze.ProjectName) -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=%(SolutionsToAnalyze.RelativeDir)%(SolutionsToAnalyze.Filename)%(SolutionsToAnalyze.Extension) -D csharp.sonar.projectBaseDir=%(SolutionsToAnalyze.RelativeDir) -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=OpenCover -D sonar.opencover.installDirectory=$(OpenCoverPath) -D sonar.dotnet.visualstudio.testProjectPattern=*$(UnitTestsProjectConventionName)*;*$(IntegrationTestsProjectConventionName)* -D sonar.gallio.coverage.excludes=&quot;$(ExcludeFromCoverage)&quot;" Condition=" $(SkipAnalysis) == 'False' " />
+		-->
+        
+        </Target>
+        
+             
+	     <Target Name="RunSpecs"  DependsOnTargets="BuildCode">
+	       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
+	         <PropertyGroup>
+	           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
+	         </PropertyGroup>
+	         <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+	         <Exec Command="$(MSpecCommand)" />
+	      </Target>
+	  
+	  
+	    
+	 
+	  
+
+        
+           <Target Name="RunAnalysis" DependsOnTargets="BuildCode">
+           
+		<Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
+		<CallTarget Targets="CodeDuplicated" />
+		<CallTarget Targets="ApiDoc" />
+ 
+		<CallTarget Targets="RunSpecs" />
+	    
+	    </Target>
+    
     <Target Name="BuildCode" DependsOnTargets="Init"  >
  
   
@@ -694,96 +799,6 @@
  		 
  		
  		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
-     </Target>
-    
-   <!-- Generates Apidoc -->
-  <Target Name="ApiDoc">
-             <Message  Importance="high" Text="Starting the ApiDoc in Dev ###########" /> 
-
-    <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
-  </Target>
-  <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
-  <Target Name="CodeDuplicated" >
-              <Message  Importance="high" Text="Starting the CodeDuplicated in Dev ###########" /> 
-
-    <Message Text="$(SimianCommand)" />
-    <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
-  </Target> 
-  
-  
-    
-      <Target Name="AnalyzeWithSonar">
-                 <Message Text="Starting the AnalyzeWithSonar in Dev ###########" /> 
-    
-
-		<ItemGroup>		
-		<_SolutionsToAnalyze Include="..\MVCApp\MVCApp.sln" />
-		<!-- if none of the above exist, look for any solution -->
-		<_SolutionsToAnalyze Include="$(CSharpSourceDirectory)**\*.sln" Condition=" @(_SolutionsToAnalyze) == '' " />
-		<SolutionsToAnalyze Include="%(_SolutionsToAnalyze.RelativeDir)%(_SolutionsToAnalyze.Filename)%(_SolutionsToAnalyze.Extension)">
-			<ProjectName>MVCApp</ProjectName>
-		</SolutionsToAnalyze>        
-		</ItemGroup>
-		<Message Text="SonarRunnerPath $(SonarRunnerPath) CSharpSourceDirectory $(CSharpSourceDirectory) SonarConnectionParameters $(SonarConnectionParameters)" Importance="high" />
-		<PropertyGroup>
-		<ExcludeFromCoverage>@(AssembliesToExludeFromCoverage -> '%(Filename)', ',')</ExcludeFromCoverage>
-		
-		<SonarConnectionParameters>/d:sonar.host.url=&quot;http://localhost:9000&quot; /d: sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot; /d:sonar.fxcop.mode=&quot;skip&quot; /d: sonar.sources=&quot;.&quot;</SonarConnectionParameters>
-		<SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) /d:sonar.profile=&quot;$(SonarProfile)&quot;</SonarConnectionParameters>
-		</PropertyGroup>
-		<Message Text="Starting Sonar " Importance="high" />
-	
-	
-	<!--
-	
-		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe  begin /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;       " />
-		
-				<Exec Command="&quot;C:\Program Files (x86)\MSBuild\14.0\bin\MSBuild.exe&quot;  /m /t:Rebuild"  />
-				<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\\MSBuild.SonarQube.Runner.exe end /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;"  />
-	
-		
-	
-		
-		
-			<Exec Command="MSBuild.SonarQube.Runner.exe begin  /k:&quot;mvctest1&quot; /n:&quot;mvctest&quot; /v:&quot;1.0&quot; /d:sonar.host.url=&quot;http://localhost:9000&quot; /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;  "/>
-			
-				<Exec Command="MSBuild.SonarQube.Runner.exe end /d:sonar.login=&quot;f357980387f466d60a61bf73e0fc726359d6a28f&quot;"  />
-	
-		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)   -D sonar.projectVersion=2  -D sonar.projectKey=&quot;mvctest1&quot;  -D sonar.projectName=&quot;mvctest&quot; -D sonar.language=cs  -D sonar.dotnet.buildConfigurations=$(Configuration)  -D sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot;  -D sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
-	
-		<Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  /d:sonar.projectVersion=2 /d:sonar.projectKey=&quot;mvctest1&quot; /d:sonar.projectName=&quot;mvctest&quot; /d:sonar.language=cs /d:sonar.dotnet.buildConfigurations=$(Configuration) /d:sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; /d:sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
-		
-		<Exec Command="&quot;$(SonarRunnerPath)&quot; $(SonarConnectionParameters) -D sonar.projectVersion=$(BuildVersion) -D sonar.projectKey=%(SolutionsToAnalyze.Filename) -D sonar.projectName=%(SolutionsToAnalyze.ProjectName) -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=%(SolutionsToAnalyze.RelativeDir)%(SolutionsToAnalyze.Filename)%(SolutionsToAnalyze.Extension) -D csharp.sonar.projectBaseDir=%(SolutionsToAnalyze.RelativeDir) -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=OpenCover -D sonar.opencover.installDirectory=$(OpenCoverPath) -D sonar.dotnet.visualstudio.testProjectPattern=*$(UnitTestsProjectConventionName)*;*$(IntegrationTestsProjectConventionName)* -D sonar.gallio.coverage.excludes=&quot;$(ExcludeFromCoverage)&quot;" Condition=" $(SkipAnalysis) == 'False' " />
-		-->
-        
-        </Target>
-        
-             
-	     <Target Name="RunSpecs"  >
-	       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
-	         <PropertyGroup>
-	           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
-	         </PropertyGroup>
-	         <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
-	         <Exec Command="$(MSpecCommand)" />
-	      </Target>
-	  
-	  
-	    
-	 
-	  
-
-        
-           <Target Name="RunAnalysis" DependsOnTargets="BuildCode">
-           
-		<Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
-		<CallTarget Targets="CodeDuplicated" />
-		<CallTarget Targets="ApiDoc" />
- 
-		<CallTarget Targets="RunSpecs" />
-	    
-	    </Target>
-   
-    
+     </Target>    
 	
 </Project>
