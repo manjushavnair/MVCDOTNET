@@ -425,7 +425,7 @@
      </Target>
 
   <PropertyGroup>
-  	<BaseDirectory>.\</BaseDirectory>
+  	<BaseDirectory>..\</BaseDirectory>
   	<IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
   	<JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
   	<TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
@@ -469,7 +469,7 @@
    <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high"  />
 
   	<!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location -->
-  	<Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)\JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j &quot;$(JMeterTestLogFileLocation)&quot; "    ContinueOnError="true" />
+  	<Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j &quot;$(JMeterTestLogFileLocation)&quot; "    ContinueOnError="true" />
   
   	<Message Text=" Jmeter test completed " Importance="high"  />
 </Target>
