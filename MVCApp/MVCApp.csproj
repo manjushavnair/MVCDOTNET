@@ -792,6 +792,7 @@
 
         
            <Target Name="RunAnalysis" DependsOnTargets="BuildCode">
+           
 		<Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="ApiDoc" />
