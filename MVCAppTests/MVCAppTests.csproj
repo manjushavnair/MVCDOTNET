@@ -462,8 +462,12 @@
   		<JMeterTestOutputFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).jtl'))</JMeterTestOutputFileLocation>
   	</PropertyGroup>
   
+  	<Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high"  />
+  	<Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high"  />
+   <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high"  />
+
   	<!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location -->
-  	<Exec Command="$(JMeterToolPath) -n -t %(JMeterTestProjects.FullPath) -l $(JMeterTestOutputFileLocation) -j $(JMeterTestLogFileLocation)" Condition=" @(JMeterTestProjects) != '' " />
+  	<Exec Command="$(JMeterToolPath) -n -t %(JMeterTestProjects.FullPath) -l $(JMeterTestOutputFileLocation) -j $(JMeterTestLogFileLocation)" Condition=" @(JMeterTestProjects) != '' "  ContinueOnError="false" />
   
   	<Message Text=" Jmeter test completed " Importance="high"  />
 </Target>

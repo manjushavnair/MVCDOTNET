@@ -249,4 +249,11 @@ ModelManifest.xml
 /ExternalTools/apache-jmeter-2.6/bin/examples
 /DOxygenOutputFile/html
 /FxCopReport
-/SimianOutputFile
+/IntegrationTests\JMeterTestResults
+/CoverageHistory
+/CoverageReport
+/CoverageResults
+/StyleCopResult
+/UnitTestReport
+/UnitTestResults
+

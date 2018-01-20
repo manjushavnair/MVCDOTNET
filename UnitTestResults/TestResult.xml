@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-01-20" time="13:16:16">
+<test-results name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-01-20" time="13:37:11">
   <environment nunit-version="3.5.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Success" success="True" time="91.681" asserts="2">
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\MVCDOTNET\MVCAppTests\obj\Debug\MVCAppTests.dll" executed="True" result="Success" success="True" time="89.709" asserts="2">
     <properties>
-      <property name="_PID" value="30936" />
+      <property name="_PID" value="32564" />
       <property name="_APPDOMAIN" value="domain-656aa1c-MVCAppTests.dll" />
     </properties>
     <results>
-      <test-suite type="TestSuite" name="MVCAppTests" executed="True" result="Success" success="True" time="91.655" asserts="2">
+      <test-suite type="TestSuite" name="MVCAppTests" executed="True" result="Success" success="True" time="89.690" asserts="2">
         <results>
-          <test-suite type="TestSuite" name="Controllers" executed="True" result="Success" success="True" time="91.654" asserts="2">
+          <test-suite type="TestSuite" name="Controllers" executed="True" result="Success" success="True" time="89.690" asserts="2">
             <results>
-              <test-suite type="TestFixture" name="RegisterControllerTests" executed="True" result="Success" success="True" time="0.142" asserts="0">
+              <test-suite type="TestFixture" name="RegisterControllerTests" executed="True" result="Success" success="True" time="0.102" asserts="0">
                 <results>
-                  <test-case name="MVCAppTests.Controllers.RegisterControllerTests.UserAddTest" executed="True" result="Success" success="True" time="0.127" asserts="0" />
+                  <test-case name="MVCAppTests.Controllers.RegisterControllerTests.UserAddTest" executed="True" result="Success" success="True" time="0.089" asserts="0" />
                 </results>
               </test-suite>
-              <test-suite type="TestSuite" name="UITest" executed="True" result="Success" success="True" time="91.654" asserts="2">
+              <test-suite type="TestSuite" name="UITest" executed="True" result="Success" success="True" time="89.690" asserts="2">
                 <results>
-                  <test-suite type="TestSuite" name="TestCases" executed="True" result="Success" success="True" time="91.654" asserts="2">
+                  <test-suite type="TestSuite" name="TestCases" executed="True" result="Success" success="True" time="89.690" asserts="2">
                     <results>
-                      <test-suite type="TestFixture" name="WUITest" executed="True" result="Success" success="True" time="91.503" asserts="2">
+                      <test-suite type="TestFixture" name="WUITest" executed="True" result="Success" success="True" time="89.580" asserts="2">
                         <results>
-                          <test-case name="MVCAppTests.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" executed="True" result="Success" success="True" time="37.554" asserts="1" />
-                          <test-case name="MVCAppTests.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_Login" executed="True" result="Success" success="True" time="53.949" asserts="1" />
+                          <test-case name="MVCAppTests.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome" executed="True" result="Success" success="True" time="35.339" asserts="1" />
+                          <test-case name="MVCAppTests.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_Login" executed="True" result="Success" success="True" time="54.240" asserts="1" />
                         </results>
                       </test-suite>
                     </results>

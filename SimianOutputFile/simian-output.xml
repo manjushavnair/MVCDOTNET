@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="simian.xsl" type="text/xsl"?>
+<!--
+Similarity Analyser 2.5.8 - http://www.harukizaemon.com/simian
+Copyright (c) 2003-2017 Simon Harris.  All rights reserved.
+Simian is not free unless used solely for non-commercial or evaluation purposes.
+-->
+<simian version="2.5.8">
+    <check failOnDuplication="true" ignoreCharacterCase="true" ignoreCurlyBraces="true" ignoreIdentifierCase="true" ignoreModifiers="true" ignoreStringCase="true" threshold="10">
+        <set lineCount="11" fingerprint="5798ab6c4fd1ef0323decbfaa0a7f9b9">
+            <block sourceFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\src\Machine.Specifications.ConsoleRunner\Outputs\IOutput.cs" startLineNumber="7" endLineNumber="17"/>
+            <block sourceFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\src\Machine.Specifications.ConsoleRunner\Outputs\SilentOutput.cs" startLineNumber="7" endLineNumber="47"/>
+        </set>
+        <summary duplicateFileCount="2" duplicateLineCount="22" duplicateBlockCount="2" totalFileCount="54" totalRawLineCount="1938" totalSignificantLineCount="805" processingTime="2116"/>
+    </check>
+</simian>
