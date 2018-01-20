@@ -357,9 +357,8 @@
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="RunSpecs" />
-    <CallTarget Targets="RunJMeterTests" />
     <CallTarget Targets="CodeCoverageReport" />
-    
+    <CallTarget Targets="RunJMeterTests" />    
     
    </Target>
   
@@ -439,23 +438,25 @@
   <Target Name="RunJMeterTests" DependsOnTargets="BeforeRunJMeterTests;CoreRunJMeterTests" />
   
   <Target Name="BeforeRunJMeterTests">
-           <Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high"/> 
-           <Message Text="Starting the BeforeRunJMeterTests in Test @(JMeterTestProjects)" Importance="high"/> 
-   
-  	<ItemGroup>
-  		<JMeterTestProjects Remove="@(JMeterTestProjects)" />
-  		<JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
-  	</ItemGroup>
-  	       <Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
-  	       <Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high"/> 
-   
+		<Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high"/> 
+		<Message Text="Starting the BeforeRunJMeterTests in Test @(JMeterTestProjects)" Importance="high"/> 
+
+		<ItemGroup>
+			<JMeterTestProjects Remove="@(JMeterTestProjects)" />
+			<JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
+		</ItemGroup>
+		<Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
+		<Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high"/> 
+
   </Target>
   <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
-             <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high"/> 
-             <Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high"/> 
-             <Message Text="Starting the CoreRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
-             <Message Text="Starting the CoreRunJMeterTests in Test $(BuildDirectory)" Importance="high"/> 
-              <Message Text="Starting the CoreRunJMeterTests in Test @(BaseDirectory)" Importance="high"/> 
+		<Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high"/> 
+		<Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high"/> 
+		<Message Text="Starting the CoreRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
+		<Message Text="Starting the CoreRunJMeterTests in Test $(BuildDirectory)" Importance="high"/> 
+		<Message Text="Starting the CoreRunJMeterTests in Test @(BaseDirectory)" Importance="high"/> 
+		<Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high"  />
+		<Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high"  />
 
   	<PropertyGroup>
   		<JMeterTestLogFileLocation>$(TestResultsDirectory)test.log</JMeterTestLogFileLocation>
@@ -465,9 +466,7 @@
   	<Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))" Importance="high"  />
   	<Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high"  />
   	
-  	<Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high"  />
-   <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high"  />
-
+ 
   	<!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location -->
   	<Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) "    ContinueOnError="true" />
   
