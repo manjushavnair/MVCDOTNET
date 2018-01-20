@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="BuildCode" InitialTargets="BeforeBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="RunAnalysis" InitialTargets="BeforeBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <!--
     Try rinning this
     ildasm  C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll
@@ -772,7 +772,7 @@
         </Target>
         
              
-	     <Target Name="RunSpecs" DependsOnTargets="BuildCode">
+	     <Target Name="RunSpecs"  >
 	       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
 	         <PropertyGroup>
 	           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
@@ -787,12 +787,12 @@
 	  
 
         
-           <Target Name="RunAnalysis">
+           <Target Name="RunAnalysis" DependsOnTargets="BuildCode">
 	             <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
 	            <CallTarget Targets="CodeDuplicated" />
 	            <CallTarget Targets="ApiDoc" />
 	            <CallTarget Targets="AnalyzeWithFxCop" />
-	            <CallTarget Targets="AnalyzeWithSonar" />
+	            <CallTarget Targets="RunSpecs" />
 	    
 	    </Target>
    
