@@ -528,6 +528,14 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
+      
+      <Target Name="BeforeBuild">
+        <Message Text="BeforeBuild called Development" Importance="high" />
+        <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
+      </Target>
+      
+  
+  
     <Target Name="BuildCode" DependsOnTargets="Init"  AfterTargets="RunAnalysis">
 
  
@@ -608,27 +616,7 @@
 		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
     </Target>
     
-    
-    <Target Name="BeforeBuild">
-      <Message Text="BeforeBuild called Development" Importance="high" />
-      <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
-    </Target>
-    
-  
-     
-     <Target Name="RunSpecs" DependsOnTargets="BuildCode">
-       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
-         <PropertyGroup>
-           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
-         </PropertyGroup>
-         <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
-         <Exec Command="$(MSpecCommand)" />
-      </Target>
-  
-  
-    
- 
-  
+
  
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
@@ -729,12 +717,7 @@
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target> 
   
-    <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;ApiDoc;AnalyzeWithFxCop;AnalyzeWithSonar">
-             <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
-             
-   
-    </Target>
-    
+  
     
       <Target Name="AnalyzeWithSonar">
                  <Message Text="Starting the AnalyzeWithSonar in Dev ###########" /> 
@@ -782,6 +765,29 @@
         
         </Target>
         
+             
+	     <Target Name="RunSpecs" DependsOnTargets="BuildCode">
+	       <Message Importance="high"  Text="Starting the RunSpecs Dev $$$$$$$$$$$$" /> 
+	         <PropertyGroup>
+	           <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i &quot;web&quot; --html  &quot;..\MachineSpecs&quot; obj\Debug\MVCApp.dll </MSpecCommand>
+	         </PropertyGroup>
+	         <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+	         <Exec Command="$(MSpecCommand)" />
+	      </Target>
+	  
+	  
+	    
+	 
+	  
+
+        
+           <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;ApiDoc;AnalyzeWithFxCop;AnalyzeWithSonar">
+	             <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
+	             
+	   
+	    </Target>
+   
+   
 	<Target Name="AfterBuild">
 		<Message Text="AfterBuild called Dev RunAnalysis" Importance="high" />
  		<CallTarget Targets="RunAnalysis" />
