@@ -243,7 +243,7 @@ ModelManifest.xml
 /MVCApp/.sonarqube
 /MVCApp/output
 /MVCApp/MVCApp_Release_4.0.0.0.zip
-/MVCApp/[Bb]in/
-/MVCAppTests/[Bb]in/
-/MVCApp/.sonarqube/[Bb]in/
+/MVCApp/bin/
+/MVCAppTests/bin/
+/MVCApp/.sonarqube/bin/
 /ExternalTools/apache-jmeter-2.6/bin/examples
