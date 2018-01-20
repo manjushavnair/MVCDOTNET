@@ -446,6 +446,9 @@
   		<JMeterTestProjects Remove="@(JMeterTestProjects)" />
   		<JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
   	</ItemGroup>
+  	       <Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
+  	       <Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high"/> 
+   
   </Target>
   <Target Name="CoreRunJMeterTests" Inputs="%(JMeterTestProjects.FullPath)" Outputs="AlwaysExecute">
              <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high"/> 

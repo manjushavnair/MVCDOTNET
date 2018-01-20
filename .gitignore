@@ -247,3 +247,6 @@ ModelManifest.xml
 /MVCAppTests/bin/
 /MVCApp/.sonarqube/bin/
 /ExternalTools/apache-jmeter-2.6/bin/examples
+/DOxygenOutputFile/html
+/FxCopReport
+/SimianOutputFile
