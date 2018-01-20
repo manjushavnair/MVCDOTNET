@@ -800,8 +800,7 @@
  	
  		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
  		-->
- 		 
- 		
+ 	 		
  		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
      </Target>    
 	
