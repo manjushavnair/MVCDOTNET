@@ -323,6 +323,7 @@
   <Target Name="AnalyzeWithFxCop">
     <ItemGroup>
        <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
+       <ProjectsToAnalyze Include="..\MVCAppTests\**" />
     </ItemGroup>
     <Message Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll " />
     <ItemGroup>
