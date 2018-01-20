@@ -659,6 +659,7 @@
  		
  	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
   	
+  		<!--
   		<ItemGroup>
  		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
  		</ItemGroup>
@@ -689,6 +690,7 @@
  		
  	
  		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
+ 		-->
  		 
  		
  		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
