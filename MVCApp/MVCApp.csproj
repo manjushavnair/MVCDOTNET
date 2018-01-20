@@ -623,8 +623,8 @@
          <Message   Importance="high"  Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll " />
        
        <ItemGroup>
-           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll') " />
-           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll') " />
+           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists(&quot;%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll&quot;) " />
+           <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists(&quot;%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll&quot;) " />
          </ItemGroup>
     
            <Message   Importance="high"  Text="Directory $$$$ $(Directory) AssembliesToAnalyze $$$$ @(AssembliesToAnalyze) $$$$" />
