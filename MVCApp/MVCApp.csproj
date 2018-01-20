@@ -787,8 +787,7 @@
  			<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
  		</ConvertToAbsolutePath>
  
-  
- 		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
+   		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
  		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
  		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
  		<Message Importance="high"  Text="TemporaryFolderAbsolute: $(TemporaryFolderAbsolute)" /> 
