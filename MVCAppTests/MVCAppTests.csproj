@@ -428,7 +428,7 @@
   	<BaseDirectory>.\</BaseDirectory>
   	<IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
   	<JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
-  	<TestResultsDirectory>$(BuildDirectory)TestResults\</TestResultsDirectory>
+  	<TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
   	<JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
   
   
@@ -446,6 +446,9 @@
   	</ItemGroup>
   </Target>
   <Target Name="CoreRunJMeterTests" Inputs="%(JMeterTestProjects.FullPath)" Outputs="AlwaysExecute">
+             <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high"/> 
+             <Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high"/> 
+             <Message Text="Starting the CoreRunJMeterTests in Test $(BuildDirectory)" Importance="high"/> 
              <Message Text="Starting the CoreRunJMeterTests in Test ###########" Importance="high"/> 
 
   	<PropertyGroup>
