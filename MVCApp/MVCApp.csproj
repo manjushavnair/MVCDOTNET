@@ -792,11 +792,12 @@
 
         
            <Target Name="RunAnalysis" DependsOnTargets="BuildCode">
-	             <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
-	            <CallTarget Targets="CodeDuplicated" />
-	            <CallTarget Targets="ApiDoc" />
-	            <CallTarget Targets="AnalyzeWithFxCop" />
-	            <CallTarget Targets="RunSpecs" />
+		<Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
+		<CallTarget Targets="CodeDuplicated" />
+		<CallTarget Targets="ApiDoc" />
+		<CallTarget Targets="AnalyzeWithFxCop" />
+		<CallTarget Targets="AnalyzeWithSonar" />
+		<CallTarget Targets="RunSpecs" />
 	    
 	    </Target>
    
