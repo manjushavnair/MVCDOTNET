@@ -731,6 +731,7 @@
   
     <Target Name="RunAnalysis"  DependsOnTargets="CodeDuplicated;ApiDoc;AnalyzeWithFxCop;AnalyzeWithSonar">
              <Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
+             
    
     </Target>
     
@@ -778,16 +779,12 @@
 		
 		<Exec Command="&quot;$(SonarRunnerPath)&quot; $(SonarConnectionParameters) -D sonar.projectVersion=$(BuildVersion) -D sonar.projectKey=%(SolutionsToAnalyze.Filename) -D sonar.projectName=%(SolutionsToAnalyze.ProjectName) -D sonar.language=cs -D sonar.dotnet.buildConfigurations=$(Configuration) -D sonar.dotnet.visualstudio.solution.file=%(SolutionsToAnalyze.RelativeDir)%(SolutionsToAnalyze.Filename)%(SolutionsToAnalyze.Extension) -D csharp.sonar.projectBaseDir=%(SolutionsToAnalyze.RelativeDir) -D sonar.gallio.installDirectory=$(GallioPath) -D sonar.gallio.coverage.tool=OpenCover -D sonar.opencover.installDirectory=$(OpenCoverPath) -D sonar.dotnet.visualstudio.testProjectPattern=*$(UnitTestsProjectConventionName)*;*$(IntegrationTestsProjectConventionName)* -D sonar.gallio.coverage.excludes=&quot;$(ExcludeFromCoverage)&quot;" Condition=" $(SkipAnalysis) == 'False' " />
 		-->
-	
-       
+        
         </Target>
-  
-    
-  <Target Name="Analysis">
-	<Message Text="AfterBuild called Dev" Importance="high" />
-  	
- 	<CallTarget Targets="RunAnalysis" />
-  
-  </Target> 
- 
+        
+	<Target Name="AfterBuild">
+		<Message Text="AfterBuild called Dev RunAnalysis" Importance="high" />
+ 		<CallTarget Targets="RunAnalysis" />
+	</Target> 
+	
 </Project>
