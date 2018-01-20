@@ -358,12 +358,13 @@
     <CallTarget Targets="ApiDoc" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="RunSpecs" />
+    <CallTarget Targets="RunJMeterTests" />
     
     
    </Target>
   
     <Target Name="AnalyzeWithSonar">
-             <Message Text="Starting the AnalyzeWithSonar in Test ###########" /> 
+             <Message Text="Starting the AnalyzeWithSonar in Test ###########" Importance="high"/> 
 
     
     <ItemGroup>		
@@ -423,6 +424,42 @@
         <Exec Command="$(MSpecCommand)" />
      </Target>
 
+  <PropertyGroup>
+  	<BaseDirectory>.\</BaseDirectory>
+  	<IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
+  	<JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
+  	<TestResultsDirectory>$(BuildDirectory)TestResults\</TestResultsDirectory>
+  	<JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
+  
+  
+  </PropertyGroup>
+  
+ 
+  
+  <Target Name="RunJMeterTests" DependsOnTargets="BeforeRunJMeterTests;CoreRunJMeterTests" />
+  <Target Name="BeforeRunJMeterTests">
+           <Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high"/> 
+
+  	<ItemGroup>
+  		<JMeterTestProjects Remove="@(JMeterTestProjects)" />
+  		<JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
+  	</ItemGroup>
+  </Target>
+  <Target Name="CoreRunJMeterTests" Inputs="%(JMeterTestProjects.FullPath)" Outputs="AlwaysExecute">
+             <Message Text="Starting the CoreRunJMeterTests in Test ###########" Importance="high"/> 
+
+  	<PropertyGroup>
+  		<JMeterTestLogFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).log'))</JMeterTestLogFileLocation>
+  		<JMeterTestOutputFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).jtl'))</JMeterTestOutputFileLocation>
+  	</PropertyGroup>
+  
+  	<!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location -->
+  	<Exec Command="$(JMeterToolPath) -n -t %(JMeterTestProjects.FullPath) -l $(JMeterTestOutputFileLocation) -j $(JMeterTestLogFileLocation)" Condition=" @(JMeterTestProjects) != '' " />
+  
+  	<Message Text=" Jmeter test completed " Importance="high"  />
+</Target>
+  	
+	
   
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 

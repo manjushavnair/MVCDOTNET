@@ -622,7 +622,7 @@
            <ProjectsToAnalyze Include="..\MVCAppTests\MVCAppTests.csproj" />
          </ItemGroup>
          
-         <Message   Importance="high"  Text="AnalyzeWithFxCop generated 1: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll " />
+         <Message   Importance="high"  Text="AnalyzeWithFxCop Dev: %(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll " />
        
        <ItemGroup>
            <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll') " />
@@ -718,8 +718,7 @@
 		<Message Text="Starting the RunAnalysis @@@@@@@@@@@@" /> 
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="ApiDoc" />
- 	<CallTarget Targets="AnalyzeWithFxCop" />
- 
+ 	        <CallTarget Targets="AnalyzeWithFxCop" /> 
 		<CallTarget Targets="RunSpecs" />
 	    
 	    </Target>
