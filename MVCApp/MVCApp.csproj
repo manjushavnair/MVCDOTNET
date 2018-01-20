@@ -581,7 +581,7 @@
 		</CreateItem>
 		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
 		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-		<!--
+		 
 		<CreateItem Include="$(PackageFolder)\*.*" >
 			<Output ItemName="ZipFiles" TaskParameter="Include"/>
 		</CreateItem>
@@ -603,7 +603,7 @@
 		
 	
 		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
-		-->
+		 
 		
 		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
     </Target>
