@@ -458,8 +458,8 @@
               <Message Text="Starting the CoreRunJMeterTests in Test @(BaseDirectory)" Importance="high"/> 
 
   	<PropertyGroup>
-  		<JMeterTestLogFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).log'))</JMeterTestLogFileLocation>
-  		<JMeterTestOutputFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).jtl'))</JMeterTestOutputFileLocation>
+  		<JMeterTestLogFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))</JMeterTestLogFileLocation>
+  		<JMeterTestOutputFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%test.jtl'))</JMeterTestOutputFileLocation>
   	</PropertyGroup>
   
   	<Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).log'))" Importance="high"  />
