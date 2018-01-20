@@ -536,88 +536,7 @@
       
   
   
-    <Target Name="BuildCode" DependsOnTargets="Init"  AfterTargets="RunAnalysis">
-
  
-		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
-
-		<Output TaskParameter="OutputItems" ItemName="Info"/>
-
-		</MSBuild.ExtensionPack.Framework.Assembly>
-      
-
-      
-		<Message Text="BuildCode called  $$$$$$$$$$$$$$$$$$$$$$$" Importance="high"  />
- 
-		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
-		
-		<PropertyGroup>
-			<BinaryFolder>.\bin\</BinaryFolder>
-			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
-			<TemporaryFolder>.\temp</TemporaryFolder>
-		</PropertyGroup>
- 
-		<!--
-		<Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
-			<Output TaskParameter="OutputItems" ItemName="Info"/> 
-		</Assembly>
-		<Message Text="Identity: %(Info.Identity)" /> 
-		<Message Text="FullName: %(Info.FullName)" /> 
-		<Message Text="FileVersion: %(Info.FileVersion)" /> 
-		<Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
-		-->
-		 
-		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
-
-		<ItemGroup>
-		<!-- Set the collection of files to Zip-->
-		<ZipFiles Include=".\bin\*"/>
-		</ItemGroup>
-		
-		<PropertyGroup>
-		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
-		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
-		</PropertyGroup>
-
-		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
-		
-	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
- 	
- 		<ItemGroup>
-		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
-		</ItemGroup>
-		<CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
-			<Output TaskParameter="Include" ItemName="TestAssembly" />
-		</CreateItem>
-		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
-		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
-		 
-		<CreateItem Include="$(PackageFolder)\*.*" >
-			<Output ItemName="ZipFiles" TaskParameter="Include"/>
-		</CreateItem>
-		<ConvertToAbsolutePath Paths="$(TemporaryFolder)">
-			<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
-		</ConvertToAbsolutePath>
-
-
-
-		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
-		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
-		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
-		<Message Importance="high"  Text="TemporaryFolderAbsolute: $(TemporaryFolderAbsolute)" /> 
-
-		<MSBuild.ExtensionPack.Compression.Zip TaskAction="Create"
-					       CompressFiles="@(Files)"
-					       CompressPath="$(TemporaryFolder)" 
-					       ZipFileName="$(ZipFileName)" />
-		
-	
-		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
-		 
-		
-		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
-    </Target>
-    
 
  
   <Target Name="MvcBuildViews"  Condition="'$(MvcBuildViews)'=='true'">
@@ -692,6 +611,89 @@
     <Error Text="BuildTools_StyleCop - the BuildTools_StyleCop package has not been restored.&#xD;&#xA;If you are running this from an IDE, make sure NuGet Package Restore has been enabled, then reload the solution and re-run the build.&#xD;&#xA;If you are running this from the command line, run the build again.&#xD;&#xA;If this is a CI server, you may want to make sure NuGet Package Restore runs before your build with:&#xD;&#xA;	msbuild solution.sln /t:restorepackages" />
   </Target>
  
+ 
+    <Target Name="BuildCode" DependsOnTargets="Init"  >
+ 
+  
+ 		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
+ 
+ 		<Output TaskParameter="OutputItems" ItemName="Info"/>
+ 
+ 		</MSBuild.ExtensionPack.Framework.Assembly>
+       
+ 
+       
+ 		<Message Text="BuildCode called  $$$$$$$$$$$$$$$$$$$$$$$" Importance="high"  />
+  
+ 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
+ 		
+ 		<PropertyGroup>
+ 			<BinaryFolder>.\bin\</BinaryFolder>
+ 			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
+ 			<TemporaryFolder>.\temp</TemporaryFolder>
+ 		</PropertyGroup>
+  
+ 		<!--
+ 		<Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
+ 			<Output TaskParameter="OutputItems" ItemName="Info"/> 
+ 		</Assembly>
+ 		<Message Text="Identity: %(Info.Identity)" /> 
+ 		<Message Text="FullName: %(Info.FullName)" /> 
+ 		<Message Text="FileVersion: %(Info.FileVersion)" /> 
+ 		<Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
+ 		-->
+ 		 
+ 		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
+ 
+ 		<ItemGroup>
+ 		<!-- Set the collection of files to Zip-->
+ 		<ZipFiles Include=".\bin\*"/>
+ 		</ItemGroup>
+ 		
+ 		<PropertyGroup>
+ 		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
+ 		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
+ 		</PropertyGroup>
+ 
+ 		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+ 		
+ 	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
+  	
+  		<ItemGroup>
+ 		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
+ 		</ItemGroup>
+ 		<CreateItem Include="$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug\MVCAppTests.dll">
+ 			<Output TaskParameter="Include" ItemName="TestAssembly" />
+ 		</CreateItem>
+ 		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+ 		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+ 		 
+ 		<CreateItem Include="$(PackageFolder)\*.*" >
+ 			<Output ItemName="ZipFiles" TaskParameter="Include"/>
+ 		</CreateItem>
+ 		<ConvertToAbsolutePath Paths="$(TemporaryFolder)">
+ 			<Output TaskParameter="AbsolutePaths" PropertyName="TemporaryFolderAbsolute"/>
+ 		</ConvertToAbsolutePath>
+ 
+ 
+ 
+ 		<Message Importance="high"  Text="ZipFileName:$(ZipFileName)" /> 
+ 		<Message Importance="high"  Text="TemporaryFolder: $(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)" /> 
+ 		<Message Importance="high"  Text="PackageFolder: $(PackageFolder)" /> 
+ 		<Message Importance="high"  Text="TemporaryFolderAbsolute: $(TemporaryFolderAbsolute)" /> 
+ 
+ 		<MSBuild.ExtensionPack.Compression.Zip TaskAction="Create"
+ 					       CompressFiles="@(Files)"
+ 					       CompressPath="$(TemporaryFolder)" 
+ 					       ZipFileName="$(ZipFileName)" />
+ 		
+ 	
+ 		<Zip TaskAction="Create" CompressFiles="@(ZipFiles)" RemoveRoot="$(TemporaryFolderAbsolute)" ZipFileName=".\temp\$(ZipFileName)"/>
+ 		 
+ 		
+ 		<!-- <RemoveDir Directories="$(TemporaryFolder)" ContinueOnError="True"/> -->
+     </Target>
+    
   
   <Target Name="AnalyzeWithFxCop">
     <ItemGroup>
