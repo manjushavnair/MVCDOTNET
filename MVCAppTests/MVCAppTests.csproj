@@ -428,7 +428,7 @@
   	<BaseDirectory>.\</BaseDirectory>
   	<IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
   	<JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
-  	<TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
+  	<TestResultsDirectory>.\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
   	<JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
   
   
@@ -462,6 +462,7 @@
   		<JMeterTestOutputFileLocation>$([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).jtl'))</JMeterTestOutputFileLocation>
   	</PropertyGroup>
   
+  	<Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)%(JMeterTestProjects.Filename).log'))" Importance="high"  />
   	<Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high"  />
   	<Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high"  />
    <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high"  />

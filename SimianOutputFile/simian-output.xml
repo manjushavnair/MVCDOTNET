@@ -11,6 +11,6 @@ Simian is not free unless used solely for non-commercial or evaluation purposes.
             <block sourceFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\src\Machine.Specifications.ConsoleRunner\Outputs\IOutput.cs" startLineNumber="7" endLineNumber="17"/>
             <block sourceFile="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\src\Machine.Specifications.ConsoleRunner\Outputs\SilentOutput.cs" startLineNumber="7" endLineNumber="47"/>
         </set>
-        <summary duplicateFileCount="2" duplicateLineCount="22" duplicateBlockCount="2" totalFileCount="54" totalRawLineCount="1938" totalSignificantLineCount="805" processingTime="2026"/>
+        <summary duplicateFileCount="2" duplicateLineCount="22" duplicateBlockCount="2" totalFileCount="54" totalRawLineCount="1938" totalSignificantLineCount="805" processingTime="2858"/>
     </check>
 </simian>
