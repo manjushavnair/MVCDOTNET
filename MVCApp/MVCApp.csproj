@@ -723,7 +723,8 @@
 	    
 	    </Target>
     
-            <Target Name="BuildCode" DependsOnTargets="Init"  >
+           
+           <Target Name="BuildCode" DependsOnTargets="Init"  >
  
   
  		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
