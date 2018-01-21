@@ -779,7 +779,6 @@
  		</CreateItem>
  		<Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
  		<Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
- 		 
  		<CreateItem Include="$(PackageFolder)\*.*" >
  			<Output ItemName="ZipFiles" TaskParameter="Include"/>
  		</CreateItem>
