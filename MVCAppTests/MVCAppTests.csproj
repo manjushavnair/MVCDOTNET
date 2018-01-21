@@ -448,7 +448,7 @@
 		<Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high"/> 
 		<Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high"/> 
 
-  </Target>
+      </Target>
       
       <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
 		<Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high"/> 
