@@ -11,8 +11,7 @@ pipeline {
  	steps {
 	 
 	echo 'Checkout..'
-	git config --system core.longpaths true
-	git 'https://github.com/manjushavnair/MVCDOTNET.git'
+ 	git 'https://github.com/manjushavnair/MVCDOTNET.git'
 	 
 	}
  		
