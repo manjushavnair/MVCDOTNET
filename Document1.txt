@@ -18,3 +18,5 @@ OpenCover.Console.exe -output:"C:\temp\coverage\opencover.xml" -target:"C:\Proje
     <NCover ToolPath="C:\Program Files\NCover Code Central\" ContinueOnError="false" Process="Single" TestRunnerExe="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" TestRunnerArgs="MVCAppTests.dll TestRunner2.dll" CoverageFile="$(CodeCoverageResultsFolder)/coverage-results.xml" />
   </Target>
    <Exec Command="del &quot;$(MSBuildStartupDirectory)\UnitTestReport&quot;\*.*" />
+
+git config --system core.longpaths true
