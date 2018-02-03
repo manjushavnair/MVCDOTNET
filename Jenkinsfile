@@ -1,6 +1,13 @@
  pipeline {
  
-	node ('master'){
+ 
+  agent  ('master')
+  {
+  }
+  options
+  {
+  }
+	 
 	
 	stages {
 
@@ -29,8 +36,8 @@
  	stage ('Build')
  	steps {
 	 
-	echo 'Building..'
-	
+		echo 'Building..'
+
 		bat "C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe MVCApp\\MVCApp.sln /p:Configuration=Release /p:Platform=\"Any CPU\""
  	 
 	}
@@ -38,10 +45,10 @@
   
  	stage ('Archive')
  	steps {
-	 echo 'Archive..'
+		 echo 'Archive..'
  		archive 'MVCDOTNET/bin/Release/**'
  		}
 
 	 }
-	 }
+	 
 }
