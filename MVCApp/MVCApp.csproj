@@ -755,9 +755,9 @@
  		-->
  		 
  		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
- 
+ 		<!--
  		<ItemGroup>
- 		<!-- Set the collection of files to Zip-->
+ 		 
  		<ZipFiles Include=".\bin\*"/>
  		</ItemGroup>
  		
@@ -765,10 +765,11 @@
  		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
  		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
  		</PropertyGroup>
+ 		-->
  
  		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
  		
- 	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
+ 	        <!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
   	
   		<!--
   		<ItemGroup>
