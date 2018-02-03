@@ -740,7 +740,9 @@
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="ApiDoc" />
  	        <CallTarget Targets="AnalyzeWithFxCop" /> 
+		<!--
 		<CallTarget Targets="RunSpecs" />
+		-->
 	    
 	    </Target>
 	    
