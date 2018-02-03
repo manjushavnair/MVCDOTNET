@@ -737,8 +737,10 @@
            <Target Name="BuildCode" DependsOnTargets="Init"  >
            
            
- 
+ 	         <Message Text="BuildCode called  $$$$$$$$$$$$$$$$$$$$$$$" Importance="high"  />
   
+  		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
+ 
  		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
  
  		<Output TaskParameter="OutputItems" ItemName="Info"/>
@@ -747,9 +749,7 @@
        
  
        
- 		<Message Text="BuildCode called  $$$$$$$$$$$$$$$$$$$$$$$" Importance="high"  />
-  
- 		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
+ 	
  		
  		<PropertyGroup>
  			<BinaryFolder>.\bin\</BinaryFolder>
