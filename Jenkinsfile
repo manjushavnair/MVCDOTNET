@@ -1,14 +1,13 @@
- 
-
-#!/usr/bin/env groovy
-// Declarative //
-pipeline {
+ pipeline {
  
 	node ('master'){
+	
+	stages {
  
  	stage ('Checkout')
  	
  	steps {
+	 
 	 
 	echo 'Checkout..'
  	git 'https://github.com/manjushavnair/MVCDOTNET.git'
@@ -32,5 +31,6 @@ pipeline {
  		archive 'MVCDOTNET/bin/Release/**'
  		}
 
+	 }
 	 }
 }
