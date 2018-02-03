@@ -21,7 +21,7 @@ stages {
 	{
 		steps {
 		echo 'Building..'
-		bat "\"C:/Program Files (x86)/MSBuild/14.0/Bin/msbuild.exe\" MVCApp/MVCApp.sln /p:Configuration=Release /p:Platform=\"Any CPU\""
+		bat "\"C:/Program Files (x86)/MSBuild/14.0/Bin/msbuild.exe\" MVCApp/MVCApp.sln /p:Configuration=Debug /p:Platform=\"Any CPU\""
 		}
 	}
 }
