@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="RunAnalysis" InitialTargets="BeforeBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <!--
-    Try rinning this
-    ildasm  C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll
-    -->
+
+
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Import Project="packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props" Condition="Exists('packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" />
   <Import Project="packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props" Condition="Exists('packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" />
   <Import Project="packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
@@ -20,63 +22,8 @@
   
    
 
-   <PropertyGroup>
-    <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <ProjectView>ProjectFiles</ProjectView>
-    <ProjectName>MVCApp</ProjectName>
 
-
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVCApp</RootNamespace>
-    <AssemblyName>MVCApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
-    <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>Full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>obj\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StyleCopEnabled>False</StyleCopEnabled> 
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>    
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>Full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>obj\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StyleCopEnabled>True</StyleCopEnabled>
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
-  </PropertyGroup>
-  <PropertyGroup>
-    <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
-  </PropertyGroup>
+  
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
@@ -404,6 +351,34 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  
+  
+    <ItemGroup>
+      <MsDeploySkipRules Include="CustomSkipFile">
+        <ObjectName>filePath</ObjectName>
+        <AbsolutePath>Views\\Home\\About1.cshtml</AbsolutePath>
+      </MsDeploySkipRules>
+    
+      <MsDeploySkipRules Include="CustomSkipFile">
+        <ObjectName>filePath</ObjectName>
+        <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
+    </MsDeploySkipRules>
+     </ItemGroup>
+     
+    <ItemGroup>
+      <Solution Include="MVCApp.sln">
+        <Properties>
+                       $(SolutionProperties)
+                   </Properties>
+      </Solution>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <BuildArtifactsDir Include="BuildArtifacts\" />
+      <SolutionFile Include="MVCApp.sln" />
+    </ItemGroup>
+
+
   <!--
  <ItemGroup>
     <Content Include="../../packages/Selenium.WebDriver.ChromeDriver.2.33.0/driver/win32/geckodriver.exe">
@@ -437,15 +412,78 @@
       <Visible>false</Visible>
     </StyleCopAdditionalAddinPaths>
   </ItemGroup>
+  
+  
+     <PropertyGroup>
+      <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
+      <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+      <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+      <ProductVersion>
+      </ProductVersion>
+      <ProjectView>ProjectFiles</ProjectView>
+      <ProjectName>MVCApp</ProjectName>
+      <SchemaVersion>2.0</SchemaVersion>
+      <ProjectGuid>{9349CF40-9AD8-4C0D-BFAB-FA7CA6801499}</ProjectGuid>
+      <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+      <OutputType>Library</OutputType>
+      <AppDesignerFolder>Properties</AppDesignerFolder>
+      <RootNamespace>MVCApp</RootNamespace>
+      <AssemblyName>MVCApp</AssemblyName>
+      <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+      <MvcBuildViews>false</MvcBuildViews>
+      <UseIISExpress>false</UseIISExpress>
+      <IISExpressSSLPort />
+      <IISExpressAnonymousAuthentication />
+      <IISExpressWindowsAuthentication />
+      <IISExpressUseClassicPipelineMode />
+      <UseGlobalApplicationHostFile />
+      <NuGetPackageImportStamp>
+      </NuGetPackageImportStamp>
+      <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
+      <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+      <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+      <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
+    </PropertyGroup>
+    
+      <PropertyGroup>
+        <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
+    </PropertyGroup>
+  
+  
+  
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <PropertyGroup>
-    <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
+   
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StyleCopEnabled>False</StyleCopEnabled> 
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>    
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StyleCopEnabled>True</StyleCopEnabled>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
 
 <PropertyGroup>
@@ -455,7 +493,7 @@
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\obj\</OutDir>
+    <OutDir>.\bin\</OutDir>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
@@ -476,30 +514,6 @@
     
   </PropertyGroup>
   
-  <ItemGroup>
-    <MsDeploySkipRules Include="CustomSkipFile">
-      <ObjectName>filePath</ObjectName>
-      <AbsolutePath>Views\\Home\\About1.cshtml</AbsolutePath>
-    </MsDeploySkipRules>
-  
-    <MsDeploySkipRules Include="CustomSkipFile">
-      <ObjectName>filePath</ObjectName>
-      <AbsolutePath>Views\\Home\\About2.cshtml</AbsolutePath>
-  </MsDeploySkipRules>
-   </ItemGroup>
-   
-  <ItemGroup>
-    <Solution Include="MVCApp.sln">
-      <Properties>
-                     $(SolutionProperties)
-                 </Properties>
-    </Solution>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <BuildArtifactsDir Include="BuildArtifacts\" />
-    <SolutionFile Include="MVCApp.sln" />
-  </ItemGroup>
   
   <Target Name="EchoDate">
     <Exec Command="echo %25date%25" />
@@ -576,7 +590,6 @@
     </VisualStudio>
   </ProjectExtensions>
   
-  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
@@ -739,7 +752,7 @@
  		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
  		
  		<PropertyGroup>
- 			<BinaryFolder>.\obj\</BinaryFolder>
+ 			<BinaryFolder>.\bin\</BinaryFolder>
  			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
  			<TemporaryFolder>.\temp</TemporaryFolder>
  		</PropertyGroup>
@@ -755,9 +768,9 @@
  		-->
  		 
  		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
- 		<!--
+ 
  		<ItemGroup>
- 		 
+ 		<!-- Set the collection of files to Zip-->
  		<ZipFiles Include=".\bin\*"/>
  		</ItemGroup>
  		
@@ -765,11 +778,10 @@
  		<PackageFolder>$(TemporaryFolder)\$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion)</PackageFolder>
  		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
  		</PropertyGroup>
- 		-->
  
  		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
  		
- 	        <!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
+ 	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
   	
   		<!--
   		<ItemGroup>
