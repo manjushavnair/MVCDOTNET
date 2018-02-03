@@ -1,13 +1,13 @@
  pipeline {
  
  
-  agent  ('master')
-  {
-  }
-  options
-  {
-  }
-	 
+	  agent any
+	  {
+	  }
+	  options
+	  {
+	  }
+
 	
 	stages {
 
@@ -50,5 +50,6 @@
  		}
 
 	 }
+	 
 	 
 }
