@@ -54,7 +54,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>Full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>obj\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,7 +64,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>Full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>obj\</OutputPath>
     <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -455,7 +455,7 @@
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\bin\</OutDir>
+    <OutDir>.\obj\</OutDir>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
@@ -739,7 +739,7 @@
  		<Message Importance="high"  Text="Starting the PackageCode Dev $$$$$$$$$$$$" /> 
  		
  		<PropertyGroup>
- 			<BinaryFolder>.\bin\</BinaryFolder>
+ 			<BinaryFolder>.\obj\</BinaryFolder>
  			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
  			<TemporaryFolder>.\temp</TemporaryFolder>
  		</PropertyGroup>
