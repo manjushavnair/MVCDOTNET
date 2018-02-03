@@ -58,6 +58,58 @@
       <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
     </PropertyGroup>
     
+    
+     
+      
+      <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>Full</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\</OutputPath>
+        <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <StyleCopEnabled>True</StyleCopEnabled>
+        <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+      </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>Full</DebugType>
+        <Optimize>true</Optimize>
+        <!-- After Compile: Result will be saved in OutDir -->
+        <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
+        <!-- MAke this Solution to work in Visusl Studio   -->
+        <OutDir>.\bin\</OutDir>
+        <OutputPath>.\obj\</OutputPath>
+        <!-- Solutionproperties -->
+        <SolutionProperties>
+            OutDir=$(OutDir);
+            OutputPath=$(OutputPath);
+            Platform=$(Platform);
+            Configuration=$(Configuration)
+          </SolutionProperties>
+          
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>    
+        <StyleCopEnabled>True</StyleCopEnabled> 
+        <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>   
+        
+        <!-- Configuration -->
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
+       <!-- Doxygen -->
+        <DoxygenExePath>..\MVCApp\packages\Doxygen.1.8.13\tools\doxygen.exe</DoxygenExePath>
+        <DoxygenConfigFile>..\MVCApp\doxygen.config</DoxygenConfigFile>
+        <!-- Simian -->
+        <SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
+        <SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile>
+        <SimianCommand>"$(SimianExeToolPath)" -formatter=xml:"$(SimianOutputFile)"  -excludes=**/*. -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
+    
+        
+      </PropertyGroup>
+
+    
     <PropertyGroup>
       <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
     </PropertyGroup>
@@ -78,56 +130,6 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
    
-
- 
-  
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>Full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StyleCopEnabled>True</StyleCopEnabled>
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
-  </PropertyGroup>
-
-<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>Full</DebugType>
-    <Optimize>true</Optimize>
-    <!-- After Compile: Result will be saved in OutDir -->
-    <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
-    <!-- MAke this Solution to work in Visusl Studio   -->
-    <OutDir>.\bin\</OutDir>
-    <OutputPath>.\obj\</OutputPath>
-    <!-- Solutionproperties -->
-    <SolutionProperties>
-        OutDir=$(OutDir);
-        OutputPath=$(OutputPath);
-        Platform=$(Platform);
-        Configuration=$(Configuration)
-      </SolutionProperties>
-      
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>    
-    <StyleCopEnabled>True</StyleCopEnabled> 
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>   
-    
-    <!-- Configuration -->
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
-   <!-- Doxygen -->
-    <DoxygenExePath>..\MVCApp\packages\Doxygen.1.8.13\tools\doxygen.exe</DoxygenExePath>
-    <DoxygenConfigFile>..\MVCApp\doxygen.config</DoxygenConfigFile>
-    <!-- Simian -->
-    <SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
-    <SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile>
-    <SimianCommand>"$(SimianExeToolPath)" -formatter=xml:"$(SimianOutputFile)"  -excludes=**/*. -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
-
-    
-  </PropertyGroup>
 
   
   <ItemGroup>
