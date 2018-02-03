@@ -2,9 +2,9 @@
 <CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="0" />
   <Modules>
-    <Module skippedDueTo="Filter" hash="95-6F-A7-D9-CA-57-AB-DE-E6-29-67-E1-17-75-0C-A6-6A-E1-81-1E">
+    <Module skippedDueTo="Filter" hash="9A-0A-84-20-7F-CD-8C-82-7C-94-6E-F8-0B-14-92-43-4A-B3-81-D7">
       <ModulePath>C:\windows\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll</ModulePath>
-      <ModuleTime>2017-09-27T18:08:07.9662306Z</ModuleTime>
+      <ModuleTime>2018-01-23T06:48:47.8791082Z</ModuleTime>
       <ModuleName>mscorlib</ModuleName>
       <Classes />
     </Module>
@@ -14,9 +14,9 @@
       <ModuleName>nunit3-console</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="Filter" hash="E0-0D-0B-92-51-0B-55-4D-34-02-F9-80-55-BC-36-8F-16-FB-43-A9">
+    <Module skippedDueTo="Filter" hash="AB-69-36-06-FC-95-2A-FE-49-56-2F-FE-00-ED-41-A6-70-40-C5-58">
       <ModulePath>C:\windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</ModulePath>
-      <ModuleTime>2017-09-27T18:08:08.6610828Z</ModuleTime>
+      <ModuleTime>2018-01-23T06:48:53.6762736Z</ModuleTime>
       <ModuleName>System</ModuleName>
       <Classes />
     </Module>

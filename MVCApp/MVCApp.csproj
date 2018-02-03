@@ -47,6 +47,8 @@
     <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
     <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
   </PropertyGroup>
+  
+  
  
  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -277,20 +279,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Global.asax.cs">
+    <FileToCompile Include="App_Start\AuthConfig.cs" />
+    <FileToCompile Include="App_Start\BundleConfig.cs" />
+    <FileToCompile Include="App_Start\FilterConfig.cs" />
+    <FileToCompile Include="App_Start\RouteConfig.cs" />
+    <FileToCompile Include="App_Start\WebApiConfig.cs" />
+    <FileToCompile Include="Controllers\AccountController.cs" />
+    <FileToCompile Include="Controllers\HomeController.cs" />
+    <FileToCompile Include="Controllers\RegisterController.cs" />
+    <FileToCompile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LoginModels.cs" />
-    <Compile Include="Models\UserModels.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    </FileToCompile>
+    <FileToCompile Include="Models\LoginModels.cs" />
+    <FileToCompile Include="Models\UserModels.cs" />
+    <FileToCompile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\accordion.css" />
@@ -458,12 +460,21 @@
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
     <OutDir>.\obj\</OutDir>
+    
+     <OutputDir>.\obj\Debug</OutputDir>
+        	<OutputAssembly>
+        		$(OutputDir)\MVCApp.dll
+        	</OutputAssembly>
+    	<Optimize>false</Optimize>
+    	
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
         Platform=$(Platform);
         Configuration=$(Configuration)
       </SolutionProperties>
+      
+      
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
@@ -532,6 +543,15 @@
     <MakeDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
+     <Target Name="Compile">
+      	<MakeDir
+      		Directories="$(OutputDir)"/>
+      	<Csc
+      		Sources="@(FileToCompile)"
+      OutputAssembly="$(OutputAssembly)"
+      		Optimize="$(Optimize)"
+      		TargetType="exe" />
+    </Target>
       
       <Target Name="BeforeBuild">
         <Message Text="BeforeBuild called Development" Importance="high" />
@@ -725,7 +745,7 @@
 	    </Target>
 	    
                
-           <Target Name="BuildCode" DependsOnTargets="Init"  >
+           <Target Name="BuildCode" DependsOnTargets="Init;"  >
  
   
  		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
