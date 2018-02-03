@@ -7,7 +7,7 @@ stages {
 	{
 		steps {
 		echo 'Start build..'
-		bat "\"C:/Program Files (x86)/Jenkins/workspace/MVCPipeLine/.nuget./.nuget/nuget.exe restore\" ./MVCApp/MVCApp.sln" 
+		bat "\"C:/Program Files (x86)/Jenkins/workspace/MVCPipeLine/.nuget./.nuget/nuget.exe\" restore ./MVCApp/MVCApp.sln" 
 		}
 	}
 	stage ('Checkout')
