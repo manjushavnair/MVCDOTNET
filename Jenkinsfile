@@ -7,6 +7,9 @@ stages {
 	{
 		steps {
 		echo 'Start build..'
+		bat .\.nuget\nuget.exe restore .\MVCApp\MVCApp.sln
+
+		
 		}
 	}
 	stage ('Checkout')
