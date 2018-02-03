@@ -754,7 +754,7 @@
  		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
  		</PropertyGroup>
  
- 		<MSBuild Projects="@(Solution)"   />
+ 		<MSBuild Projects="@(Solution)"  />
  	 
  		
  	 

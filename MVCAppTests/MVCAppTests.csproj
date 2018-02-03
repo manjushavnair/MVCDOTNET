@@ -258,6 +258,7 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <Message Text="PrepareForBuild called " Importance="high" />
     <PropertyGroup>
@@ -272,12 +273,16 @@
     <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props'))" />
     <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props'))" />
   </Target>
+  
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
+
   <Target Name="Clean">
     <Delete Files="$(OutputPath)$(AssemblyName)" />
   </Target>
+  
   <Target Name="Rebuild" DependsOnTargets="Build;Test" />
+  
   <Target Name="Test">
     <Message Text="Test called" Importance="high" />
     <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
@@ -299,16 +304,19 @@
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools"  ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
   </Target>
+  
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport in Test Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
+  
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high" />
     <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;"  ContinueOnError="false"/>
     <Message Text="CoverageOC Completed " />
   </Target>
+  
   <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
     <Message Text="CodeCoverageReport Test ######## called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
     <ItemGroup>
@@ -320,6 +328,7 @@
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
+  
   <Target Name="AnalyzeWithFxCop">
     <ItemGroup>
       <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
@@ -333,12 +342,14 @@
     <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="C:\Software\Fxcop10.0\Rules" FxCopPath="C:\Software\Fxcop10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="C:\Software\Fxcop10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(
     Directory)" />
   </Target>
+  
   <!-- Generates Apidoc -->
   <Target Name="ApiDoc">
              <Message  Importance="high" Text="Starting the ApiDoc in Test ###########" /> 
 
     <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
   </Target>
+  
   <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
   <Target Name="CodeDuplicated">
               <Message  Importance="high" Text="Starting the CodeDuplicated in Test ###########" /> 
@@ -346,6 +357,7 @@
     <Message Text="$(SimianCommand)" />
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
+  
   <Target Name="BeforeBuild">
 	    <Message Text="BeforeBuild called Testing" Importance="high" />
   

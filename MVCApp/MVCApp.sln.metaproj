@@ -18,6 +18,11 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
     <WindowsSDK80Path />
     <AspNetConfiguration>Debug</AspNetConfiguration>
+    <SolutionDir>C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>MVCApp.sln</SolutionFileName>
+    <SolutionName>MVCApp</SolutionName>
+    <SolutionPath>C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\MVCApp.sln</SolutionPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemDefinitionGroup />
