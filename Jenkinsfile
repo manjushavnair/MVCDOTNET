@@ -3,6 +3,17 @@
 	node ('master'){
 	
 	stages {
+
+
+
+ 	stage ('Start build')
+ 	
+ 	steps {
+	 
+	 
+	echo 'Start build..'
+ 	}
+
  
  	stage ('Checkout')
  	
