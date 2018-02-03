@@ -65,6 +65,7 @@
       <IntermediateOutputPath>..\StyleCopResult\</IntermediateOutputPath>
     </PropertyGroup>
     
+    
       <PropertyGroup>
         <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
     </PropertyGroup>
@@ -77,17 +78,7 @@
   </PropertyGroup>
    
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>Full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StyleCopEnabled>False</StyleCopEnabled> 
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>    
-  </PropertyGroup>
+ 
   
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>Full</DebugType>
@@ -100,10 +91,10 @@
     <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
 
-<PropertyGroup>
+<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>Full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <!-- After Compile: Result will be saved in OutDir -->
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
@@ -116,6 +107,15 @@
         Platform=$(Platform);
         Configuration=$(Configuration)
       </SolutionProperties>
+      
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    
+    <StyleCopEnabled>True</StyleCopEnabled> 
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>    
+
+
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
