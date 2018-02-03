@@ -108,9 +108,11 @@
     <!-- MAke this MSBuildStartupDirectory to work in command prompt  -->
     <!-- MAke this Solution to work in Visusl Studio   -->
     <OutDir>.\bin\</OutDir>
+    <OutputPath>.\obj\</OutputPath>
     <!-- Solutionproperties -->
     <SolutionProperties>
         OutDir=$(OutDir);
+        OutputPath=$(OutputPath);
         Platform=$(Platform);
         Configuration=$(Configuration)
       </SolutionProperties>
