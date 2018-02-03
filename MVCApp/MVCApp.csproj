@@ -83,8 +83,7 @@
         <OutputPath>.\obj\</OutputPath>
         <!-- Solutionproperties -->
         <SolutionProperties>
-            OutDir=$(OutDir);
-            OutputPath=$(OutputPath);
+             OutputPath=$(OutputPath);
             Platform=$(Platform);
             Configuration=$(Configuration)
           </SolutionProperties>
