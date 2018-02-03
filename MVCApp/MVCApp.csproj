@@ -110,12 +110,10 @@
       
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    
+    <WarningLevel>4</WarningLevel>    
     <StyleCopEnabled>True</StyleCopEnabled> 
-    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>    
-
-
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>   
+    
     <!-- Configuration -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BuildPlatform Condition=" '$(Platform)' == '' ">Any CPU</BuildPlatform>
@@ -737,6 +735,8 @@
 	    
                
            <Target Name="BuildCode" DependsOnTargets="Init"  >
+           
+           
  
   
  		<MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="C:\Projects\ASP.NET-master\MVCDOTNET\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll">
@@ -755,6 +755,8 @@
  			<BinaryFolder>.\bin\</BinaryFolder>
  			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
  			<TemporaryFolder>.\temp</TemporaryFolder>
+ 			<OutputPath>.\obj</OutputPath>
+ 			 
  		</PropertyGroup>
   
  		<!--
