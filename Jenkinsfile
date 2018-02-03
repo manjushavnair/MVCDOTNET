@@ -2,12 +2,7 @@
  
  
 	  agent any
-	  {
-	  }
-	  options
-	  {
-	  }
-
+	   
 	
 	stages {
 
