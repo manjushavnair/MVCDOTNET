@@ -737,20 +737,11 @@
  		
  		<PropertyGroup>
  			<BinaryFolder>.\bin\</BinaryFolder>
+ 			<OutputPath>.\obj\</OutputPath>
  			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
  			<TemporaryFolder>.\temp</TemporaryFolder>
  		</PropertyGroup>
-  
- 		<!--
- 		<Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
- 			<Output TaskParameter="OutputItems" ItemName="Info"/> 
- 		</Assembly>
- 		<Message Text="Identity: %(Info.Identity)" /> 
- 		<Message Text="FullName: %(Info.FullName)" /> 
- 		<Message Text="FileVersion: %(Info.FileVersion)" /> 
- 		<Message Text="AssemblyVersion: %(Info.AssemblyVersion)" />  
- 		-->
- 		 
+   	 
  		<Message Importance="high"  Text="Starting the PackageCode $$$$$$$$$$$$" /> 
  
  		<ItemGroup>
@@ -763,10 +754,10 @@
  		<ZipFileName>$(ProjectName)_$(Configuration)_%(Info.AssemblyVersion).zip</ZipFileName>
  		</PropertyGroup>
  
- 		<MSBuild Projects="@(Solution)" Properties="Configuration=$(Configuration);PublishProfile=$(Configuration);Platform=$(Platform);AdditionalSettings=-s -t -i &quot;web&quot; --html ..\MachineSpecs\Specs.html" />
+ 		<MSBuild Projects="@(Solution)"   />
+ 	 
  		
- 	<!-- DesktopBuildPackageLocation=.\temp\$(PackageFolder)\$(ZipFileName);  -->
-  	
+ 	 
   		<!--
   		<ItemGroup>
  		<Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.7.0\tools\*.dll" />
