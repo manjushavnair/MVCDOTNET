@@ -72,7 +72,7 @@
         <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
       </PropertyGroup>
     
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Any CPU' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>Full</DebugType>
         <Optimize>true</Optimize>
@@ -81,12 +81,15 @@
         <!-- MAke this Solution to work in Visusl Studio   -->
         <OutDir>.\bin\</OutDir>
         <OutputPath>.\obj\</OutputPath>
+        
         <!-- Solutionproperties -->
         <SolutionProperties>
-             OutputPath=$(OutputPath);
+        
+            OutputPath=$(OutputPath);
             Platform=$(Platform);
             Configuration=$(Configuration)
-          </SolutionProperties>
+            
+        </SolutionProperties>
           
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
