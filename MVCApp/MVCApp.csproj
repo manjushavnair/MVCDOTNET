@@ -751,13 +751,14 @@
        
  	
  		
- 		<PropertyGroup>
+ 		<!--<PropertyGroup>
  			<BinaryFolder>.\bin\</BinaryFolder>
  			<MainExecutable>$(BinaryFolder)/$(ProjectName).dll</MainExecutable>
  			<TemporaryFolder>.\temp</TemporaryFolder>
  			<OutputPath>.\obj</OutputPath>
  			 
  		</PropertyGroup>
+ 		-->
   
  		<!--
  		<Assembly TaskAction="GetInfo" NetAssembly="$(MainExecutable)"> 
