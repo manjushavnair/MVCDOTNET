@@ -72,7 +72,7 @@
         <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
       </PropertyGroup>
     
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Any CPU' ">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>Full</DebugType>
         <Optimize>true</Optimize>
@@ -734,7 +734,7 @@
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="ApiDoc" />
  	        <CallTarget Targets="AnalyzeWithFxCop" /> 
-		<CallTarget Targets="RunSpecs" />
+	<!--	<CallTarget Targets="RunSpecs" /> -->
 	    
 	    </Target>
 	    
