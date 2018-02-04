@@ -503,9 +503,7 @@
    
   <ItemGroup>
     <Solution Include="MVCApp.sln">
-      <Properties>
-                     $(SolutionProperties)
-                 </Properties>
+      <Properties> $(SolutionProperties) </Properties>
     </Solution>
   </ItemGroup>
   
@@ -537,26 +535,20 @@
     <RemoveDir Directories="@(BuildArtifactsDir)" />
   </Target>
   
-  <Target Name="Init" DependsOnTargets="Clean">
-          <Message Importance="high" Text="Running Dev Init"/>
-
-    <MakeDir Directories="@(BuildArtifactsDir)" />
-  </Target>
+	<Target Name="Init" DependsOnTargets="Clean">
+		<Message Importance="high" Text="Running Dev Init"/>
+		<MakeDir Directories="@(BuildArtifactsDir)" />
+	</Target>
   
-     <Target Name="Compile">
-      	<MakeDir
-      		Directories="$(OutputDir)"/>
-      	<Csc
-      		Sources="@(FileToCompile)"
-      OutputAssembly="$(OutputAssembly)"
-      		Optimize="$(Optimize)"
-      		TargetType="exe" />
-    </Target>
-      
-      <Target Name="BeforeBuild">
-        <Message Text="BeforeBuild called Development" Importance="high" />
-        <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
-      </Target>
+	<Target Name="Compile">
+		<MakeDir Directories="$(OutputDir)"/>
+		<Csc Sources="@(FileToCompile)" OutputAssembly="$(OutputAssembly)" Optimize="$(Optimize)" TargetType="exe" />
+	</Target>
+
+	<Target Name="BeforeBuild">
+		<Message Text="BeforeBuild called Development" Importance="high" />
+		<Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
+	</Target>
       
   
   
