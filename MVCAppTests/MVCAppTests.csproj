@@ -1,23 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\MVCApp\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props" Condition="Exists('..\MVCApp\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" />
+  <Import Project="..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" />
   <Import Project="..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props" Condition="Exists('..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" />
   <Import Project="..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props" Condition="Exists('..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" />
-  <Import Project="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" />
-  <Import Project="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props" Condition="Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" />
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
   <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.CodeQuality.FxCop" />
   <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
   <UsingTask TaskName="ReportGenerator" AssemblyFile="..\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
-  <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.8.0\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.8\build\Selenium.InternetExplorer.WebDriver.targets')" />
-  <Import Project="..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
   <PropertyGroup>
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
     <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
     <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
-    <WebGreaseLibPath>..\MVCApp\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup>
     <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
@@ -99,16 +97,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="dotless.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\dotless.1.4.0.0\lib\dotless.Core.dll</HintPath>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.6.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.6.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
@@ -124,39 +122,40 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\Mono.Cecil.dll</HintPath>
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\Mono.Cecil.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit-agent, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
+    <Reference Include="nunit-agent, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit-agent.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
+    <Reference Include="nunit-agent-x86, Version=3.8.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit-agent-x86.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
+    <Reference Include="nunit.engine, Version=3.8.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit.engine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.engine.api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\NUnit.Engine.Api.3.7.0\lib\nunit.engine.api.dll</HintPath>
+      <HintPath>..\MVCApp\packages\NUnit.Engine.Api.3.8.0\lib\nunit.engine.api.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\MVCApp\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Selenium.WebDriverBackedSelenium.3.8.0\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.WebDriverBackedSelenium.3.9.1\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sharp2City, Version=1.2.0.0, Culture=neutral, PublicKeyToken=60fd7e7e2bef8082, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Sharp2City.dll</HintPath>
+    <Reference Include="Sharp2City, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.2.4.0\lib\Net40\Sharp2City.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -203,20 +202,20 @@
       <HintPath>..\MVCApp\packages\TextifyLib.1.5.0\lib\TextifyLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Selenium.WebDriver.3.8.0\lib\net45\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.WebDriver.3.9.1\lib\net45\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver.Support, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Selenium.Support.3.8.0\lib\net45\WebDriver.Support.dll</HintPath>
+    <Reference Include="WebDriver.Support, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.Support.3.9.1\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=3.0.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
+    <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.2.4.0\lib\Net40\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WpfMath, Version=0.3.1.40510, Culture=neutral, processorArchitecture=MSIL">
@@ -261,10 +260,20 @@
   <ItemGroup>
     <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.Analyzers.dll" />
     <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.CSharp.Analyzers.dll" />
-    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.Common.dll" />
-    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.0.1\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.CSharp.dll" />
-    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.Analyzers.dll" />
-    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.1.0\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.Common.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.AnalyzerPowerPack.1.1.0\analyzers\dotnet\cs\Microsoft.AnalyzerPowerPack.CSharp.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.1.0\analyzers\dotnet\cs\System.Runtime.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.Analyzers.1.1.0\analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.1.0\analyzers\dotnet\cs\System.Runtime.InteropServices.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.1.0\analyzers\dotnet\cs\System.Runtime.InteropServices.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="deleteme.txt" />
@@ -302,11 +311,17 @@
     <Error Condition="!Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets'))" />
     <Error Condition="!Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
-    <Error Condition="!Exists('..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\System.Runtime.Analyzers.1.0.1\build\System.Runtime.Analyzers.props'))" />
-    <Error Condition="!Exists('..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\System.Runtime.InteropServices.Analyzers.1.0.1\build\System.Runtime.InteropServices.Analyzers.props'))" />
-    <Error Condition="!Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
     <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild.4.7.49.5\build\StyleCopPlus.MSBuild.props'))" />
     <Error Condition="!Exists('..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCopPlus.MSBuild2.1.10.0\build\StyleCopPlus.MSBuild2.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props'))" />
   </Target>
   <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
   <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
@@ -411,7 +426,6 @@
     <Message Text="Starting Sonar " Importance="high" />
     <Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  /d:sonar.projectVersion=2 /d:sonar.projectKey=&quot;mvctest1&quot; /d:sonar.projectName=&quot;mvctest&quot; /d:sonar.language=cs /d:sonar.dotnet.buildConfigurations=$(Configuration) /d:sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; /d:sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
   </Target>
-  <Import Project="..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\MVCApp\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
   <Import Project="..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets" Condition="Exists('..\MVCApp\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets')" />
   <Target Name="___MVCApp_packages_BuildTools_StyleCop_4_7_49_0_tools_StyleCop_targets" Condition="$(StyleCopOutputFile)==''" BeforeTargets="BeforeBuild">
     <Error Text="BuildTools_StyleCop - the BuildTools_StyleCop package has not been restored.&#xD;&#xA;If you are running this from an IDE, make sure NuGet Package Restore has been enabled, then reload the solution and re-run the build.&#xD;&#xA;If you are running this from the command line, run the build again.&#xD;&#xA;If this is a CI server, you may want to make sure NuGet Package Restore runs before your build with:&#xD;&#xA;	msbuild solution.sln /t:restorepackages" />
@@ -462,9 +476,9 @@
     <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation)" ContinueOnError="true" />
     <Message Text=" Jmeter test completed " Importance="high" />
   </Target>
-  <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
+  <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="..\MVCApp\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\MVCApp\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets')" />
 </Project>
