@@ -105,8 +105,8 @@
       <HintPath>..\MVCApp\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.6.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.6.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
@@ -154,8 +154,8 @@
       <HintPath>..\MVCApp\packages\Selenium.WebDriverBackedSelenium.3.9.1\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sharp2City, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.2.4.0\lib\Net40\Sharp2City.dll</HintPath>
+    <Reference Include="Sharp2City, Version=1.2.0.0, Culture=neutral, PublicKeyToken=60fd7e7e2bef8082, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Sharp2City.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -214,8 +214,8 @@
       <HintPath>..\MVCApp\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.2.4.0\lib\Net40\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
+    <Reference Include="Wolfpack.Contrib.BuildAnalytics, Version=3.0.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Wolfpack.Contrib.BuildAnalytics.3.0.20\lib\net45\Wolfpack.Contrib.BuildAnalytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WpfMath, Version=0.3.1.40510, Culture=neutral, processorArchitecture=MSIL">
